@@ -25,7 +25,7 @@
      <form name="formulario" id="formulario" method="post">
     <div id="form">
               <div class="logo">
-              <h1 class="logo-active"> Iniciar Sesión </h1>
+              <h1 class="logo-active"> Iniciar Sesión</h1>
               </div>
             <div class="form-item">
                 <p class="formLabel"> <i class="fas fa-user-circle"></i> Nombre</p>

@@ -47,6 +47,11 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+  
+  <!-- Select2 -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+  
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -112,7 +117,8 @@
                   <!-- <a href="#" class="btn btn-default btn-flat">Perfil</a> -->
                 </div>
                 <div class="pull-right">
-                  <a href="../../modelo/Logout.php" class="btn btn-default btn-flat">Salir</a>
+                  <a href="../../modelo/Logout.php" class="btn btn-default btn-flat"><i class="fas fa-sign-out-alt"></i>&nbsp; Salir</a>
+                 
                 </div>
               </li>
             </ul>
@@ -152,18 +158,20 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">      
-        <li class="header">MENÚ PRINCIPAL</li>        
-        <li class="active">
+                  
+                  <li class="header">MENÚ PRINCIPAL</li>  
+                        
+                        
+                   <li class=""><a href="../Index/index.php"><i class="fas fa-home"></i><span>&nbsp; Inicio</span></a></li> 
+        
+                   <li class="active">
                           <!-- <a href="bootstrap/cardscopy.html"> -->
                           <a href="#">
                           <i class="fa fa-dashboard"></i> <span>Panel de Control</span>
                             <!-- <small class="label pull-right bg-blue">CONFIGURACION</small> -->
                           </a>
                         </li> 
-                      
-                    <?php
-                    if ($_SESSION["TipoUsuario"] === 'A' ) {       
-                    ?>  
+                   
                              <!-- <li class="treeview cong"> -->
                              <li class="treeview" >
                                     <a href="#">
@@ -178,9 +186,6 @@
                                      <li><a href="../tercero.php"><i class="fas fa-users-cog"></i>&nbsp;  Terceros</a></li>              
                                    </ul>
                              </li>                           
-                     <?php 
-                     }   
-                     ?>                                                                                   
                
                    <li class="treeview">
                           <a href="#">
@@ -195,11 +200,15 @@
                                <li><a href="../clase.php"><i class="far fa-folder-open"></i>&nbsp; Clases</a></li>  
                                <li><a href="../estadoproducto.php"><i class="fas fa-toggle-on"></i>&nbsp; Estado de los Productos</a></li>    
                                <li><a href="../marca.php"><i class="fas fa-tag"></i>&nbsp; Marcas</a></li>    
-                               <li ><a href="../linea.php"><i class="fas fa-clipboard"></i>&nbsp; líneas</a></li>
-                               <li class="active"><a href="../area.php"><i class="far fa-building"></i>&nbsp; Áreas</a></li>  
-                               <li ><a href="../unidadmedida.php"><i class="fas fa-boxes"></i>&nbsp; Unidades de Medida</a></li>                                
-                               <li ><a href="../bodega.php"><i class="fas fa-warehouse"></i>&nbsp; Bodega</a></li>    
-                               <li ><a href="../producto.php"><i class="fas fa-barcode"></i>&nbsp; Productos</a></li> 
+                               <li><a href="../linea.php"><i class="fas fa-clipboard"></i>&nbsp; líneas</a></li>
+                               <li><a href="../area.php"><i class="far fa-building"></i>&nbsp; Áreas</a></li>  
+                               <li><a href="../unidadmedida.php"><i class="fas fa-boxes"></i>&nbsp; Unidades de Medida</a></li>                                
+                               <li><a href="../bodega.php"><i class="fas fa-warehouse"></i>&nbsp; Bodega</a></li>    
+                               <li><a href="../producto.php"><i class="fas fa-barcode"></i>&nbsp; Productos</a></li> 
+                               <li ><a href="../tipotransaccion.php"><i class="fas fa-store"></i>&nbsp; Tipo de transacción</a></li> 
+                               <li ><a href="../movimiento.php"><i class="fas fa-credit-card"></i>&nbsp; Compras</a></li>
+                               <li ><a href="../pedido.php"><i class="fas fa-shopping-cart"></i>&nbsp; Pedidos</a></li>
+                               
                           </ul>
                    </li> 
         
@@ -638,4 +647,3 @@
 <?php
 }
 ?>
-

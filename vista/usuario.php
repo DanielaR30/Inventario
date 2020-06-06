@@ -13,6 +13,8 @@
 
       <ul class="sidebar-menu" data-widget="tree">          
          <li class="header">MENÚ PRINCIPAL</li>
+         <li class=""><a href="Index/index.php"><i class="fas fa-home"></i><span>&nbsp; Inicio</span></a></li> 
+         
                         <li class="treeview">
                           <!-- <a href="bootstrap/cardscopy.html"> -->
                           <a href="Dashboard/index.php">
@@ -29,7 +31,7 @@
                           </a>
                          <ul class="treeview-menu">                                           
                                   
-                           <li class="active"><a href="usuario.php"><i class="fas fa-user-edit"></i>&nbsp; Usuarios</a></li>
+                           <li class="active"><a href="#"><i class="fas fa-user-edit"></i>&nbsp; Usuarios</a></li>
                            <li><a href="cargo.php"><i class="fas fa-user-tie"></i>&nbsp; Cargos</a></li>
                            <li><a href="oficina.php"><i class="far fa-building"></i>&nbsp; Oficinas</a></li>
                            <li><a href="tercero.php"><i class="fas fa-users-cog"></i>&nbsp;  Terceros</a></li>              
@@ -54,6 +56,10 @@
                                <li ><a href="unidadmedida.php"><i class="fas fa-boxes"></i>&nbsp; Unidades de Medida</a></li>                                
                                <li ><a href="bodega.php"><i class="fas fa-warehouse"></i>&nbsp; Bodega</a></li>    
                                <li ><a href="producto.php"><i class="fas fa-barcode"></i>&nbsp; Productos</a></li> 
+                               <li ><a href="tipotransaccion.php"><i class="fas fa-store"></i>&nbsp; Tipo de transacción</a></li> 
+                               <li ><a href="movimiento.php"><i class="fas fa-credit-card"></i>&nbsp; Compras</a></li>
+                               <li ><a href="pedido.php"><i class="fas fa-shopping-cart"></i>&nbsp; Pedidos</a></li>
+                               
                           </ul>
                    </li> 
          </ul>
@@ -197,7 +203,8 @@
                             
                           </div>
                         </div>
-                <br>
+                        
+                      <br>
                       <div class="row">
                       <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                              <!-- <button class="btn btn-primary" type="button" onclick="guardar();" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>  -->

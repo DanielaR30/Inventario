@@ -70,10 +70,10 @@ public function mostrarid($IdClase){
         // $NuExistenciaFisica,
         // $NuExistenciaEnTransito,
         $NuStockMin,
-        $NuStockMax
+        $NuStockMax,
+        $GravadoIVA,
+        $PorcentajeIVA
         // $VlCostoPromedio,
-        // $PrecioVentaEf,
-        // $PrecioVentaCr
         // $IdEstadoProducto
         ) {            
         
@@ -89,12 +89,11 @@ public function mostrarid($IdClase){
              IdUnidadMedida,
              IdLocalizacion,
              NuExistenciaFisica,
-             NuExistenciaEnTransito,
              NuStockMin,
              NuStockMax,
+             GravadoIVA,
+             PorcentajeIVA,
              VlCostoPromedio,
-             PrecioVentaEf,
-             PrecioVentaCr,
              IdEstadoProducto) 
             VALUES (
             '$IdProducto',
@@ -108,11 +107,10 @@ public function mostrarid($IdClase){
             '$IdUnidadMedida',
             '$IdLocalizacion',
             '0',
-            '0',
             '$NuStockMin',
             '$NuStockMax',
-            '0',
-            '0',
+            '$GravadoIVA',
+            '$PorcentajeIVA',
             '0',
             '1'
             )";
@@ -179,12 +177,13 @@ public function mostrarid($IdClase){
             WHERE IdProducto='$IdProducto'";
             return ejecutarConsulta($sql);
         }
+        
 
         public function listar()
         {    
            $sql= "SELECT p.IdProducto, c.NmClase, p.NmProducto, p.Descripcion, p.CodigoBarras, p.ImagenProducto, m.NmMarca, l.NmLinea,
-           u.NmUnidadMedida, b.NmBodega, p.NuExistenciaFisica, p.NuExistenciaEnTransito, p.NuStockMin, p.NuStockMax, 
-           convert(varchar,cast(p.VlCostoPromedio as money),1) as 'VlCostoPromedio', convert(varchar,cast(p.PrecioVentaEf as money),1) as 'PrecioVentaEf',  convert(varchar,cast(p.PrecioVentaCr as money),1) as 'PrecioVentaCr' , e.NmEstadoProducto          
+           u.NmUnidadMedida, b.NmBodega, p.NuExistenciaFisica, p.NuStockMin, p.NuStockMax, 
+           convert(varchar,cast(p.VlCostoPromedio as money),1) as 'VlCostoPromedio', p.GravadoIVA, p.PorcentajeIVA, e.NmEstadoProducto          
            FROM INV_PRODUCTO as p
            INNER JOIN INV_CLASE as c on c.IdClase=p.IdClase
            INNER JOIN INV_MARCA as m on m.IdMarca=p.IdMarca
@@ -195,18 +194,6 @@ public function mostrarid($IdClase){
            return ejecutarConsulta($sql);
         }
         
-        // public function fclase($fclase)
-        // {
-        //     $sql="SELECT p.IdProducto, p.NmProducto, m.NmMarca, u.NmUnidadMedida, b.NmBodega, p.NuStockMin, p.NuStockMax, p.NuExistenciaFisica
-        //     FROM INV_PRODUCTO as p
-        //     -- INNER JOIN INV_CLASE as c on c.IdClase=p.IdClase
-        //     INNER JOIN INV_MARCA as m on m.IdMarca=p.IdMarca
-        //     INNER JOIN INV_UNIDAD_MEDIDA as u on u.IdUnidadMedida=p.IdUnidadMedida
-        //     INNER JOIN INV_BODEGA as b on b.IdBodega=p.IdLocalizacion
-        //     WHERE p.IdClase = '$fclase'";
-        //     // print_r($sql); die();
-        //    return ejecutarConsulta($sql);
-        // }
 
         public function selectClase()
         {

@@ -4,6 +4,8 @@ function init() {
 
     mostrarform(false);
     listar();
+    card();
+
 
     $.post("../controlador/producto.php?op=selectClase", function(r) {
         $("#fclase").html(r);
@@ -176,7 +178,7 @@ function listar() {
         initComplete: function() {
             this.api().columns([2]).every(function() {
                 var column = this;
-                var select = $('<select><option value="">All</option></select>')
+                var select = $('<select style="border: none;"><option value="">Clase</option></select>')
                     // .appendTo($(column.footer()))
                     .appendTo($(column.header()))
                     .on('change', function() {
@@ -203,64 +205,16 @@ function listar() {
 
 }
 
+
 // function listarfclase() {
 // }
 
+// <div id = "demo" >
+//     <h2 > The XMLHttpRequest Object < /h2>
+// <button type = "button" onclick = "loadDoc('ajax_info.txt', myFunction)" > Change Content </button> < /div >
+
 
 $(document).ready(function() {
-
-    // $('#fclase').change(function() {
-
-    //     $("#tbllistado").css("display", "none");
-    //     $("#tblfclase").css("display", "inline");
-    //     // console.log('iniciando............ donde llama esta funcion');
-    //     var IdClase = $(this).val();
-    //     var dataString = 'IdClase=' + IdClase;
-    //     // console.log(dataString);
-    //     tabla = $('#tblfclase').dataTable({
-    //         select: true,
-    //         // scrollY: "550px",
-    //         // scrollX: true,
-    //         // scrollCollapse: true,
-    //         // paging: false,
-    //         // fixedColumns: true,
-    //         // columnDefs: [
-    //         //     { width: 70, targets: 0 },
-    //         // ],
-    //         "aProcessing": true, // activando los procedimientos de datatables
-    //         "aServerSide": true, // paginacion y filtracion
-    //         dom: 'Bfrtip', // definimos los elementos de la tabla
-    //         buttons: [
-    //             'copy', 'csv', 'excel', 'pdf'
-    //         ],
-    //         "ajax": {
-    //             type: "POST",
-    //             url: '../controlador/producto.php?op=listarfclase',
-    //             data: dataString,
-    //             dataType: "json",
-    //             error: function(e) {
-    //                 console.log(e.responseText);
-    //             }
-    //         },
-    //         "bDestroy": true,
-    //         "iDisplayLength": 14, // indicamos el numero de paginacion
-    //         "order": [
-    //                 [0, "desc"]
-    //             ] // ordernar (columna,orden)
-    //     }).DataTable();
-    //     // var IdClase = $(this).val();
-    //     // var dataString = 'IdClase=' + IdClase;
-    //     //mostrar el id de producto, autoincremental según familia, segmento y clase.
-    //     // $.ajax({
-    //     //     type: "POST",
-    //     //     url: "../controlador/producto.php?op=listarfclase",
-    //     //     data: dataString,
-    //     //     success: function(data) {
-    //     //         console.log(data);
-    //     //     },
-    //     // });
-    // });
-
 
     $('#IdClase').click(function() {
         var IdClase = $(this).val();
@@ -406,128 +360,10 @@ $(document).ready(function() {
             consol.log("elect only images");
             // alert("Pls select only images");
         }
-
     });
-
-    // $("#imagenactual").change(function() {
-    //     //obtener referencia al input y a la imagen
-    //     //selecarchivos
-    //     let imgactual = $("#imagenactual").val();
-    //     let imagenmuestra = $("#imagenmuestra").val();
-
-    //     let objectURL = URL.createObjectURL(imgactual);
-    //     imagenmuestra.src = objectURL;
-
-    //     $("#imagenmuestra").show();
-    //     $("#imagenmuestra").attr(imagenmuestra.src);
-    // });
-
-    // document.getElementById("ImagenProducto").onchange = function(e) {
-    //     // Creamos el objeto de la clase FileReader
-    //     let reader = new FileReader();
-
-    //     // Leemos el archivo subido y se lo pasamos a nuestro fileReader
-    //     reader.readAsDataURL(e.target.files[0]);
-
-    //     // Le decimos que cuando este listo ejecute el código interno
-    //     reader.onload = function() {
-    //         let preview = document.getElementById('imagenmuestra'),
-    //             image = document.createElement('img');
-
-    //         image.src = reader.result;
-
-    //         preview.innerHTML = '';
-    //         preview.append(image);
-    //     };
-    // }
-
-
-
-    // Obtener referencia al input y a la imagen
-
-    // const $seleccionArchivos = document.querySelector("#ImagenProducto"),
-    //     $imagenPrevisualizacion = document.querySelector("#imagenmuestra");
-
-    // // Escuchar cuando cambie
-    // $seleccionArchivos.addEventListener("change", () => {
-    //     // Los archivos seleccionados, pueden ser muchos o uno
-    //     const archivos = $seleccionArchivos.files;
-    //     // Si no hay archivos salimos de la función y quitamos la imagen
-    //     if (!archivos || !archivos.length) {
-    //         $imagenPrevisualizacion.src = "";
-    //         return;
-    //     }
-    //     // Ahora tomamos el primer archivo, el cual vamos a previsualizar
-    //     const primerArchivo = archivos[0];
-    //     // Lo convertimos a un objeto de tipo objectURL
-    //     const objectURL = URL.createObjectURL(primerArchivo);
-    //     // Y a la fuente de la imagen le ponemos el objectURL
-    //     $imagenPrevisualizacion.src = objectURL;
-    // });
 
 
 });
-
-// previewFile();
-
-// function previewFile(e) {
-
-//     // console.log("entrooooooooooooooo");
-//     // var preview = document.querySelector('img');
-//     var preview = $("#imagenmuestra");
-//     preview.css('display', 'none');
-//     // var file = document.querySelector('input[type=file]').files[];
-//     var file = $("#ImagenProducto").files;
-//     var reader = new FileReader();
-
-//     reader.onloadend = function() {
-//         preview.attr('src', reader.result);
-//         preview.css('display', 'block');
-
-//         // preview.src = reader.result;
-//     }
-
-//     if (file) {
-//         reader.readAsDataURL(file);
-//     } else {
-//         // preview.src = "";
-//         preview.css('display', 'none');
-//         preview.attr('src', '');
-//     }
-
-//     reader.onloadend = function(e) {
-//         preview.attr('src', reader.result);
-//         preview.css('display', 'block');
-//     }
-
-// }
-
-
-
-// $(window).load(function() {
-// $(function() {
-//     $('#ImagenProducto').change(function(e) {
-//         addImage(e);
-//     });
-
-//     function addImage(e) {
-//         var file = e.target.files[0],
-//             imageType = /image.*/;
-
-//         if (!file.type.match(imageType))
-//             return;
-
-//         var reader = new FileReader();
-//         reader.onload = fileOnload;
-//         reader.readAsDataURL(file);
-//     }
-
-//     function fileOnload(e) {
-//         var result = e.target.result;
-//         $('#imagenmuestra').attr("src", result);
-//     }
-// });
-// });
 
 
 $("#btnGuardar").click(function(e) {

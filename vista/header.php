@@ -19,6 +19,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../public/css/_all-skins.min.css">
   <link rel="apple-touch-icon" href="../public/img/apple-touch-icon.png">
+  
   <link rel="shortcut icon" href="../public/img/favicoon.ico">
   <!-- Estilos del datatables -->
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
@@ -26,20 +27,24 @@
   <link rel="stylesheet" type="text/css" href="../public/datatables/buttons.dataTables.min.css">
   <link rel="stylesheet" type="text/css" href="../public/datatables/responsive.dataTables.min.css">
   <link rel="stylesheet" type="text/css" href="../public/datatables/fixedColumns.dataTables.min.css">
+  
   <!-- sweetalert2 -->
   <link rel="stylesheet" href="../public/css/sweetalert.min.css" />
+  
   <!-- bootstrap-select -->
   <link rel="stylesheet" href="../public/css/bootstrap-select.min.css"> 
   
-  <style type="text/css">
+   <!-- Select2 -->
+     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+  
+<style type="text/css">
 .thumb-image{
  float:left;
  width:167px;
  position:relative;
  padding:3px;
 }
-
-
 </style>
  
 </head>
@@ -107,7 +112,7 @@
                   <!-- <a href="#" class="btn btn-default btn-flat">Perfil</a> -->
                 </div>
                   <div class="pull-right">
-                    <a href="../modelo/Logout.php"  class="btn btn-default btn-flat">Salir</a>
+                    <a href="../modelo/Logout.php"  class="btn btn-default btn-flat"><i class="fas fa-sign-out-alt"></i>&nbsp; Salir</a>
                   </div>
                 </li>
               </ul>

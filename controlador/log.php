@@ -31,8 +31,10 @@ $login = new Login();
                     if(password_verify($Clave, $row["Clave"]))
                     {
                           $_SESSION["NmUsuario"]=$row['NmUsuario'];
+                          $_SESSION["TipoUsuario"]=$row['TipoUsuario']; 
+                          $_SESSION["IdUsuario"]=$row['IdUsuario'];
+                          
                           echo $_SESSION["NmUsuario"];   
-                          echo $_SESSION["TipoUsuario"]= $row['TipoUsuario'];                          
                           
                           // header("location:Dashboard/index.php");
                     }                    

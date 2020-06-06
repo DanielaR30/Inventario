@@ -1,6 +1,6 @@
 <?php
-    require_once "../modelo/Bodega.php";
-    $tipotransaccion = new TipoTransaccion();
+    require_once "../modelo/Tipotransaccion.php";
+    $tipotransaccion = new Tipotransaccion();
     
     $IdTipoTransaccion = "";
     $NmTipoTransaccion = "";

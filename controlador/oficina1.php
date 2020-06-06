@@ -23,7 +23,9 @@
     (isset($_POST["FlPuntodeAtencion"])) ? $FlPuntodeAtencion =  $_POST["FlPuntodeAtencion"] : ""; // ? LimpiarCadena($_POST["FlPuntodeAtencion"]) : "";
     (isset($_POST["IdZona"])) ? $IdZona = $_POST["IdZona"] : $IdZona ="0"; // ? LimpiarCadena($_POST["IdZona"]) : "";
     (isset($_POST["FcApertura"])) ? $FcApertura = $_POST["FcApertura"] : ""; // ? LimpiarCadena($_POST["FcApertura"]) : "";
+    
     (isset($FcApertura)) ? $FcApertura = date("Y-m-d H:m:s", strtotime($FcApertura)) : "";
+    
     (isset($_POST["FlSedePropia"])) ? $FlSedePropia = $_POST["FlSedePropia"] : ""; // ? LimpiarCadena($_POST["FlSedePropia"]) : "";
     (isset($_POST["NuEmpleados"])) ? $NuEmpleados = $_POST["NuEmpleados"] : ""; // ? LimpiarCadena($_POST["NuEmpleados"]) : "";
     (isset($_POST["NuHabitantes"])) ? $NuHabitantes = $_POST["NuHabitantes"] : ""; // ? LimpiarCadena($_POST["NuHabitantes"]) : "";

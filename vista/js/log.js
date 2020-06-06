@@ -69,7 +69,7 @@ $(document).ready(function() {
                         $("#Clave").popover('hide');
 
                         console.log('entró');
-                        window.location.replace("Dashboard/index.php");
+                        window.location.replace("Index/index.php");
                     }
                 }
             })

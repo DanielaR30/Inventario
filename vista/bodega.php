@@ -15,6 +15,8 @@
 <ul class="sidebar-menu" data-widget="tree"> 
          
          <li class="header">MENÚ PRINCIPAL</li>
+         <li class=""><a href="Index/index.php"><i class="fas fa-home"></i><span>&nbsp; Inicio</span></a></li> 
+         
                         <li>
                           <!-- <a href="bootstrap/cardscopy.html"> -->
                           <a href="Dashboard/index.php">
@@ -60,8 +62,12 @@
                                <li ><a href="linea.php"><i class="fas fa-clipboard"></i>&nbsp; líneas</a></li>
                                <li ><a href="area.php"><i class="far fa-building"></i>&nbsp; Áreas</a></li>  
                                <li ><a href="unidadmedida.php"><i class="fas fa-boxes"></i>&nbsp; Unidades de Medida</a></li>                                
-                               <li class="active"><a href="bodega.php"><i class="fas fa-warehouse"></i>&nbsp; Bodega</a></li>    
+                               <li class="active"><a href="#"><i class="fas fa-warehouse"></i>&nbsp; Bodega</a></li>    
                                <li ><a href="producto.php"><i class="fas fa-barcode"></i>&nbsp; Productos</a></li> 
+                               <li ><a href="tipotransaccion.php"><i class="fas fa-store"></i>&nbsp; Tipo de transacción</a></li> 
+                               <li ><a href="movimiento.php"><i class="fas fa-credit-card"></i>&nbsp; Compras</a></li>
+                               <li ><a href="pedido.php"><i class="fas fa-shopping-cart"></i>&nbsp; Pedidos</a></li>
+                               
                           </ul>
                    </li> 
          </ul>
@@ -127,8 +133,7 @@
                                            
                                                   
                          <div class="row">
-                         
-                         <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12"> 
+                         <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" style="display:none;"> 
                             <label for="IdBodega">Código</label>
                             <input type="text" class="form-control" name="IdBodega" id="IdBodega" required>
                          </div> 

@@ -16,6 +16,8 @@
 <ul class="sidebar-menu" data-widget="tree"> 
          
          <li class="header">MENÚ PRINCIPAL</li>
+         <li class=""><a href="Index/index.php"><i class="fas fa-home"></i><span>&nbsp; Inicio</span></a></li> 
+         
                         <li>
                           <!-- <a href="bootstrap/cardscopy.html"> -->
                           <a href="Dashboard/index.php">
@@ -34,7 +36,7 @@
                                   
                            <li><a href="usuario.php"><i class="fas fa-user-edit"></i>&nbsp; Usuarios</a></li>
                            <li><a href="cargo.php"><i class="fas fa-user-tie"></i>&nbsp; Cargos</a></li>
-                           <li class="active"><a href="oficina.php"><i class="far fa-building"></i>&nbsp; Oficinas</a></li>
+                           <li class="active"><a href="#"><i class="far fa-building"></i>&nbsp; Oficinas</a></li>
                            <li><a href="tercero.php"><i class="fas fa-users-cog"></i>&nbsp;  Terceros</a></li>              
                          </ul>
                    </li> 
@@ -57,6 +59,10 @@
                                <li ><a href="unidadmedida.php"><i class="fas fa-boxes"></i>&nbsp; Unidades de Medida</a></li>                                
                                <li ><a href="bodega.php"><i class="fas fa-warehouse"></i>&nbsp; Bodega</a></li>    
                                <li ><a href="producto.php"><i class="fas fa-barcode"></i>&nbsp; Productos</a></li> 
+                               <li ><a href="tipotransaccion.php"><i class="fas fa-store"></i>&nbsp; Tipo de transacción</a></li> 
+                               <li ><a href="movimiento.php"><i class="fas fa-credit-card"></i>&nbsp; Compras</a></li>
+                               <li ><a href="pedido.php"><i class="fas fa-shopping-cart"></i>&nbsp; Pedidos</a></li>
+                               
                           </ul>
                    </li> 
          </ul>

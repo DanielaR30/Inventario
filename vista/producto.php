@@ -10,6 +10,8 @@
 ?>
     <ul class="sidebar-menu" data-widget="tree">          
          <li class="header">MENÚ PRINCIPAL</li>
+         <li class=""><a href="Index/index.php"><i class="fas fa-home"></i><span>&nbsp; Inicio</span></a></li> 
+         
                         <li>
                           <!-- <a href="bootstrap/cardscopy.html"> -->
                           <a href="Dashboard/index.php">
@@ -58,7 +60,11 @@
                                <li ><a href="area.php"><i class="far fa-building"></i>&nbsp; Áreas</a></li>  
                                <li ><a href="unidadmedida.php"><i class="fas fa-boxes"></i>&nbsp; Unidades de Medida</a></li>                                
                                <li ><a href="bodega.php"><i class="fas fa-warehouse"></i>&nbsp; Bodega</a></li>    
-                               <li class="active"><a href="producto.php"><i class="fas fa-barcode"></i>&nbsp; Productos</a></li>    
+                               <li class="active"><a href="#"><i class="fas fa-barcode"></i>&nbsp; Productos</a></li> 
+                               <li ><a href="tipotransaccion.php"><i class="fas fa-store"></i>&nbsp; Tipo de transacción</a></li> 
+                               <li ><a href="movimiento.php"><i class="fas fa-credit-card"></i>&nbsp; Compras</a></li>
+                               <li ><a href="pedido.php"><i class="fas fa-shopping-cart"></i>&nbsp; Pedidos</a></li>
+                               
                           </ul>
                    </li> 
          </ul>
@@ -105,13 +111,6 @@
                     <!-- /.box-header -->
                     <!-- centro --> 
                     <div class="panel-body table-responsive" id="listadoregistros">
-                    <!-- <form action="" method="post">
-                    <div class="inputWithIcon form-group col-lg-4 col-md-6 col-sm-6 col-xs-12 select2"  multiple="multiple" data-placeholder="">
-                              <select name="fclase" id="fclase" class="form-control" class="border-top-3">
-                              </select>
-                        </div>
-                    </form> -->
-                  
                         <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover display">
                         <!-- <a class="dt-button buttons-excel buttons-html5" tabindex="0" aria-controls="tbllistado" href="../exportar-phpexcel/createExcel.php" target="_blank"><span>Excel</span></a>
                         <a class="dt-button buttons-excel buttons-html5" tabindex="0" aria-controls="tbllistado" href="../exportar-phpexcel/pdf/index.php" target="_blank"><span>PDF</span></a> -->
@@ -119,7 +118,8 @@
                           <thead >                            
                             <th>Opciones</th>
                             <th>Código</th>
-                            <th>Clase</th>
+                            <!-- <th>Clase</th> -->
+                            <th></th>
                             <th>Nombre</th>
                             <th>Descripción</th>
                             <th>Código de barrras</th>
@@ -129,12 +129,11 @@
                             <th>Unidad de medida</th>
                             <th>Localización</th>
                             <th>Existencias Físicas</th>
-                            <th>Existencias en Transito</th>
                             <th>Stock Mínimo</th>
                             <th>Stock Máximo</th>
                             <th>Costo Promedio</th>
-                            <th>Precio de venta Ef</th>
-                            <th>Precio de venta Cr</th>
+                            <th>Gravado Iva</th>
+                            <th>Porcentaje IVA</th>
                             <th>Estado Activo/Inactivo</th>
                           </thead>
                           <tbody>
@@ -159,29 +158,13 @@
                             <th></th>
                             <th></th>
                             <th></th>
-                            <th></th>
-					</tr>
-				</tfoot>
+                				  	</tr>
+			                  	</tfoot>
                         </table>
                         
-                        <!-- <table id="tblfclase" style="display: none">
-                        <thead>                            
-                            <th>Opciones</th>
-                            <th>Código</th>
-                            <th>Nombre</th>
-                            <th>Marca</th>
-                            <th>Unidad de medida</th>
-                            <th>Localización</th>
-                            <th>Existencias Físicas</th>                            
-                            <th>Stock Mínimo</th>
-                            <th>Stock Máximo</th>
-                          </thead>
-                          <tbody>
-                          </tbody>
-                          </table> -->
                     </div>
                      
-                    <div class="panel-body" style="height: 800px;"  id="formularioregistros">
+                    <div class="panel-body"   id="formularioregistros">
                       <form name="formulario" id="formulario" method="post">
                         <div class="row">     
                         <div class="col-lg-12">
@@ -262,13 +245,23 @@
                                         <i class="fas fa-exclamation-circle"> Campo requerido.</i> 
                                    </span>
                               </div>
+                              
                               <div class="inputWithIcon form-group col-lg-12 col-md-6 col-sm-6 col-xs-12">
-                                  <label for="NuStockMax">Stock máximo</label>
-                                  <input type="number" class="form-control" name="NuStockMax" id="NuStockMax" required>
-                                  <span class="infoma" style="display:none; color:rgba(230, 35, 18, 0.952);">
+                                  <label for="GravadoIVA">Gravado IVA</label>
+                                  <input type="text" class="form-control" maxlength="1" name="GravadoIVA" id="GravadoIVA" required>
+                                  <span class="infogi" style="display:none; color:rgba(230, 35, 18, 0.952);">
                                         <i class="fas fa-exclamation-circle"> Campo requerido.</i> 
                                    </span>
-                             </div> 
+                              </div>
+                              
+                              <div class="inputWithIcon form-group col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                                  <label for="PorcentajeIVA">Porcentaje IVA</label>
+                                  <input type="number" class="form-control" name="PorcentajeIVA" id="PorcentajeIVA" required>
+                                  <span class="infoiv" style="display:none; color:rgba(230, 35, 18, 0.952);">
+                                        <i class="fas fa-exclamation-circle"> Campo requerido.</i> 
+                                   </span>
+                              </div>
+                           
                         </div>
                         
                         <div class="col col-lg-6">
@@ -280,18 +273,25 @@
                             <span class="infomrc" style="display:none; color:rgba(230, 35, 18, 0.952);">
                                   <i class="fas fa-exclamation-circle"> Campo requerido.</i> 
                              </span>
-                      </div>  
+                        </div>  
                       
                       
-                      <div class="inputWithIcon form-group col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                        <div class="inputWithIcon form-group col-lg-12 col-md-6 col-sm-6 col-xs-12">
                               <label for="IdUnidadMedida">Unidades de medida</label>
                               <select name="IdUnidadMedida" id="IdUnidadMedida" class="form-control">
                               </select>
                               <span class="infoDocu" style="display:none; color:rgba(230, 35, 18, 0.952);">
                                     <i class="fas fa-exclamation-circle"> Campo requerido.</i> 
                                </span>
-                           </div>
+                        </div>
                       
+                        <div class="inputWithIcon form-group col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                                  <label for="NuStockMax">Stock máximo</label>
+                                  <input type="number" class="form-control" name="NuStockMax" id="NuStockMax" required>
+                                  <span class="infoma" style="display:none; color:rgba(230, 35, 18, 0.952);">
+                                        <i class="fas fa-exclamation-circle"> Campo requerido.</i> 
+                                   </span>
+                             </div> 
                       
                          <div class="inputWithIcon form-group col-lg-12 col-md-6 col-sm-6 col-xs-12">
                                 <label for="ImagenProducto">Imagen</label>
@@ -306,64 +306,7 @@
                               </div> 
                          </div>                                                 
                 </div>                         
-                                                                           
-                                      
-                      <div class="row">                                 
-                        <!-- <div class="inputWithIcon form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                              <label for="NuExistenciaFisica">Existencia Física</label>
-                              <input type="number" class="form-control" name="NuExistenciaFisica" id="NuExistenciaFisica" required>
-                              <span class="infofi" style="display:none; color:rgba(230, 35, 18, 0.952);">
-                                    <i class="fas fa-exclamation-circle"> Campo requerido.</i> 
-                              </span>
-                            </div> -->
-                            
-                            <!-- <div class="inputWithIcon form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                              <label for="NuExistenciaEnTransito">Existencia En Tránsito</label>
-                              <input type="number" class="form-control" name="NuExistenciaEnTransito" id="NuExistenciaEnTransito" required>
-                              <span class="infotra" style="display:none; color:rgba(230, 35, 18, 0.952);">
-                                    <i class="fas fa-exclamation-circle"> Campo requerido.</i> 
-                               </span>
-                            </div> -->    
-                      </div>  
-                      
-                      <div class="row">                   
-                      </div>
-                                                 
-                       <!-- <div class="row"> -->                            
-                            <!-- <div class="inputWithIcon form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                <label for="VlCostoPromedio">Costo Promedio</label>
-                                <input type="number" class="form-control" name="VlCostoPromedio" id="VlCostoPromedio" required>
-                                <span class="infocosto" style="display:none; color:rgba(230, 35, 18, 0.952);">
-                                      <i class="fas fa-exclamation-circle"> Campo requerido.</i> 
-                                 </span>
-                              </div> -->
-                       <!-- </div>    -->
-                      
-                       <!-- <div class="row"> -->
-                          <!-- <div class="inputWithIcon form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                            <label for="PrecioVentaEf">Precio de Venta Ef</label>
-                            <input type="number" class="form-control" name="PrecioVentaEf" id="PrecioVentaEf" required>
-                            <span class="infoef" style="display:none; color:rgba(230, 35, 18, 0.952);">
-                                  <i class="fas fa-exclamation-circle"> Campo requerido.</i> 
-                             </span>
-                          </div> -->
-                          <!-- <div class="inputWithIcon form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                              <label for="PrecioVentaCr">Precio de Venta Cr</label>
-                              <input type="number" class="form-control" name="PrecioVentaCr" id="PrecioVentaCr" required>
-                              <span class="infopv" style="display:none; color:rgba(230, 35, 18, 0.952);">
-                                    <i class="fas fa-exclamation-circle"> Campo requerido.</i> 
-                               </span>
-                            </div> -->
-                            
-                            <!-- <div class="inputWithIcon form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                              <label for="IdEstadoProducto">Estado</label>
-                              <select name="IdEstadoProducto" id="IdEstadoProducto" class="form-control">
-                              </select>
-                              <span class="infoes" style="display:none; color:rgba(230, 35, 18, 0.952);">
-                                    <i class="fas fa-exclamation-circle"> Campo requerido.</i> 
-                               </span>
-                            </div>      -->
-                       <!-- </div>      -->
+                 
  
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                              <button class="btn btn-primary" type="button"  id="btnGuardar"><i class="fa fa-save"> Guardar</i></button> 
@@ -380,6 +323,7 @@
     </div><!-- /.content-wrapper -->
   <!--Fin-Contenido-->
   <!-- Fin modal -->
+  
 <?php
 require 'footer.php';
 ?>

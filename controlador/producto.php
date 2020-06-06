@@ -4,8 +4,6 @@ $producto = new Producto();
 
 $IdProducto="";
 $IdClase="";
-
-// $fclase=""; 
 $NmProducto="";
 $Descripcion="";
 $CodigoBarras="";
@@ -14,21 +12,14 @@ $IdMarca="";
 $IdLinea="";
 $IdUnidadMedida="";
 $IdLocalizacion="";
-// $NuExistenciaFisica="";
-// $NuExistenciaEnTransito="";
 $NuStockMin="";
 $NuStockMax="";
-// $VlCostoPromedio="";
-// $PrecioVentaEf="";
-// $PrecioVentaCr="";
-// $IdEstadoProducto="";
+$GravadoIVA="";
+$PorcentajeIVA="";
 
 
 (isset($_POST["IdProducto"])) ? $IdProducto = $_POST["IdProducto"] : ""; // ? LimpiarCadena($_POST["idOficina"]) : "";
 (isset($_POST["IdClase"])) ? $IdClase = $_POST["IdClase"] : ""; // ? LimpiarCadena($_POST["NmOficina"]) : "";
-
-// (isset($_POST["fclase"])) ? $fclase = $_POST["fclase"] : ""; // ? LimpiarCadena($_POST["NmOficina"]) : "";
-
 (isset($_POST["NmProducto"])) ? $NmProducto = $_POST["NmProducto"] : ""; // ? LimpiarCadena($_POST["Descripcion"]) : "";
 (isset($_POST["Descripcion"])) ? $Descripcion = $_POST["Descripcion"] : "";  // ? LimpiarCadena($_POST["Telefono"]) : "";
 (isset($_POST["CodigoBarras"])) ? $CodigoBarras = $_POST["CodigoBarras"] : "";   // ? LimpiarCadena($_POST["NuStockMin"]) : "";
@@ -37,17 +28,10 @@ $NuStockMax="";
 (isset($_POST["IdLinea"])) ? $IdLinea =  $_POST["IdLinea"] : ""; // ? LimpiarCadena($_POST["FlPuntodeAtencion"]) : "";
 (isset($_POST["IdUnidadMedida"])) ? $IdUnidadMedida =  $_POST["IdUnidadMedida"] : ""; // ? LimpiarCadena($_POST["FlPuntodeAtencion"]) : "";
 (isset($_POST["IdLocalizacion"])) ? $IdLocalizacion =  $_POST["IdLocalizacion"] : ""; // ? LimpiarCadena($_POST["FlPuntodeAtencion"]) : "";
-// (isset($_POST["NuExistenciaFisica"])) ? $NuExistenciaFisica =  $_POST["NuExistenciaFisica"] : ""; // ? LimpiarCadena($_POST["FlPuntodeAtencion"]) : "";
-// (isset($_POST["NuExistenciaEnTransito"])) ? $NuExistenciaEnTransito = $_POST["NuExistenciaEnTransito"] : ""; // ? LimpiarCadena($_POST["IdZona"]) : "";
 (isset($_POST["NuStockMin"])) ? $NuStockMin = $_POST["NuStockMin"] : ""; // ? LimpiarCadena($_POST["FlSedePropia"]) : "";
 (isset($_POST["NuStockMax"])) ? $NuStockMax = $_POST["NuStockMax"] : ""; // ? LimpiarCadena($_POST["FlSedePropia"]) : "";
-// (isset($_POST["VlCostoPromedio"])) ? $VlCostoPromedio = $_POST["VlCostoPromedio"] : ""; // ? LimpiarCadena($_POST["NuEmpleados"]) : "";
-// (isset($_POST["PrecioVentaEf"])) ? $PrecioVentaEf = $_POST["PrecioVentaEf"] : ""; // ? LimpiarCadena($_POST["NuEmpleados"]) : "";
-// (isset($_POST["PrecioVentaCr"])) ? $PrecioVentaCr = $_POST["PrecioVentaCr"] : ""; // ? LimpiarCadena($_POST["NuEmpleados"]) : "";
-// (isset($PrecioVentaCr)) ? $PrecioVentaCr =  (number_format($PrecioVentaCr, 2, '.', ',')) : ""; // ? LimpiarCadena($_POST["NuEmpleados"]) : "";
-
-// (isset($_POST["IdEstadoProducto"])) ? $IkdEstadoProducto = $_POST["IdEstadoProducto"] : ""; // ? LimpiarCadena($_POST["NuEmpleados"]) : "";
-
+(isset($_POST["GravadoIVA"])) ? $GravadoIVA = $_POST["GravadoIVA"] : ""; // ? LimpiarCadena($_POST["FlSedePropia"]) : "";
+(isset($_POST["PorcentajeIVA"])) ? $PorcentajeIVA = $_POST["PorcentajeIVA"] : ""; // ? LimpiarCadena($_POST["FlSedePropia"]) : "";
 
 
 session_start();
@@ -111,7 +95,7 @@ case 'guardar':
     // }
 
   $rspta = $producto->insertar($IdProducto, $IdClase, $NmProducto, $Descripcion, $CodigoBarras, $ImagenProducto,
-  $IdMarca, $IdLinea, $IdUnidadMedida, $IdLocalizacion, $NuStockMin, $NuStockMax);
+  $IdMarca, $IdLinea, $IdUnidadMedida, $IdLocalizacion, $NuStockMin, $NuStockMax, $GravadoIVA, $PorcentajeIVA);
   echo  $rspta ? "Datos guardados" : "Los datos no se pudieron guardar";
   break;
 
@@ -136,7 +120,7 @@ case 'editar':
 		}
 
   $rspta = $producto->editar($IdProducto, $IdClase, $NmProducto, $Descripcion, $CodigoBarras, $ImagenProducto,
-  $IdMarca, $IdLinea, $IdUnidadMedida, $IdLocalizacion, $NuStockMin, $NuStockMax);
+  $IdMarca, $IdLinea, $IdUnidadMedida, $IdLocalizacion, $NuStockMin, $NuStockMax, $GravadoIVA, $PorcentajeIVA);
   echo $rspta ? "Datos actualizados" : "Los Datos no se pudieron actualizar";
 
 break;
@@ -177,7 +161,6 @@ case 'listar':
       "15" => $reg[14],
       "16" => $reg[15],
       "17" => $reg[16],
-      "18" => $reg[17],
     );
   }
 
@@ -192,38 +175,28 @@ case 'listar':
   echo json_encode($results);
   
   break;
-
-
-  // case 'listarfclase':  
-  //   // print_r($fclase); die();
-  //   $rspta = $producto->listar($fclase);
-  //   $data = array();
-  //   while ($reg = sqlsrv_fetch_array($rspta, SQLSRV_FETCH_NUMERIC)) {
-  //   // print_r(); die();
-  //     $data[] = array(
-  //       "0" => '<button type="button" class="btn btn-warning btn-sm" onclick="mostrar(' . $reg[0] . ')"  data-toggle="tooltip" data-placement="bottom" title="Actualizar"><i class="fas fa-pen"></i></button> &nbsp;'.
-  //         '<button type="button" class="btn btn-danger btn-sm" onclick="eliminar(' . $reg[0] . ')" data-toggle="tooltip" data-placement="bottom" title="Eliminar"><i class="fas fa-trash"></i></button>',
-  //       "1" => $reg[0],
-  //       "2" => $reg[1],
-  //       "3" => $reg[2],
-  //       "4" => $reg[3],
-  //       "5" => $reg[4],
-  //       "6" => $reg[5],
-  //       "7" => $reg[6],
-  //       "8" => $reg[7],
-  //     );
-  //   }
-  //   $results = array(
-  //     "sEcho" => 1,
-  //     "iTotalRecords" => count($data),
-  //     "iTotalDisplayRecord" => count($data),
-  //     "aaData" => $data
-  //   );
-  //   // print_r($results); die();
-  //   echo json_encode($results);
-  // break;
-
-
+  
+  
+  case 'card':
+    $rspta = $producto->listar();
+    while ($reg = sqlsrv_fetch_array($rspta, SQLSRV_FETCH_ASSOC)) {
+  
+    $IdProducto =  $reg['IdProducto'];
+    $ImagenProducto =  $reg['ImagenProducto'];
+    $NmProducto =  $reg['NmProducto'];
+    
+    
+    $results[] = array 
+    ("IdProducto" =>$IdProducto,
+    "ImagenProducto" =>$ImagenProducto, 
+     "NmProducto" => $NmProducto); 
+    }
+  
+    echo json_encode($results);
+    break;
+  
+  
+  
   case 'selectClase':
     $rspta = $producto->selectClase();
     echo '<option value="" selected disabled> Seleccione la clase </option>';

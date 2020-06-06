@@ -3,7 +3,7 @@
     require "../conexionDB/Conexion.php";
     
     //clase para la tabla categoría.
-    Class TipoTransaccion
+    Class Tipotransaccion
     {
         //implementamos nuestro constructor vacío de la clase categoría.
         public function __construct()
