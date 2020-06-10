@@ -12,7 +12,6 @@
      //     $.post("../controlador/tercero.php?op=selectCiudad", function(r) {
      //         $("#IdCiudad").html(r);
      //     });
-
      //     $.post("../controlador/tercero.php?op=selectGenero", function(r) {
      //         $("#IdGenero").html(r);
      //     });
@@ -54,11 +53,8 @@
              success: function(response) {
 
                  //  if ($.trim($("#IdTransaccion").val()).length === 0) {
-
                  //      $('#IdTransaccion').val(response);
-
                  //  } else {
-
                  //      $('#IdTransaccion').val("");
                  //      $('#IdTransaccion').val(response);
                  //  }
@@ -68,7 +64,6 @@
                  }
              }
          });
-
          //  campos();
      });
 
@@ -87,7 +82,6 @@
 
          $(this).css("display", "none");
          $('#agregar').css("display", "inline");
-
          $('#IdProducto').val("");
          $('#IdProducto').css("display", "none");
          $('#NmProducto').val("");

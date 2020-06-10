@@ -125,10 +125,27 @@ case 'editar':
 
 break;
 
-case 'mostrar':
+case 'mostrar': 
   $rspta = $producto->mostrar($IdProducto);
   //Codificar el resultado utilizando json_encode(array)
   echo json_encode($rspta);
+break;
+
+case 'mostrarcar': 
+  $rspta = $producto->mostrar($IdProducto);
+  
+  $IdProducto =  $rspta['IdProducto'];
+  $ImagenProducto =  $rspta['ImagenProducto'];
+  $NmProducto =  $rspta['NmProducto'];
+  
+  $results[] = array (
+    "IdProducto" =>$IdProducto,
+    "ImagenProducto" =>$ImagenProducto, 
+     "NmProducto" => $NmProducto); 
+  
+  // print_r(json_encode($results));
+    echo json_encode($results);
+    
 break;
 
 case 'eliminar':
@@ -173,7 +190,6 @@ case 'listar':
   // $r = json_encode($results);
   // print_r($r); die();
   echo json_encode($results);
-  
   break;
   
   
@@ -185,17 +201,21 @@ case 'listar':
     $ImagenProducto =  $reg['ImagenProducto'];
     $NmProducto =  $reg['NmProducto'];
     
-    
-    $results[] = array 
-    ("IdProducto" =>$IdProducto,
+    $results[] = array(
+    "IdProducto" =>$IdProducto,
     "ImagenProducto" =>$ImagenProducto, 
-     "NmProducto" => $NmProducto); 
+    "NmProducto" =>$NmProducto); 
     }
-  
     echo json_encode($results);
     break;
-  
-  
+    
+    case 'selectClasepro':
+      $rspta = $producto->selectClasepro();
+      echo '<option value="" selected disabled> Seleccione la clase de producto</option>';
+      while ($reg = sqlsrv_fetch_array($rspta, SQLSRV_FETCH_ASSOC)) {
+        echo '<option value="' . $reg['IdClase'] . '">' . $reg['NmClase'] . '</option>';
+      }
+    break;
   
   case 'selectClase':
     $rspta = $producto->selectClase();

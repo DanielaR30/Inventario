@@ -14,8 +14,8 @@
         {                      
             $IdUsuario = $_SESSION["IdUsuario"];
             
-            $sql="INSERT INTO  INV_MOVIMIENTOCAB (FcOrdenPedido, IdTercero, CdEstado, IdUsuario) 
-            VALUES ('$FcOrdenPedido','$IdTercero','$IdTercero', '1', '$IdUsuario')";
+            $sql="INSERT INTO  INV_ORDEN_PEDIDOCAB (FcOrdenPedido, IdTercero, IdEstadoPedido, IdUsuario) 
+            VALUES ('$FcOrdenPedido','$IdTercero','1', '$IdUsuario')";
             // print_r($sql); die();
             return ejecutarConsulta($sql);
         }

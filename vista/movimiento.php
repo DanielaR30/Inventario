@@ -120,20 +120,24 @@
 
               <div class="row">
               <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label for="FcTransaccion" class="col-sm-2 control-label">Fecha</label>
-                                <div class="col-sm-10">
-                                <input type="datetime-local" class="form-control" name="FcTransaccion" id="FcTransaccion" required>
-                                 <span class="infoDi" style="display:none; color:rgba(230, 35, 18, 0.952);">
-                                      <i class="fas fa-exclamation-circle"> Campo requerido, Ingrese 1 dígito.</i>
-                                  </span>
-                                </div>
-                              </div>
+                    <label for="FcTransaccion" class="col-sm-2 control-label">Fecha</label>
+                    <div class="col-sm-10">
+                    <input type="datetime-local" class="form-control" name="FcTransaccion" id="FcTransaccion" required>
+                     <span class="infoDi" style="display:none; color:rgba(230, 35, 18, 0.952);">
+                          <i class="fas fa-exclamation-circle"> Campo requerido, Ingrese 1 dígito.</i>
+                      </span>
+                    </div>
+                  </div>
               </div>
 
               <div class="row">
                     <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label for="IdTercero" class="col-sm-2 control-label">Proveedor</label>
                             <div class="col-lg-10">
+                            
+                            <!-- <input type="text" list="IdTercero" class="form-control" name="IdTercero" id="IdTercero" required>
+                            <datalist id="IdTercero" name="IdTercero"></datalist> -->
+                            
                             <select class="form-control select2" style="width: 100%;" name="IdTercero" id="IdTercero"></select>
                             <span class="infoCor" style="display:none; color:rgba(230, 35, 18, 0.952);">
                                   <i class="fas fa-exclamation-circle"> Campo requerido.</i>
@@ -201,7 +205,7 @@
                 <h4 class="box-title" style="font-family: 'Sawarabi Gothic', sans-serif; position:center;">Detalles del los productos</h4>
                <div class="box">
                             <div class="box-header">
-                <div class="box-body no-padding">
+                    <div class="box-body no-padding">
                                 <table class="table table-striped">
                                     <tr>
                                         <!-- <th style="width: 10px">#</th> -->

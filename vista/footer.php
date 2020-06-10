@@ -1,6 +1,6 @@
 
 
-    <footer class="main-footer" >
+    <footer class="main-footer fixed-bottom">
     
    
 

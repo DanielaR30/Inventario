@@ -41,11 +41,10 @@
     .min :hover{
        color: #088b3a;
     }
-    
     </style>
   </head>
   
-  <body>
+  <body id="carrito">
       
     <div class="container-fluid">
         
@@ -65,31 +64,20 @@
        <div class="col col-8 pt-5">
        <!-- <div class="col col-8 pt-5" data-spy="scroll" data-target="#navbar-example2" data-offset="0"> -->
        
-       <table class="table table-borderless">
+       <table id="tb" class="table table-borderless">
           <thead>
             <tr>
-              <th scope="col">Producto</th> 
-              <th scope="col">Cantidad</th>
+              <th scope="col" colspan="2">Producto</th> 
+              <th scope="col" colspan="2">Cantidad</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Mark</td>
-              <td>Otto</td>
-            </tr>
-            <tr>
-              <td>Jacob</td>
-              <td>Thornton</td>
-            </tr>
-            <tr>
-              <td>Larry</td>
-              <td>the Bird</td>
-            </tr>
+           <!-- '<tr> <td> <img  class="img-fluid" src="../../public/img/' + ImagenProducto + '" alt=""></td><td>' + NmProducto +
+           '</td> <td><input style="width: 30%;" type="text" class="form-control" name="NuCantidad" id="NuCantidad"></td></tr>' -->
           </tbody>
        </table>
     
       </div>
-       
        
        <div class="col col-4 border-left mt-5" style="height:450px;">
        
@@ -124,7 +112,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     
     <script src="js/pedidocab.js"></script>
-    <script src="js/pedidodet.js"></script>
   
   </body>
 </html>

@@ -167,7 +167,7 @@ public function mostrarid($IdClase){
             // IdLocalizacion, NuExistenciaFisica, NuExistenciaEnTransito, NuStockMin, NuStockMax, convert(varchar,cast(VlCostoPromedio as money),1) as VlCostoPromedio,
             // convert(varchar,cast(PrecioVentaEf as money),1) as PrecioVentaEf, convert(varchar,cast(PrecioVentaCr as money),1) as PrecioVentaCr , IdEstadoProducto          
             $sql="SELECT * FROM INV_PRODUCTO 
-            WHERE IdProducto='$IdProducto'"; 
+            WHERE IdProducto='$IdProducto'";
             return consultarUnaFila($sql);
         }
       
@@ -194,6 +194,22 @@ public function mostrarid($IdClase){
            return ejecutarConsulta($sql);
         }
         
+        public function filtropro($IdClase)
+        {    
+           $sql= "SELECT p.IdProducto, c.NmClase, p.NmProducto, p.ImagenProducto       
+           FROM INV_PRODUCTO as p
+           INNER JOIN INV_CLASE as c on c.IdClase=p.IdClase
+		   WHERE  IdClase='$IdClase'"; 
+           return ejecutarConsulta($sql);
+        }
+        
+        public function selectClasepro()
+        {
+            $sql="SELECT DISTINCT p.IdClase, c.NmClase       
+            FROM INV_PRODUCTO as p
+            INNER JOIN INV_CLASE as c on c.IdClase=p.IdClase"; 
+            return ejecutarConsulta($sql);		
+        }
 
         public function selectClase()
         {

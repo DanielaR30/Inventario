@@ -1,12 +1,11 @@
 <?php
  session_start();
             // print_r($_SESSION);die();
-            
  if (!isset($_SESSION["NmUsuario"])) 
  {          // print_r('holaaaaaa'); die();
    header("location:../log.php");  
  } else{
- ?>
+?>
 
 
 <!DOCTYPE html>
@@ -22,6 +21,10 @@
 
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+ <!-- google fonts -->
+ <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Muli&display=swap" rel="stylesheet">
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
@@ -41,15 +44,87 @@
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
 
+    <link href="../../plugin" rel="stylesheet" />
+    <script src="path/to/select2.min.js"></script>
+
     <!-- =======================================================
   * Template Name: KnightOne - v2.0.0
   * Template URL: https://bootstrapmade.com/knight-simple-one-page-bootstrap-template/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  
+  <style type="text/css">
+    .min{
+      color : #2c2c2c;
+    }
+    
+    .min :hover{
+       color: #088b3a;
+    }
+    </style>  
 </head>
 
 <body>
+
+<div id="carrito" class="container-fluid" style="heigth:140%;">
+          
+          <div class="row border-bottom border-success">
+            <div class="mt-3 ml-5">
+                <a id="hidecarrito" href="#" class="min"><h1><i class="fas fa-chevron-right"></i></h1></a>
+            </div>
+           
+                <div class="col d-flex justify-content-center pt-4 pb-2">
+                  <h3 style="font-family: 'Pacifico', cursive;"><i class="fas fa-shopping-cart"></i>&nbsp; Carrito</h3>
+                </div>
+          </div> 
+          
+         
+          <div class="row">
+          
+           <div class="col col-8 pt-5">
+           <!-- <div class="col col-8 pt-5" data-spy="scroll" data-target="#navbar-example2" data-offset="0"> -->
+           
+           <table id="tb" class="table table-borderless">
+              <thead>
+                <tr>
+                  <th scope="col" colspan="2">Producto</th> 
+                  <th scope="col" colspan="2">Cantidad</th>
+                </tr>
+              </thead>
+              <tbody>
+               <!-- '<tr> <td> <img  class="img-fluid" src="../../public/img/' + ImagenProducto + '" alt=""></td><td>' + NmProducto +
+               '</td> <td><input style="width: 30%;" type="text" class="form-control" name="NuCantidad" id="NuCantidad"></td></tr>' -->
+              </tbody>
+           </table>
+        
+          </div>
+           
+           <div class="col col-4 border-left mt-5" style="height:450px;">
+           
+           <form class="form-horizontal" action="" method="post">
+             <div class="row">
+              <div class="col col-lg-12  pl-4">
+                    <label for="Observaciones" class="col-lg-1 control-label"> <b>Observaciones</b> </label>
+                      <div style="width: 92%;">
+                        <textarea class="form-control" name="Observaciones" id="Observaciones" maxlength="255" rows="4" cols="50" style="resize: none;"></textarea>
+                      <!-- <input type="text" class="form-control" name="Descripcion" id="Descripcion" required> -->
+                        <span class="infoDir" style="display:none; color:rgba(230, 35, 18, 0.952);">
+                            <i class="fas fa-exclamation-circle"> Campo requerido. Ingrese máximo 255 caracteres.</i>
+                        </span>
+                      </div>
+              </div>
+                
+                  <div class="col col-lg-10 pt-4 d-flex justify-content-center ml-4">
+                       <button type="button" class="btn btn-success btn-lg btn-block">Realizar Pedido</button>
+                  </div>
+             </div>
+           </form>
+           
+        
+           </div>
+          </div>
+        </div>
 
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top ">
@@ -65,9 +140,8 @@
                     <nav class="nav-menu d-none d-lg-block">
                         <ul>
                        
-                            <li><a href="../carrito.php"><i class="fas fa-shopping-cart"></i></a></li>
-                            
-                            <li><a href="#portfolio">Productos</a></li>
+                            <li id="vercarrito"><a href="#"><i class="fas fa-shopping-cart"></i></a></li>     
+                            <li id="prod"><a href="#portfolio">Productos</a></li>
                             
                             <?php if ($_SESSION["TipoUsuario"] === 'A' ) { ?>  
                                  <li><a href="../Dashboard/index.php"> Panel de Control</a></li>
@@ -87,23 +161,19 @@
                                   </li>
                                 </ul>
                               </li>
-
                         </ul>
-                        
                     </nav>
                     <!-- .nav-menu -->
-
                     <!-- <a href="#about" class="get-started-btn scrollto">Get Started</a> -->
                 </div>
             </div>
-
         </div>
     </header>
     <!-- End Header -->
 
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex flex-column justify-content-center">
-        <div class="container">
+    <section id="hero" style="display:none;" class="d-flex flex-column justify-content-center">
+        <div  class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8">
                     <h1>Inventario</h1>
@@ -113,6 +183,7 @@
             </div>
         </div>
     </section>
+    
     <!-- End Hero -->
 
     <main id="main">
@@ -121,8 +192,13 @@
         <section id="portfolio" class="portfolio">
             <div class="container">
 
+        <div class="row">
+            <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12 mt-4">
+                 <button class="btn btn-success pull-left" style="margin-left: 4px" type="button"  id="btnnvo"><i class="fas fa-truck"></i>&nbsp;Nuevo pedido</button> 
+            </div>
+        </div>  
 
-            <div class="row">
+            <div id="pedidocab" class="row">
                 <div class="col">
                  <form class="form-horizontal" name="formulario" id="formulario" action="" method="post">
                  
@@ -150,30 +226,47 @@
                             </div>
                       </div>
                </div>
-               
-           
          
               <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12 mt-4 d-flex justify-content-end">
-                <button class="btn btn-outline-secondary pull-left" style="margin-left: 4px" type="button"  id="btGuardar">Siguiente &nbsp;<i class="fas fa-chevron-right"></i></button> 
+                <button class="btn btn-outline-secondary pull-left" style="margin-left: 4px" type="button"  id="btnGuardar">Siguiente &nbsp;<i class="fas fa-chevron-right"></i></button> 
               </div>
               <!-- <button type="button" class="btn btn-primary pull-right">Sign in</button> -->
-            
-          
-                  
+             
                 </form>
                 </div>
             </div>
 
-
-
-                <div class="section-title" style="display: none;">
-                    <h2>Clase</h2>
-                    <div class="alert alert-secondary"> Mensaje...
-                        <a href="#" class="badge badge-success">Ver carrito</a>
+<div class="row" id="card">
+    <div class="col col-lg-12">
+    <div class="section-title">
+    
+    <!-- <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-secondary"><select class="form-control select2" style="width: 100%;" name="IdClase" id="IdClase"></select>
+</button>
+          <button type="button" class="btn btn-secondary"><i class="fas fa-shopping-cart"></i>Mi carrito</button>
+    </div> -->
+    
+    
+    <div> 
+       <div class="row">
+        <div class="inputWithIcon form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                <div class="col-lg-10">
+                <select class="form-control select2" style="width: 100%;" name="IdClase" id="IdClase"></select>
+                <span class="infoCor" style="display:none; color:rgba(230, 35, 18, 0.952);">
+                      <i class="fas fa-exclamation-circle"> Campo requerido.</i>
+                </span>
+                </div>
+          </div>
+          
+       </div>
+    </div>
+    
+                <div class="alert alert-secondary" style="display:none; position: fixed; top: 540px; right: 1000px;"> Producto agregado &nbsp; &nbsp; &nbsp;
+                        <a href="#" id="vercarrit" class="badge badge-success">Ver carrito</a>&nbsp; &nbsp; &nbsp;<i class="fas fa-times"></i>
                     </div>
                 </div>
-         <!-- 
-                <div class="row">
+         
+               <!-- <div class="row">
                     <div class="col-lg-12 d-flex justify-content-center">
                         <ul id="portfolio-flters">
                             <li data-filter="*" class="filter-active">All</li>
@@ -184,38 +277,28 @@
                     </div>
                 </div> -->
 
-
-
-                <div id="card" class="row portfolio-container h-100" style="display:none;">
-                
-                    <!-- <div class="col-lg-2 col-md-6 portfolio-item"> 
-                        <img class="img-fluid" src="../../public/img/1584041792.jpg" alt=""> 
-                            <div class="portfolio-info"> 
-                                 <h4> </h4> 
-                            </div>
-                    </div> --> 
-                    
-                    <!-- <form action="" method="post"><input type="text" name="IdProducto" id="IdProducto" value="'+ 
-                    IdProducto +'"> <input type="text" name="NmProducto" id="NmProducto" value="'+ 
-                    NmProducto +'"><input type="text" name="NuCantidad" id="NuCantidad" value="' + 
-                    1 + '"><button id="addcarrito" data-toggle="tooltip" data-placement="bottom" title="agregar al carrito" style="border: none;" class="btn btn-outline-light btn-sm" type="button"><i class="fas fa-cart-plus"></i></button> <button id="delcarrito" data-toggle="tooltip" data-placement="bottom" title="Eliminar del carrito" style="border: none;" class="btn btn-outline-light btn-sm" type="button"><i class="far fa-trash-alt"></i></button></form>
-                     -->
-                       
-                    <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Web 3</h4>
-                            <p>Web</p>
-                            <a href="assets/img/portfolio/portfolio-2.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-                    -->
+                <div class="row portfolio-container h-100">
+                    <!-- <div class="col col-8 pt-5">
+                       <table id="tb" class="table table-borderless">
+                          <thead>
+                            <tr>
+                              <th scope="col" colspan="2">Producto</th> 
+                              <th scope="col" colspan="2">Cantidad</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                       </table>
+                    </div> -->
                 </div>
+    </div>
+</div>
+                
+           
             </div>
         </section>
         <!-- End Portfolio Section -->
-        <br> <br>
+        <br><br>
 
         <!-- ======= Services Section ======= -->
         <section id="services" class="services">
@@ -628,7 +711,7 @@
     <!-- Vendor JS Files -->
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
-    <script src="../js/indexpedidocab.js"></script>
+    <script src="../js/pedidocab.js"></script>
     
     
     <script src="assets/vendor/jquery/jquery.min.js"></script>
@@ -645,6 +728,7 @@
     <script src="assets/js/main.js"></script>
 
 </body>
+
 </html>
 <?php
 }

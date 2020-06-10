@@ -4,12 +4,12 @@ function init() {
 
     mostrarform(false);
     listar();
-    card();
+    // card();
 
 
-    $.post("../controlador/producto.php?op=selectClase", function(r) {
-        $("#fclase").html(r);
-    });
+    // $.post("../controlador/producto.php?op=selectClase", function(r) {
+    //     $("#fclase").html(r);
+    // });
 
     $.post("../controlador/producto.php?op=selectClase", function(r) {
         $("#IdClase").html(r);

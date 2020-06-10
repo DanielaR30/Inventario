@@ -6,12 +6,9 @@
     $FcOrdenPedido="";
     $IdTercero="";
   
-  
     (isset($_POST["FcOrdenPedido"])) ? $FcOrdenPedido = $_POST["FcOrdenPedido"] : ""; // ? LimpiarCadena($_POST["NmOficina"]) : "";
     (isset($FcOrdenPedido)) ? $FcOrdenPedido = date("Y-m-d H:m:s", strtotime($FcOrdenPedido)) : "";
-    
     (isset($_POST["IdTercero"])) ? $IdTercero = $_POST["IdTercero"] : ""; // ? LimpiarCadena($_POST["Direccion"]) : "";
-    
     
     session_start();
     switch ($_GET["op"]) {

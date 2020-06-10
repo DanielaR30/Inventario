@@ -196,9 +196,7 @@
                           
                           <div class="inputWithIcon form-group col-lg-12 col-md-8 col-sm-8 col-xs-8">
                             <label for="Descripcion">Descripción</label>  
-                            
                             <textarea class="form-control" name="Descripcion" id="Descripcion" maxlength="255" rows="2" cols="159" style="resize: none;"></textarea>   
-                            
                             <!-- <input type="text" class="form-control" name="Descripcion" id="Descripcion" required> -->
                             <span class="infoDir" style="display:none; color:rgba(230, 35, 18, 0.952);">
                                   <i class="fas fa-exclamation-circle"> Campo requerido. Ingrese máximo 255 caracteres.</i> 
