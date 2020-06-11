@@ -17,7 +17,6 @@ $NuStockMax="";
 $GravadoIVA="";
 $PorcentajeIVA="";
 
-
 (isset($_POST["IdProducto"])) ? $IdProducto = $_POST["IdProducto"] : ""; // ? LimpiarCadena($_POST["idOficina"]) : "";
 (isset($_POST["IdClase"])) ? $IdClase = $_POST["IdClase"] : ""; // ? LimpiarCadena($_POST["NmOficina"]) : "";
 (isset($_POST["NmProducto"])) ? $NmProducto = $_POST["NmProducto"] : ""; // ? LimpiarCadena($_POST["Descripcion"]) : "";
@@ -32,7 +31,6 @@ $PorcentajeIVA="";
 (isset($_POST["NuStockMax"])) ? $NuStockMax = $_POST["NuStockMax"] : ""; // ? LimpiarCadena($_POST["FlSedePropia"]) : "";
 (isset($_POST["GravadoIVA"])) ? $GravadoIVA = $_POST["GravadoIVA"] : ""; // ? LimpiarCadena($_POST["FlSedePropia"]) : "";
 (isset($_POST["PorcentajeIVA"])) ? $PorcentajeIVA = $_POST["PorcentajeIVA"] : ""; // ? LimpiarCadena($_POST["FlSedePropia"]) : "";
-
 
 session_start();
 switch ($_GET["op"]) {
@@ -49,7 +47,6 @@ case 'validarid':
       }
   }
 break;
-
 
 //muestra los campos según el id existente
 case 'datosid':
@@ -192,6 +189,21 @@ case 'listar':
   echo json_encode($results);
   break;
   
+  case 'filtropro':
+    $rspta = $producto->filtropro($IdClase);
+    while ($reg = sqlsrv_fetch_array($rspta, SQLSRV_FETCH_ASSOC)) {
+  
+      $IdProducto =  $reg['IdProducto'];
+      $ImagenProducto =  $reg['ImagenProducto'];
+      $NmProducto =  $reg['NmProducto'];
+      
+      $results[] = array(
+      "IdProducto" =>$IdProducto,
+      "ImagenProducto" =>$ImagenProducto, 
+      "NmProducto" =>$NmProducto); 
+      }
+      echo json_encode($results);
+  break;
   
   case 'card':
     $rspta = $producto->listar();

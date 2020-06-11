@@ -36,6 +36,9 @@ function mostrarcar(IdProducto) {
         $("#tb tbody").append(car);
 
     })
+
+    // $("#addcarrito").ccs("display", "none");
+
 }
 
 // function limpiar() {
@@ -46,24 +49,16 @@ function mostrarcar(IdProducto) {
 //     $('#CodigoBarras').val("");
 //     $('#ImagenProducto').val("");
 //     $("#imagenmuestra").hide();
-
 //     $("#imagenpre").empty();
 //     $("#imagenmuestra").attr("src", "");
 //     $("#imagenactual").val("");
 //     $("#print").hide();
-//     $("#IdMarca").val("");
-//     $('#IdLinea').val("");
-//     $('#IdUnidadMedida').val("");
-//     $("#IdLocalizacion").val("");
-//     // $("#NuExistenciaFisica").val("");
-//     // $("#NuExistenciaEnTransito").val("");
-//     $("#NuStockMin").val("");
-//     $("#NuStockMax").val("");
-//     // $("#VlCostoPromedio").val("");
+
 // }
 
 
 $(document).ready(function() {
+
 
     $("#btnnvo").click(function(e) {
         $("#pedidocab").show();
@@ -81,6 +76,13 @@ $(document).ready(function() {
         $("#header").hide();
         $("#footer").hide();
         $("#main").hide();
+
+        $('#tb tr').each(function() {
+            var total = $(this).text();
+            // alert(total);
+            console.log(total)
+
+        });
 
     });
 
@@ -106,25 +108,73 @@ $(document).ready(function() {
         $('#pedidocab').css("display", "none");
         $('#hed').css("display", "inline");
         $('#card').show();
+    });
 
-        // $.ajax({
-        //     url: '../controlador/movimientocab.php?op=idlast',
-        //     type: 'get',
-        //     dataType: 'JSON',
-        //     success: function(response) {
-        //         //  if ($.trim($("#IdTransaccion").val()).length === 0) {
-        //         //      $('#IdTransaccion').val(response);
-        //         //  } else {
-        //         //      $('#IdTransaccion').val("");
-        //         //      $('#IdTransaccion').val(response);
-        //         //  }
-        //         if (response != undefined || response != null) {
-        //             $('#IdTransaccion').val(response);
-        //         }
-        //     }
-        // });
 
-        //  campos();
+    $('#IdClase').change(function() {
+        var IdClase = $(this).val();
+        var dataString = 'IdClase=' + IdClase;
+
+
+        $.ajax({
+            type: "POST",
+            url: "../../controlador/producto.php?op=filtropro",
+            data: dataString,
+            success: function(data) {
+
+                $(".portfolio-item").remove(card);
+
+                console.log(data);
+                if (data.trim() !== "\r\nnull" || data.trim() !== undefined || data.trim() !== null || data.trim() !== "null") {
+
+                    data = JSON.parse(data);
+
+                    console.log(data);
+                    console.log(data[0]);
+                    // $('#IdProducto').val(data);
+
+                    var len = data.length;
+                    console.log(len);
+
+                    for (var i = 0; i < len; i++) {
+
+                        var IdProducto = data[i].IdProducto;
+                        var ImagenProducto = data[i].ImagenProducto;
+                        var NmProducto = data[i].NmProducto;
+                        var ida = "addcarrito" + i;
+                        var idd = "deltcarrito" + i;
+
+                        console.log(idd);
+
+                        var card = '<div class="col-lg-2 col-md-6 portfolio-item" ><img class="img-fluid" src="../../public/img/' +
+                            ImagenProducto + '" alt="">' + '<div class="portfolio-info"> <p>' +
+                            NmProducto + '</p><p><button id="' + ida + '" onclick="mostrarcar(' + IdProducto +
+                            ')" data-toggle="tooltip" data-placement="bottom" title="agregar al carrito" style="border: none;" class="btn btn-outline-light btn-sm" type="button"><i class="fas fa-cart-plus"></i></button> <button id="' + idd + '" onclick="delete(' + IdProducto +
+                            ')" data-toggle="tooltip" data-placement="bottom" title="Eliminar del carrito" style="border: none; display:none;" class="btn btn-outline-light btn-sm" type="button"><i class="far fa-trash-alt"></i></button></p></div>'
+
+
+                        $("#card").append(card);
+
+                        // $('#' + ida).click(function(e) {
+                        //     $(this).css("display", "none");
+                        //     $("#" + idd).css("display", "inline");
+
+                        // });
+
+                        // $('#' + idd).click(function(e) {
+                        //     $(this).css("display", "none");
+                        //     $('#' + ida).css("display", "inline");
+                        // });
+
+                    }
+
+
+                }
+            },
+            error: function() {
+                console.log('existió un problema');
+            }
+        });
     });
 
 
@@ -145,6 +195,10 @@ $(document).ready(function() {
                 var IdProducto = response[i].IdProducto;
                 var ImagenProducto = response[i].ImagenProducto;
                 var NmProducto = response[i].NmProducto;
+                var ida = "addcarrito" + i;
+                var idd = "deltcarrito" + i;
+
+                console.log(idd);
 
                 // var card = '<div class="col-lg-2 col-md-6 portfolio-item"><img  class="img-fluid" src="../../public/img/' +
                 //     ImagenProducto + ' " alt="">' + '<div class="portfolio-info">  <p> ' +
@@ -155,14 +209,29 @@ $(document).ready(function() {
 
                 var card = '<div class="col-lg-2 col-md-6 portfolio-item"><img  class="img-fluid" src="../../public/img/' +
                     ImagenProducto + '" alt="">' + '<div class="portfolio-info"> <p>' +
-                    NmProducto + '</p><p><button id="addcarrito" onclick="mostrarcar(' + IdProducto +
-                    ')" data-toggle="tooltip" data-placement="bottom" title="agregar al carrito" style="border: none;" class="btn btn-outline-light btn-sm" type="button"><i class="fas fa-cart-plus"></i></button><button id="delcarrito" onclick="delete(' + IdProducto +
-                    ')" data-toggle="tooltip" data-placement="bottom" title="Eliminar del carrito" style="border: none;" class="btn btn-outline-light btn-sm" type="button"><i class="far fa-trash-alt"></i></button></p></div>'
+                    NmProducto + '</p><p><button id="' + ida + '" onclick="mostrarcar(' + IdProducto +
+                    ')" data-toggle="tooltip" data-placement="bottom" title="agregar al carrito" style="border: none;" class="btn btn-outline-light btn-sm" type="button"><i class="fas fa-cart-plus"></i></button> <button id="' + idd + '" onclick="delete(' + IdProducto +
+                    ')" data-toggle="tooltip" data-placement="bottom" title="Eliminar del carrito" style="border: none; display:none;" class="btn btn-outline-light btn-sm" type="button"><i class="far fa-trash-alt"></i></button></p></div>'
 
                 $("#card").append(card);
+
+                $('#' + ida).click(function(e) {
+                    $(this).css("display", "none");
+                    $("#" + idd).css("display", "inline");
+
+                });
+
+                $('#' + idd).click(function(e) {
+                    $(this).css("display", "none");
+                    $('#' + ida).css("display", "inline");
+                });
+
             }
         }
     });
+
+
+
 });
 
 function guardar(e) {

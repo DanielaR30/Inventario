@@ -44,8 +44,8 @@
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
 
-    <link href="../../plugin" rel="stylesheet" />
-    <script src="path/to/select2.min.js"></script>
+    <!-- <link href="../../plugin" rel="stylesheet" /> -->
+    <!-- <script src="path/to/select2.min.js"></script> -->
 
     <!-- =======================================================
   * Template Name: KnightOne - v2.0.0
@@ -67,24 +67,26 @@
 
 <body>
 
-<div id="carrito" class="container-fluid" style="heigth:140%;">
+
+<div id="carrito" class="container-fluid" style="max-width: 2000px; height: 700px;">
           
-          <div class="row border-bottom border-success">
+          <div class="row">
+              <div class="col position-relative">
+              
+              
+              <div class="row border-bottom border-success">
             <div class="mt-3 ml-5">
                 <a id="hidecarrito" href="#" class="min"><h1><i class="fas fa-chevron-right"></i></h1></a>
             </div>
            
-                <div class="col d-flex justify-content-center pt-4 pb-2">
+                <div class="col d-flex justify-content-center pt-4 pb-2 ">
                   <h3 style="font-family: 'Pacifico', cursive;"><i class="fas fa-shopping-cart"></i>&nbsp; Carrito</h3>
                 </div>
           </div> 
-          
          
           <div class="row">
-          
            <div class="col col-8 pt-5">
            <!-- <div class="col col-8 pt-5" data-spy="scroll" data-target="#navbar-example2" data-offset="0"> -->
-           
            <table id="tb" class="table table-borderless">
               <thead>
                 <tr>
@@ -120,9 +122,11 @@
                   </div>
              </div>
            </form>
-           
-        
            </div>
+          </div>
+              
+              
+              </div>
           </div>
         </div>
 
@@ -172,7 +176,7 @@
     <!-- End Header -->
 
     <!-- ======= Hero Section ======= -->
-    <section id="hero" style="display:none;" class="d-flex flex-column justify-content-center">
+    <section id="hero" class="d-flex flex-column justify-content-center">
         <div  class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8">
@@ -245,27 +249,23 @@
 </button>
           <button type="button" class="btn btn-secondary"><i class="fas fa-shopping-cart"></i>Mi carrito</button>
     </div> -->
-    
-    
-    <div> 
-       <div class="row">
-        <div class="inputWithIcon form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
-                <div class="col-lg-10">
-                <select class="form-control select2" style="width: 100%;" name="IdClase" id="IdClase"></select>
-                <span class="infoCor" style="display:none; color:rgba(230, 35, 18, 0.952);">
-                      <i class="fas fa-exclamation-circle"> Campo requerido.</i>
-                </span>
+                <div> 
+                   <div class="row">
+                    <div class="inputWithIcon form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-lg-10">
+                            <select class="form-control select2" style="width: 100%;" name="IdClase" id="IdClase"></select>
+                            <span class="infoCor" style="display:none; color:rgba(230, 35, 18, 0.952);">
+                                  <i class="fas fa-exclamation-circle"> Campo requerido.</i>
+                            </span>
+                            </div>
+                      </div>
+                      
+                   </div>
                 </div>
-          </div>
-          
-       </div>
-    </div>
-    
                 <div class="alert alert-secondary" style="display:none; position: fixed; top: 540px; right: 1000px;"> Producto agregado &nbsp; &nbsp; &nbsp;
                         <a href="#" id="vercarrit" class="badge badge-success">Ver carrito</a>&nbsp; &nbsp; &nbsp;<i class="fas fa-times"></i>
-                    </div>
                 </div>
-         
+    </div>         
                <!-- <div class="row">
                     <div class="col-lg-12 d-flex justify-content-center">
                         <ul id="portfolio-flters">
@@ -278,6 +278,7 @@
                 </div> -->
 
                 <div class="row portfolio-container h-100">
+                
                     <!-- <div class="col col-8 pt-5">
                        <table id="tb" class="table table-borderless">
                           <thead>

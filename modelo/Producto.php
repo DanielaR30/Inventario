@@ -9,7 +9,7 @@
         {
         }     
         
- // mostrar id autoincremental según:  familia, segmento, clase      
+// mostrar id autoincremental según:  familia, segmento, clase      
 public function mostrarid($IdClase){
 
             try {   
@@ -44,6 +44,7 @@ public function mostrarid($IdClase){
                     $IdProducto = str_pad($res['ID'], 5, '0', STR_PAD_LEFT);
                     // concatenar idsegmento,idfamili,idclase,idproducto para Código final
                     $Idproducto= $IdSegmento . $IDFamilia . $IdClase . $IdProducto;
+                    
                     return ($Idproducto);
                     
                 }
@@ -196,10 +197,10 @@ public function mostrarid($IdClase){
         
         public function filtropro($IdClase)
         {    
-           $sql= "SELECT p.IdProducto, c.NmClase, p.NmProducto, p.ImagenProducto       
+           $sql= "SELECT p.IdProducto, p.NmProducto, p.ImagenProducto       
            FROM INV_PRODUCTO as p
            INNER JOIN INV_CLASE as c on c.IdClase=p.IdClase
-		   WHERE  IdClase='$IdClase'"; 
+		   WHERE  p.IdClase='$IdClase'"; 
            return ejecutarConsulta($sql);
         }
         

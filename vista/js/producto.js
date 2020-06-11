@@ -424,7 +424,6 @@ $("#btnEditar").click(function(e) { //Valida que ningun campo esté vacio antes 
     }
 });
 
-
 function generarbarcode() {
     codigo = $("#IdProducto").val();
     JsBarcode("#barcode", codigo, {
@@ -440,7 +439,6 @@ function generarbarcode() {
 function imprimir() {
     $("#print").printArea();
 }
-
 
 //valida que ningún campo esté vacío
 function campos() {
@@ -739,8 +737,9 @@ function eliminar(IdProducto) {
                 tabla.ajax.reload();
             });
         } else {
-            swal("! Cancelado ¡", "Se Cancelo la Eliminacion", "error");
+            swal("!Cancelado¡", "Se Cancelo la Eliminacion", "error");
         }
     });
 }
+
 init();
