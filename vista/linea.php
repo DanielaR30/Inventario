@@ -50,7 +50,7 @@
                    <li class="treeview  active">
                           <a href="#">
                           <i class="fas fa-cog fa-spin"></i>&nbsp; <span>Configuración del Sistema</span>
-                            <!-- <small class="label pull-right bg-yellow">AvideaIT</small>  -->
+             
                             <i class="fa fa-angle-left pull-right"></i>
                           </a>
                           <ul class="treeview-menu">                                              
@@ -67,10 +67,60 @@
                            <li ><a href="producto.php"><i class="fas fa-barcode"></i>&nbsp; Productos</a></li> 
                            <li ><a href="tipotransaccion.php"><i class="fas fa-store"></i>&nbsp; Tipo de transacción</a></li> 
                            <li ><a href="movimiento.php"><i class="fas fa-credit-card"></i>&nbsp; Compras</a></li>
+                           <li ><a href="estadopedido.php"><i class="fas fa-clipboard-check"></i>&nbsp; Estado de los Pedidos</a></li>
                            <li ><a href="pedido.php"><i class="fas fa-shopping-cart"></i>&nbsp; Pedidos</a></li>
-                               
                           </ul>
                    </li> 
+                   
+                   <!-------------------- menuuuuuu  ordenado-----------------------------------------------------------------------
+                   <li class="treeview  active">
+                          <a href="#">
+                          <i class="fas fa-cog fa-spin"></i>&nbsp; <span>Configuración del Sistema</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                          </a>
+                          <ul class="treeview-menu">        
+                          <li ><a href="pedido.php"><i class="fas fa-shopping-cart"></i>&nbsp; Pedidos</a></li>
+                          <li ><a href="estadopedido.php"><i class="fas fa-clipboard-check"></i>&nbsp; Estado de los Pedidos</a></li>
+                          
+                          <li class="treeview">
+                                <a href="#"><i class="fa fa-circle-o"></i> Transacciones
+                                  <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                  </span>
+                                </a>
+                                
+                                <ul class="treeview-menu">
+                                <li ><a href="movimiento.php"><i class="fas fa-credit-card"></i>&nbsp; Compras</a></li>
+                                <li ><a href="movimiento.php"><i class="fas fa-credit-card"></i>&nbsp; Remisiones</a></li>
+                                <li ><a href="movimiento.php"><i class="fas fa-credit-card"></i>&nbsp; Devoluciones</a></li>
+                                </ul>
+                          </li>
+                          <li ><a href="tipotransaccion.php"><i class="fas fa-store"></i>&nbsp; Tipos de transacción</a></li> 
+                          <li ><a href="producto.php"><i class="fas fa-barcode"></i>&nbsp; Productos</a></li> 
+                                  
+                                  
+                          <li class="treeview">
+                                <a href="#"><i class="fa fa-circle-o"></i> Configuración de productos
+                                  <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                  </span>
+                                </a>
+                            <ul class="treeview-menu">
+                            
+                                 <li><a href="segmento.php"><i class="far fa-file"></i>&nbsp; Segmentos</a></li>                            
+                                 <li><a href="familia.php"><i class="fas fa-sitemap"></i>&nbsp; Familias</a></li>
+                                 <li><a href="clase.php"><i class="far fa-folder-open"></i>&nbsp; Clases</a></li>    
+                                 <li><a href="estadoproducto.php"><i class="fas fa-toggle-on"></i>&nbsp; Estado de los Productos</a></li>  
+                                 <li ><a href="unidadmedida.php"><i class="fas fa-boxes"></i>&nbsp; Unidades de Medida</a></li>                                
+                                 <li><a href="marca.php"><i class="fas fa-tag"></i>&nbsp; Marcas</a></li>    
+                                 <li class="active"><a href="linea.php"><i class="fas fa-clipboard"></i>&nbsp; líneas</a></li>
+                                 <li ><a href="bodega.php"><i class="fas fa-warehouse"></i>&nbsp; Bodega</a></li>    
+                                 <li ><a href="area.php"><i class="far fa-building"></i>&nbsp; Áreas</a></li>  
+                            </ul>
+                          </li>
+                          </ul>
+                   </li>  -->
+                   
          </ul>
        </section>
        <!-- /.sidebar -->

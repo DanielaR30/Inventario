@@ -106,10 +106,10 @@
               </div>
               
               <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                          <label for="IdTransaccion" class="col-lg-2 control-label">Código</label>
+                          <label for="IdTransaccionCab" class="col-lg-2 control-label">Código</label>
                           <!-- readonly -->
                           <div class="col-sm-10">
-                          <input type="number" class="form-control align-self-end bg-gray "  name="IdTransaccion" id="IdTransaccion"  readonly>
+                          <input type="number" class="form-control align-self-end bg-gray "  name="IdTransaccionCab" id="IdTransaccionCab"  readonly>
                             <span class="infoT" style="display:none; color:rgba(230, 35, 18, 0.952);">
                                 <i class="fas fa-exclamation-circle"> Campo requerido.</i>
                             </span>
@@ -177,7 +177,6 @@
                   </div>
 
                 <div class="row">
-
                       <div class="inputWithIcon form-group col-lg-12 col-md-8 col-sm-8 col-xs-8">
                             <label for="Observaciones" class="col-lg-1 control-label">Observaciones</label>
                             <div class="col-lg-11" style="width: 89%;">
@@ -187,34 +186,33 @@
                                   <i class="fas fa-exclamation-circle"> Campo requerido. Ingrese máximo 255 caracteres.</i>
                               </span>
                             </div>
-
                         </div>
-
                 </div>
                 
     <!-- -------------------------------------------btn Guardar compra------------------------------------------------------------ -->
                 <div class="box-footer">
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <!-- <button id="btnap" class="btn btn-primary pull-right" type="button"><i class="far fa-list-alt"> Agregar Productos</i></button> -->
-                <button class="btn btn-primary pull-right" style="margin-right: 4px" type="button"  id="btnGuardar">Siguiente &nbsp;<i class="fas fa-chevron-right"></i></button> 
-                
-                  
+                <button class="btn btn-primary pull-right" style="margin-right: 4px" type="button"  id="btnGuardarc">Siguiente &nbsp;<i class="fas fa-chevron-right"></i></button> 
                 </div>
                 </div>
 
-                <h4 class="box-title" style="font-family: 'Sawarabi Gothic', sans-serif; position:center;">Detalles del los productos</h4>
+                <h4 class="box-title" style="font-family: 'Sawarabi Gothic', sans-serif; text-align:center;">Detalles del los productos</h4>
                <div class="box">
                             <div class="box-header">
                     <div class="box-body no-padding">
                                 <table class="table table-striped">
+                                <thead class="border">
                                     <tr>
                                         <!-- <th style="width: 10px">#</th> -->
-                                        <th>Código</th>
-                                        <th>Producto</th>
-                                        <th>Cantidad</th>
-                                        <th>Valor Unitario</th>
-                                        <th>Total</th>
+                                        <th style="width: 20px;">Código</th>
+                                        <th style="width: 20px;">Producto</th>
+                                        <th style="width: 20px;">Cantidad</th>
+                                        <th style="width: 20px;">Valor Unitario</th>
+                                        <th style="width: 20px;">Total</th>
                                     </tr>
+                                </thead>
+                                <tbody>
                                     <tr>
                                         <td>1</td>
                                         <td>Vasos</td>
@@ -223,26 +221,43 @@
                                         <td>20000</td>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <td style="width: 20px;">
                                         <button type="button" id="agregar" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Agregar producto"><i class="fas fa-plus"></i></button> 
                                         <input style="display: none;" type="text" class="form-control" name="IdProducto" id="IdProducto">
                                         <button type="button" id="guardar" style="margin-top: 7px; display: none;" class="btn btn-primary btn-sm m-1"  data-toggle="tooltip" data-placement="right" title="Guardar producto"><i class="fas fa-save"></i></button>
                                         <button type="button" id="volver" style="margin-top: 7px; display: none;" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="right" title="Volver"><i class="fas fa-backspace"></i></i></button> 
                                         </td>
                                         
-                                        <td><input style="display: none;" type="text" class="form-control" name="NmProducto" id="NmProducto" ></td>
-                                        <td><input style="display: none;" type="text" class="form-control" name="NuCantidad" id="NuCantidad" ></td>
-                                        <td><input style="display: none;" type="text" class="form-control" name="VlUnitario" id="VlUnitario" ></td>
-                                        <td></td>
+                                        <td style="width: 20px;"><input style="display: none;" type="text" class="form-control" name="NmProducto" id="NmProducto" ></td>
+                                        <td style="width: 20px;"><input style="display: none;" type="text" class="form-control" name="NuCantidad" id="NuCantidad" ></td>
+                                        <td style="width: 20px;"><input style="display: none;" type="text" class="form-control" name="VlUnitario" id="VlUnitario" ></td>
+                                        <td style="width: 20px;"></td>
                                     </tr>
+                                </tbody>
+                                <tfoot>
+                                </tfoot>
+                                <tr> 
+                                 <td colspan="3"></td>
+                                 <td style="width: 20px;"><b>Subtotal</b></td>
+                                 <td style="width: 20px; font-weight: 600;">2000</td>
+                                </tr>
+                                <tr>
+                                 <td colspan="3"></td>  
+                                 <td style="width: 20px;"><b>Iva</b></td>
+                                 <td style="width: 20px; font-weight: 600;">2000</td>
+                                </tr>
+                                <tr>
+                                 <td colspan="3"></td>  
+                                 <td style="width: 20px;"><b>Total</b></td>
+                                 <td style="width: 20px; font-weight: 600;">2000</td>
+                                </tr>
                                 </table>
                             </div> 
                             </div> 
                             </div> 
                             
-                            
-                            
-              <div class="row">
+                        
+              <!-- <div class="row">
               <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
               <div class="col-lg-2"></div>
               <div class="col-lg-10"></div>
@@ -271,9 +286,8 @@
                                 <i class="fas fa-exclamation-circle"> Campo requerido.</i>
                             </span>
                   </div>
-                </div>
+              </div>
               </div> 
-              
               <div class="row">
               <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
               <div class="col-lg-2"></div>
@@ -281,7 +295,7 @@
               </div>
               <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                           <label for="total" class="col-lg-5 control-label">Total</label>
-                          <!-- readonly -->
+                      
                           <div class="col-lg-7">
                           <input type="number" class="form-control align-self-end"  name="total" id="total"  >
                             <span class="infoT" style="display:none; color:rgba(230, 35, 18, 0.952);">
@@ -289,8 +303,7 @@
                             </span>
                   </div>
                 </div>
-              </div> 
-
+              </div>  -->
 
               </div>
               <!-- /.box-body -->
@@ -313,9 +326,7 @@
 <?php
 require 'footer.php';
 ?>
-
-<script src="js/movimientocab.js"></script>
-<script src="js/movimientodet.js"></script>
+<script src="js/compra.js"></script>
 
 <?php
 }

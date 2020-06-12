@@ -24,6 +24,8 @@ function init() {
 }
 
 
+// -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --agregar items al carrito-- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
 function mostrarcar(IdProducto) {
     $.post("../../controlador/producto.php?op=mostrarcar", { IdProducto: IdProducto }, function(data, _status) {
         data = JSON.parse(data);
@@ -31,8 +33,9 @@ function mostrarcar(IdProducto) {
 
         var ImagenProducto = data[0].ImagenProducto;
         var NmProducto = data[0].NmProducto;
+
         var car = '<tr> <td width="15%"> <img  class="img-fluid" src="../../public/img/' + ImagenProducto + '" alt=""></td><td><h6> ' + NmProducto +
-            '</h6></td> <td><input style="width: 30%;" type="number" value="1" class="form-control" name="NuCantidad" id="NuCantidad"></td><td style="width:15px;"><i class="fas fa-times"></i></td></tr>'
+            '</h6></td> <td><input style="width: 30%;" type="number" value="1" class="form-control cantidad"></td><td style="width:15px;"><i class="fas fa-times"></i></td></tr>'
         $("#tb tbody").append(car);
 
     })
@@ -59,7 +62,7 @@ function mostrarcar(IdProducto) {
 
 $(document).ready(function() {
 
-
+    // -- -- -- -- -- -- -- -- -- - tomar fecha hr actual-- -- -- -- -- -- -- -- -- -- -- -- -- -- --
     $("#btnnvo").click(function(e) {
         $("#pedidocab").show();
         var f = new Date();
@@ -77,12 +80,11 @@ $(document).ready(function() {
         $("#footer").hide();
         $("#main").hide();
 
-        $('#tb tr').each(function() {
-            var total = $(this).text();
-            // alert(total);
-            console.log(total)
-
-        });
+        // $('#tb tr').each(function() {
+        //     var total = $(this).text();
+        //     // alert(total);
+        //     console.log(total)
+        // });
 
     });
 
@@ -91,7 +93,6 @@ $(document).ready(function() {
         $("#header").hide();
         $("#footer").hide();
         $("#main").hide();
-
     });
 
     $("#hidecarrito").click(function(e) {
@@ -99,9 +100,36 @@ $(document).ready(function() {
         $("#header").show();
         $("#footer").show();
         $("#main").show();
-
     });
 
+    // -- -- -- -- -- -- -- -- -- ----guardar datos de la tabla carrito-- -- -- -- -- -- -- -- --
+
+    $("#ingresar").click(function(e) {
+        var filas = [];
+        $('#tb tbody tr').each(function() {
+            var imagen = $(this).find('td').eq(0).text();
+            var nombre = $(this).find('td').eq(1).text();
+            var cantidad = $(".cantidad").val();
+            // var abonocapital = $(this).find('td').eq(2).text();
+            // var valorcuota = $(this).find('td').eq(3).text();
+            // var saldocapital = $(this).find('td').eq(4).text();
+
+            var fila = {
+                imagen,
+                nombre,
+                cantidad
+                // abonocapital,
+                // valorcuota,
+                // saldocapital
+            };
+            filas.push(fila);
+        });
+        console.log(filas);
+
+        alert(JSON.stringify(filas));
+    });
+
+    // -- -- ---- ---- -- -- ---- -- ---- - guadar cabecera-- -- -- -- -- -- -- -- -- -
 
     $("#btnGuardar").click(function(e) {
         // guardar(e);
@@ -114,7 +142,6 @@ $(document).ready(function() {
     $('#IdClase').change(function() {
         var IdClase = $(this).val();
         var dataString = 'IdClase=' + IdClase;
-
 
         $.ajax({
             type: "POST",

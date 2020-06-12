@@ -67,6 +67,7 @@
                            <li ><a href="producto.php"><i class="fas fa-barcode"></i>&nbsp; Productos</a></li> 
                            <li ><a href="tipotransaccion.php"><i class="fas fa-store"></i>&nbsp; Tipo de transacción</a></li> 
                            <li ><a href="movimiento.php"><i class="fas fa-credit-card"></i>&nbsp; Compras</a></li>
+                           <li ><a href="estadopedido.php"><i class="fas fa-clipboard-check"></i>&nbsp; Estado de los Pedidos</a></li>
                            <li ><a href="pedido.php"><i class="fas fa-shopping-cart"></i>&nbsp; Pedidos</a></li>
                                
                           </ul>
@@ -121,7 +122,7 @@
                           <thead>
                             <th>Opciones</th>
                             <th>Código</th>
-                            <th>Estado Activo/Inactivo</th>
+                            <th>Estado</th>
                                                     
                           </thead>
                           <tbody>

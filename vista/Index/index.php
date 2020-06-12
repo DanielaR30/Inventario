@@ -95,11 +95,10 @@
                 </tr>
               </thead>
               <tbody>
-               <!-- '<tr> <td> <img  class="img-fluid" src="../../public/img/' + ImagenProducto + '" alt=""></td><td>' + NmProducto +
+          <!-- '<tr> <td> <img  class="img-fluid" src="../../public/img/' + ImagenProducto + '" alt=""></td><td>' + NmProducto +
                '</td> <td><input style="width: 30%;" type="text" class="form-control" name="NuCantidad" id="NuCantidad"></td></tr>' -->
               </tbody>
            </table>
-        
           </div>
            
            <div class="col col-4 border-left mt-5" style="height:450px;">
@@ -118,13 +117,12 @@
               </div>
                 
                   <div class="col col-lg-10 pt-4 d-flex justify-content-center ml-4">
-                       <button type="button" class="btn btn-success btn-lg btn-block">Realizar Pedido</button>
+                       <button type="button" id="ingresar" class="btn btn-success btn-lg btn-block">Realizar Pedido</button>
                   </div>
              </div>
            </form>
            </div>
           </div>
-              
               
               </div>
           </div>

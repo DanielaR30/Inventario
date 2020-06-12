@@ -1,14 +1,11 @@
  var tabla;
 
  function init() {
-
      //     mostrarform(false);
      //     listar();
-
-     $.post("../controlador/movimientocab.php?op=selectTercero", function(r) {
+     $.post("../controlador/compra.php?op=selectTercero", function(r) {
          $("#IdTercero").html(r);
      });
-
      //     $.post("../controlador/tercero.php?op=selectCiudad", function(r) {
      //         $("#IdCiudad").html(r);
      //     });
@@ -16,7 +13,6 @@
      //         $("#IdGenero").html(r);
      //     });
  }
-
 
  // function limpiar() {
  //     $("#IdTercero").val("");
@@ -39,15 +35,12 @@
  // }
 
 
-
  $(document).ready(function() {
 
-
-     $("#btnGuardar").click(function(e) {
+     $("#btnGuardarc").click(function(e) {
          guardar(e);
-
          $.ajax({
-             url: '../controlador/movimientocab.php?op=idlast',
+             url: '../controlador/compra.php?op=idlast',
              type: 'get',
              dataType: 'JSON',
              success: function(response) {
@@ -60,7 +53,7 @@
                  //  }
 
                  if (response != undefined || response != null) {
-                     $('#IdTransaccion').val(response);
+                     $('#IdTransaccionCab').val(response);
                  }
              }
          });
@@ -103,7 +96,7 @@
      $("#btnGuardar").prop("disabled", true);
      var formData = new FormData($("#formulario")[0]); //
      $.ajax({
-         url: "../controlador/movimientocab.php?op=guardar",
+         url: "../controlador/compra.php?op=guardar",
          type: "POST",
          data: formData,
          contentType: false,
