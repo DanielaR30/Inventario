@@ -85,7 +85,7 @@
           </div> 
          
           <div class="row">
-           <div class="col col-8 pt-5">
+           <div class="col col-8 pt-4 pl-4">
            <!-- <div class="col col-8 pt-5" data-spy="scroll" data-target="#navbar-example2" data-offset="0"> -->
            <table id="tb" class="table table-borderless">
               <thead>
@@ -95,8 +95,18 @@
                 </tr>
               </thead>
               <tbody>
-          <!-- '<tr> <td> <img  class="img-fluid" src="../../public/img/' + ImagenProducto + '" alt=""></td><td>' + NmProducto +
+               <!-- '<tr> <td> <img  class="img-fluid" src="../../public/img/' + ImagenProducto + '" alt=""></td><td>' + NmProducto +
                '</td> <td><input style="width: 30%;" type="text" class="form-control" name="NuCantidad" id="NuCantidad"></td></tr>' -->
+               
+               <!-- 
+               '<tr><td style="width: 30px;"><img  class="img-fluid" src="../../public/img/' + ImagenProducto + 
+               '" alt=""></td><td style="width: 30px;"><h6> ' + NmProducto + 
+               '</h6></td><td style="width: 30px;"><input style="width: 20%;" type="number" value="1" class="form-control cantidad"></td><td style="width: 10px;"> <button id="' + ida + '" onclick="eliminaritem(' + IdProducto + 
+               ')" data-toggle="tooltip" data-placement="bottom" title="Eliminar" style="border: none;" class="btn btn-outline-light btn-sm" type="button"><i class="fas fa-times"></i></button></td></tr>'
+               -->
+        
+               
+               
               </tbody>
            </table>
           </div>
@@ -260,7 +270,7 @@
                       
                    </div>
                 </div>
-                <div class="alert alert-secondary" style="display:none; position: fixed; top: 540px; right: 1000px;"> Producto agregado &nbsp; &nbsp; &nbsp;
+                <div class="alert alert-secondary" id="alertcarr" style="display:none; position: fixed; top: 540px; right: 1000px;"> Producto agregado &nbsp; &nbsp; &nbsp;
                         <a href="#" id="vercarrit" class="badge badge-success">Ver carrito</a>&nbsp; &nbsp; &nbsp;<i class="fas fa-times"></i>
                 </div>
     </div>         

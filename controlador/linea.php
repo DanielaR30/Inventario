@@ -45,7 +45,7 @@
               '<button type="button" class="btn btn-danger btn-sm" onclick="eliminar(' . $reg[0] . ')" data-toggle="tooltip" data-placement="right" title="Eliminar"><i class="fas fa-trash"></i></button>',
             "1" => $reg[0],
             "2" => $reg[1]
-           
+          
           );
         }
           $results = array(

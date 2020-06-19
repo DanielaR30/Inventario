@@ -30,7 +30,7 @@
             $sql="SELECT MAX(IdTransaccion) AS ID FROM INV_MOVIMIENTOCAB";
             $res= consultarUnaFila($sql);
             // $IdTransaccion= $res['ID']
-            print_r($res['ID']); die();
+            // print_r($res['ID']); die();
             return ($res['ID']);
         }
         

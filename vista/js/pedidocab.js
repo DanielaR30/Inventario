@@ -1,13 +1,11 @@
 var tabla;
 
-
 function init() {
     $("#pedidocab").hide();
     $("#card").hide();
     $("#carrito").hide();
-
-    //     mostrarform(false);
-    //     listar();
+    //   mostrarform(false);
+    //   listar();
 
     $.post("../../controlador/pedidocab.php?op=selectTercero", function(r) {
         $("#IdTercero").html(r);
@@ -24,24 +22,42 @@ function init() {
 }
 
 
-// -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --agregar items al carrito-- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-
+//AGREGAR ITEMS AL CARRITO
 function mostrarcar(IdProducto) {
     $.post("../../controlador/producto.php?op=mostrarcar", { IdProducto: IdProducto }, function(data, _status) {
-        data = JSON.parse(data);
-        console.log(data);
+            data = JSON.parse(data);
+            console.log(data);
 
-        var ImagenProducto = data[0].ImagenProducto;
-        var NmProducto = data[0].NmProducto;
+            var IdProducto = data[0].IdProducto;
+            var ImagenProducto = data[0].ImagenProducto;
+            var NmProducto = data[0].NmProducto;
 
-        var car = '<tr> <td width="15%"> <img  class="img-fluid" src="../../public/img/' + ImagenProducto + '" alt=""></td><td><h6> ' + NmProducto +
-            '</h6></td> <td><input style="width: 30%;" type="number" value="1" class="form-control cantidad"></td><td style="width:15px;"><i class="fas fa-times"></i></td></tr>'
-        $("#tb tbody").append(car);
+            var car = '<tr><td style="width:10%;"><img  class="img-fluid" src="../../public/img/' + ImagenProducto +
+                '" alt=""></td><td style="width:30%;"><h8>' + NmProducto +
+                '</h8></td><td style="width:35;"><input style="width: 20%;" type="number" value="1" class="form-control cantidad"></td><td style=""> <button onclick="eliminaritem(' + IdProducto +
+                ')" data-toggle="tooltip" data-placement="bottom" title="Eliminar" style="border: none;" class="btn btn-outline-secondary btn-sm" type="button"><i class="fas fa-times"></i></button></td></tr>'
+            $("#tb tbody").append(car);
+        })
+        // $("#addcarrito").ccs("display", "none");
+}
 
-    })
+//ELIMINAR ITEMS DEL CARRITO
+function mostrarcar(IdProducto) {
+    $.post("../../controlador/producto.php?op=mostrarcar", { IdProducto: IdProducto }, function(data, _status) {
+            data = JSON.parse(data);
+            console.log(data);
 
-    // $("#addcarrito").ccs("display", "none");
+            var IdProducto = data[0].IdProducto;
+            var ImagenProducto = data[0].ImagenProducto;
+            var NmProducto = data[0].NmProducto;
 
+            var car = '<tr><td style="width:10%;"><img  class="img-fluid" src="../../public/img/' + ImagenProducto +
+                '" alt=""></td><td style="width:30%;"><h8>' + NmProducto +
+                '</h8></td><td style="width:35;"><input style="width: 20%;" type="number" value="1" class="form-control cantidad"></td><td style=""> <button onclick="eliminaritem(' + IdProducto +
+                ')" data-toggle="tooltip" data-placement="bottom" title="Eliminar" style="border: none;" class="btn btn-outline-secondary btn-sm" type="button"><i class="fas fa-times"></i></button></td></tr>'
+            $("#tb tbody").remove(car);
+        })
+        // $("#addcarrito").ccs("display", "none");
 }
 
 // function limpiar() {
@@ -56,13 +72,11 @@ function mostrarcar(IdProducto) {
 //     $("#imagenmuestra").attr("src", "");
 //     $("#imagenactual").val("");
 //     $("#print").hide();
-
 // }
-
 
 $(document).ready(function() {
 
-    // -- -- -- -- -- -- -- -- -- - tomar fecha hr actual-- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+    //TOMAR HR FECHA ACTUAL
     $("#btnnvo").click(function(e) {
         $("#pedidocab").show();
         var f = new Date();
@@ -70,24 +84,22 @@ $(document).ready(function() {
         console.log('factual');
         $("#FcOrdenPedido").val(factual);
         $("#btnnvo").hide();
-
     });
 
-
+    //MOSTRAR CARRITO ICON
     $("#vercarrito").click(function(e) {
         $("#carrito").show();
         $("#header").hide();
         $("#footer").hide();
         $("#main").hide();
-
         // $('#tb tr').each(function() {
         //     var total = $(this).text();
         //     // alert(total);
         //     console.log(total)
         // });
-
     });
 
+    //MOSTRAR CARRITO ALERT
     $("#vercarrit").click(function(e) {
         $("#carrito").show();
         $("#header").hide();
@@ -95,6 +107,7 @@ $(document).ready(function() {
         $("#main").hide();
     });
 
+    //OCULTAR CARRITO
     $("#hidecarrito").click(function(e) {
         $("#carrito").hide();
         $("#header").show();
@@ -102,9 +115,8 @@ $(document).ready(function() {
         $("#main").show();
     });
 
-    // -- -- -- -- -- -- -- -- -- ----guardar datos de la tabla carrito-- -- -- -- -- -- -- -- --
-
     $("#ingresar").click(function(e) {
+        //RECORRER TABLA CARRITO
         var filas = [];
         $('#tb tbody tr').each(function() {
             var imagen = $(this).find('td').eq(0).text();
@@ -129,8 +141,7 @@ $(document).ready(function() {
         alert(JSON.stringify(filas));
     });
 
-    // -- -- ---- ---- -- -- ---- -- ---- - guadar cabecera-- -- -- -- -- -- -- -- -- -
-
+    //GUARDAR CAB
     $("#btnGuardar").click(function(e) {
         // guardar(e);
         $('#pedidocab').css("display", "none");
@@ -139,6 +150,7 @@ $(document).ready(function() {
     });
 
 
+    // FILTRAR PRODUCTOS 
     $('#IdClase').change(function() {
         var IdClase = $(this).val();
         var dataString = 'IdClase=' + IdClase;
@@ -149,20 +161,19 @@ $(document).ready(function() {
             data: dataString,
             success: function(data) {
 
-                $(".portfolio-item").remove(card);
+                $(".portfolio-item").remove(card); //LIMPIAR CARD
 
                 console.log(data);
                 if (data.trim() !== "\r\nnull" || data.trim() !== undefined || data.trim() !== null || data.trim() !== "null") {
-
                     data = JSON.parse(data);
 
                     console.log(data);
                     console.log(data[0]);
-                    // $('#IdProducto').val(data);
 
                     var len = data.length;
                     console.log(len);
 
+                    //CREAR CARD POR PRODUCTO
                     for (var i = 0; i < len; i++) {
 
                         var IdProducto = data[i].IdProducto;
@@ -170,7 +181,6 @@ $(document).ready(function() {
                         var NmProducto = data[i].NmProducto;
                         var ida = "addcarrito" + i;
                         var idd = "deltcarrito" + i;
-
                         console.log(idd);
 
                         var card = '<div class="col-lg-2 col-md-6 portfolio-item" ><img class="img-fluid" src="../../public/img/' +
@@ -179,7 +189,6 @@ $(document).ready(function() {
                             ')" data-toggle="tooltip" data-placement="bottom" title="agregar al carrito" style="border: none;" class="btn btn-outline-light btn-sm" type="button"><i class="fas fa-cart-plus"></i></button> <button id="' + idd + '" onclick="delete(' + IdProducto +
                             ')" data-toggle="tooltip" data-placement="bottom" title="Eliminar del carrito" style="border: none; display:none;" class="btn btn-outline-light btn-sm" type="button"><i class="far fa-trash-alt"></i></button></p></div>'
 
-
                         $("#card").append(card);
 
                         // $('#' + ida).click(function(e) {
@@ -187,7 +196,6 @@ $(document).ready(function() {
                         //     $("#" + idd).css("display", "inline");
 
                         // });
-
                         // $('#' + idd).click(function(e) {
                         //     $(this).css("display", "none");
                         //     $('#' + ida).css("display", "inline");
@@ -205,6 +213,7 @@ $(document).ready(function() {
     });
 
 
+    //MOSTRAR TODOS LOS PRODUCTOS
     $.ajax({
         url: '../../controlador/producto.php?op=card',
         type: 'get',
@@ -257,10 +266,9 @@ $(document).ready(function() {
         }
     });
 
-
-
 });
 
+//GUARDAR CAB PEDIDO
 function guardar(e) {
     e.preventDefault(); //No se activará la acción predeterminada del evento
     $("#btnGuardar").prop("disabled", true);

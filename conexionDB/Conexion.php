@@ -1,10 +1,15 @@
   <?php 
-
   $serverName = '192.168.6.4'; 
   $connectionInfo = array("Database"=>"dbFenix1", "UID"=>"aemartinez", "PWD"=>"aemartinez", "CharacterSet"=>"UTF-8");
   $conexion = sqlsrv_connect($serverName, $connectionInfo);
+  
+  // $database = "dbFenix1";  
+  // $server = "(192.168.6.4)";  
+  // $conn = new PDO("sqlsrv:server=$server ; Database = $database", "", "");  
+  
+  // $conn=new PDO("sqlsrv:Server=localhost,192.168.6.4;Database=dbFenix1", "aemartinez", "aemartinez");
      
-    if( $conexion ) {
+    if($conexion) {
       // echo "Conexión establecida";
         if(!function_exists('ejecutarConsulta'))
         {
@@ -13,11 +18,14 @@
                     global $conexion;
                     $query = sqlsrv_query( $conexion, $sql );
                     if( $query === false) {
-                        die( print_r(sqlsrv_errors(), true) );
-                    }else{
+                        die( print_r(sqlsrv_errors(), true));
+                   }else{
                       return $query;
                     }  
                 }
+              }
+                
+              
                 function consultarUnaFila($sql)
                   {
                       global $conexion;
@@ -43,7 +51,7 @@
                 //     return $conexion->insert_id;
                 // }     
         }
-    }else{
+    else{
         echo "Conexión no se pudo establecer";
         die( print_r(sqlsrv_errors(), true));
     }

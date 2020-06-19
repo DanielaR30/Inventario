@@ -144,15 +144,7 @@
                              </span>
                             </div>
                       </div>
-                   <!-- <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                     <div class="col-lg-2"></div>
-                            <div class="col-lg-10">
-                            <input type="text" class="form-control" name="NmRazonSocial" id="NmRazonSocial" required>
-                             <span class="infoDi" style="display:none; color:rgba(230, 35, 18, 0.952);">
-                                  <i class="fas fa-exclamation-circle"> Campo requerido, Ingrese 1 dígito.</i>
-                              </span>
-                            </div>
-                     </div> -->
+                 
                </div>
 
                 <div class="row">
@@ -201,7 +193,7 @@
                <div class="box">
                             <div class="box-header">
                     <div class="box-body no-padding">
-                                <table class="table table-striped">
+                                <table id="tbcompra" class="table table-striped">
                                 <thead class="border">
                                     <tr>
                                         <!-- <th style="width: 10px">#</th> -->
@@ -213,44 +205,44 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Vasos</td>
-                                        <td>10</td>
-                                        <td>2000</td>
-                                        <td>20000</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 20px;">
-                                        <button type="button" id="agregar" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Agregar producto"><i class="fas fa-plus"></i></button> 
-                                        <input style="display: none;" type="text" class="form-control" name="IdProducto" id="IdProducto">
-                                        <button type="button" id="guardar" style="margin-top: 7px; display: none;" class="btn btn-primary btn-sm m-1"  data-toggle="tooltip" data-placement="right" title="Guardar producto"><i class="fas fa-save"></i></button>
-                                        <button type="button" id="volver" style="margin-top: 7px; display: none;" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="right" title="Volver"><i class="fas fa-backspace"></i></i></button> 
-                                        </td>
-                                        
-                                        <td style="width: 20px;"><input style="display: none;" type="text" class="form-control" name="NmProducto" id="NmProducto" ></td>
-                                        <td style="width: 20px;"><input style="display: none;" type="text" class="form-control" name="NuCantidad" id="NuCantidad" ></td>
-                                        <td style="width: 20px;"><input style="display: none;" type="text" class="form-control" name="VlUnitario" id="VlUnitario" ></td>
-                                        <td style="width: 20px;"></td>
-                                    </tr>
+                                    <!-- '<tr><td style="width: 20px;">'+IdProducto+
+                                    '</td><td style="width: 20px;">'+NmProducto+
+                                    '</td><td style="width: 20px;">'+NuCantidad+
+                                    '</td><td style="width: 20px;">'+VlUnitario+
+                                    '</td><td style="width: 20px;">'+Total+
+                                    '</td></tr>' -->
+                           
                                 </tbody>
                                 <tfoot>
+                                  <tr>
+                                      <td style="width: 20px;">
+                                      <button type="button" id="agregar" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Agregar producto"><i class="fas fa-plus"></i></button> 
+                                      <input style="display: none;" type="text" class="form-control" name="IdProducto" id="IdProducto">
+                                      <button type="button" id="guardar" style="margin-top: 7px; display: none;" class="btn btn-primary btn-sm m-1"  data-toggle="tooltip" data-placement="right" title="Guardar producto"><i class="fas fa-save"></i></button>
+                                      <button type="button" id="volver" style="margin-top: 7px; display: none;" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="right" title="Volver"><i class="fas fa-backspace"></i></i></button> 
+                                      </td>
+                                      
+                                      <td style="width: 20px;"><input style="display: none;" type="text" class="form-control" name="NmProducto" id="NmProducto" ></td>
+                                      <td style="width: 20px;"><input style="display: none;" type="text" class="form-control" name="NuCantidad" id="NuCantidad" ></td>
+                                      <td style="width: 20px;"><input style="display: none;" type="text" class="form-control" name="VlUnitario" id="VlUnitario" ></td>
+                                      <td style="width: 20px;"></td>
+                                  </tr>
+                                  <tr> 
+                                   <td colspan="3"></td>
+                                   <td style="width: 20px;"><b>Subtotal</b></td>
+                                   <td style="width: 20px; font-weight: 600;"><input type="number" class="form-control align-self-end"  name="VlSubtotal" id="VlSubtotal" readonly></td>
+                                  </tr>
+                                  <tr>
+                                   <td colspan="3"></td>  
+                                   <td style="width: 20px;"><b>Iva</b></td>
+                                   <td style="width: 20px; font-weight: 600;"><input type="number" value="300" class="form-control align-self-end"  name="VlSubtotal" id="VlSubtotal" readonly></td>
+                                  </tr>
+                                  <tr>
+                                   <td colspan="3"></td>  
+                                   <td style="width: 20px;"><b>Total</b></td>
+                                   <td style="width: 20px; font-weight: 600;"><input type="number" class="form-control align-self-end"  name="VlSubtotal" id="VlSubtotal" readonly></td>
+                                  </tr>
                                 </tfoot>
-                                <tr> 
-                                 <td colspan="3"></td>
-                                 <td style="width: 20px;"><b>Subtotal</b></td>
-                                 <td style="width: 20px; font-weight: 600;">2000</td>
-                                </tr>
-                                <tr>
-                                 <td colspan="3"></td>  
-                                 <td style="width: 20px;"><b>Iva</b></td>
-                                 <td style="width: 20px; font-weight: 600;">2000</td>
-                                </tr>
-                                <tr>
-                                 <td colspan="3"></td>  
-                                 <td style="width: 20px;"><b>Total</b></td>
-                                 <td style="width: 20px; font-weight: 600;">2000</td>
-                                </tr>
                                 </table>
                             </div> 
                             </div> 

@@ -34,11 +34,24 @@
  //     $("#DigVerificacion").css("background-color", "rgb(255, 255, 255)");
  // }
 
-
  $(document).ready(function() {
 
+     //  GUARDAR DETALLE
      $("#btnGuardarc").click(function(e) {
-         guardar(e);
+
+         //VALIDAR QUE LOS CAMPOS NO ESTEN VACÍOS
+         if (
+             $.trim($("#FcTransaccion").val()).length == 0 ||
+             $.trim($("#IdTercero").val()).length == 0 ||
+             $.trim($("#NuDocumento").val()).length == 0 ||
+             $.trim($("#FcDocumento").val()).length == 0
+         ) {
+             console.log('campos vacíos');
+         } else {
+             guardar(e);
+         }
+
+         //  LEER ULTIMO ID CAB
          $.ajax({
              url: '../controlador/compra.php?op=idlast',
              type: 'get',
@@ -60,7 +73,7 @@
          //  campos();
      });
 
-
+     // MOSTRAR INPUTS Y GUARDAR O VOLVER
      $('#agregar').click(function() {
          $(this).css("display", "none");
          $('#IdProducto').css("display", "inline");
@@ -71,8 +84,8 @@
          $('#volver').css("display", "inline");
      });
 
+     // MOSTRAR GREGAR, ESCONDER INPUTS 
      $('#volver').click(function() {
-
          $(this).css("display", "none");
          $('#agregar').css("display", "inline");
          $('#IdProducto').val("");
@@ -88,9 +101,86 @@
          $('#volver').css("display", "none");
      });
 
+     //  GUARDAR FILAS A DETALLE
+     $('#guardar').click(function() {
+         var IdProducto = $('#IdProducto').val();
+         var NmProducto = $('#NmProducto').val();
+         var NuCantidad = $('#NuCantidad').val();
+         var VlUnitario = $('#VlUnitario').val();
+         //  CALCULAR TOTAL
+         var Total = NuCantidad * VlUnitario;
+
+         var compradet = '<tr><td style="width: 20px;">' + IdProducto +
+             '</td><td style="width: 20px;">' + NmProducto +
+             '</td><td style="width: 20px;">' + NuCantidad +
+             '</td><td style="width: 20px;">' + VlUnitario +
+             '</td><td style= "width: 20px;">' + Total +
+             '</td></tr>'
+         $("#tbcompra tbody").append(compradet);
+
+         //  CALCULAR SUBTOTAL
+         var sum = 0;
+         $('#tbcompra tbody tr').each(function() {
+             sum += parseFloat($(this).find('td').eq(4).text());
+         });
+         $("#VlSubtotal").val(sum);
+
+         // DESPUES DE AGREGAR FILA, LIMPIAR INPUTS 
+         $('#IdProducto').val("");
+         $('#NmProducto').val("");
+         $('#NuCantidad').val("");
+         $('#VlUnitario').val("");
+
+     });
+
+
+     $("#btGuardar").click(function(e) {
+         //RECORRER TABLA
+         var filas = [];
+         var IdTransaccionCab = $('#IdTransaccionCab').val();
+         $('#tbcompra tbody tr').each(function() {
+             var IdProducto = $(this).find('td').eq(0).text();
+             var NmProducto = $(this).find('td').eq(1).text();
+             var NuCantidad = $(this).find('td').eq(2).text();
+             var VlUnitario = $(this).find('td').eq(3).text();
+             var Total = $(this).find('td').eq(4).text();
+
+             var fila = {
+                 IdTransaccionCab,
+                 IdProducto,
+                 NmProducto,
+                 NuCantidad,
+                 VlUnitario,
+                 Total
+                 // abonocapital,
+                 // valorcuota,
+                 // saldocapital
+             };
+             filas.push(fila);
+         });
+         console.log(filas);
+         //  alert(JSON.stringify(filas));
+
+         //GUARDAR ARRAY EN TABLA DETALLE
+         $.ajax({
+             type: "POST",
+             url: '../controlador/compra.php?op=guardardet',
+             data: { valores: JSON.stringify(filas) }, // stringify CONVERTIR OBJ EN STRING
+             success: function(data) {
+                 console.log(data);
+                 swal({
+                     title: 'Success',
+                     type: 'success',
+                     text: data
+                 });
+             }
+         });
+
+     });
+
  });
 
-
+ //GUADAR CAB
  function guardar(e) {
      e.preventDefault(); //No se activará la acción predeterminada del evento
      $("#btnGuardar").prop("disabled", true);
@@ -108,8 +198,7 @@
                  type: 'success',
                  text: datos
              });
-             //  mostrarform(false);
-             //  tabla.ajax.reload();
+
          }
      });
      //  limpiar();
