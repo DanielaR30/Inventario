@@ -74,7 +74,7 @@
               <div class="col position-relative">
               
               
-              <div class="row border-bottom border-success">
+          <div class="row border-bottom border-success">
             <div class="mt-3 ml-5">
                 <a id="hidecarrito" href="#" class="min"><h1><i class="fas fa-chevron-right"></i></h1></a>
             </div>
@@ -95,22 +95,18 @@
                 </tr>
               </thead>
               <tbody>
-               <!-- '<tr> <td> <img  class="img-fluid" src="../../public/img/' + ImagenProducto + '" alt=""></td><td>' + NmProducto +
-               '</td> <td><input style="width: 30%;" type="text" class="form-control" name="NuCantidad" id="NuCantidad"></td></tr>' -->
                
                <!-- 
-               '<tr><td style="width: 30px;"><img  class="img-fluid" src="../../public/img/' + ImagenProducto + 
+               '<tr><td style="display:none;">' + IdProducto + 
+               '</td><td style="width: 30px;"><img  class="img-fluid" src="../../public/img/' + ImagenProducto + 
                '" alt=""></td><td style="width: 30px;"><h6> ' + NmProducto + 
                '</h6></td><td style="width: 30px;"><input style="width: 20%;" type="number" value="1" class="form-control cantidad"></td><td style="width: 10px;"> <button id="' + ida + '" onclick="eliminaritem(' + IdProducto + 
                ')" data-toggle="tooltip" data-placement="bottom" title="Eliminar" style="border: none;" class="btn btn-outline-light btn-sm" type="button"><i class="fas fa-times"></i></button></td></tr>'
                -->
         
-               
-               
               </tbody>
            </table>
           </div>
-           
            <div class="col col-4 border-left mt-5" style="height:450px;">
            
            <form class="form-horizontal" action="" method="post">

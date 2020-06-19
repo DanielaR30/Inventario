@@ -36,7 +36,7 @@
 
  $(document).ready(function() {
 
-     //  GUARDAR DETALLE
+     //GUARDAR DETALLE
      $("#btnGuardarc").click(function(e) {
 
          //VALIDAR QUE LOS CAMPOS NO ESTEN VACÍOS
@@ -51,7 +51,7 @@
              guardar(e);
          }
 
-         //  LEER ULTIMO ID CAB
+         //LEER ULTIMO ID CAB
          $.ajax({
              url: '../controlador/compra.php?op=idlast',
              type: 'get',
@@ -84,7 +84,7 @@
          $('#volver').css("display", "inline");
      });
 
-     // MOSTRAR GREGAR, ESCONDER INPUTS 
+     // MOSTRAR AGREGAR, ESCONDER INPUTS 
      $('#volver').click(function() {
          $(this).css("display", "none");
          $('#agregar').css("display", "inline");
@@ -101,7 +101,7 @@
          $('#volver').css("display", "none");
      });
 
-     //  GUARDAR FILAS A DETALLE
+     //  AGREGAR FILAS A DETALLE
      $('#guardar').click(function() {
          var IdProducto = $('#IdProducto').val();
          var NmProducto = $('#NmProducto').val();
@@ -133,7 +133,6 @@
 
      });
 
-
      $("#btGuardar").click(function(e) {
          //RECORRER TABLA
          var filas = [];
@@ -152,9 +151,6 @@
                  NuCantidad,
                  VlUnitario,
                  Total
-                 // abonocapital,
-                 // valorcuota,
-                 // saldocapital
              };
              filas.push(fila);
          });

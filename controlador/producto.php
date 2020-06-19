@@ -138,7 +138,7 @@ case 'mostrarcar':
   $results[] = array (
     "IdProducto" =>$IdProducto,
     "ImagenProducto" =>$ImagenProducto, 
-     "NmProducto" => $NmProducto); 
+    "NmProducto" => $NmProducto); 
   
   // print_r(json_encode($results));
     echo json_encode($results);

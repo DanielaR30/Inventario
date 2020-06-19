@@ -32,32 +32,51 @@ function mostrarcar(IdProducto) {
             var ImagenProducto = data[0].ImagenProducto;
             var NmProducto = data[0].NmProducto;
 
-            var car = '<tr><td style="width:10%;"><img  class="img-fluid" src="../../public/img/' + ImagenProducto +
-                '" alt=""></td><td style="width:30%;"><h8>' + NmProducto +
-                '</h8></td><td style="width:35;"><input style="width: 20%;" type="number" value="1" class="form-control cantidad"></td><td style=""> <button onclick="eliminaritem(' + IdProducto +
-                ')" data-toggle="tooltip" data-placement="bottom" title="Eliminar" style="border: none;" class="btn btn-outline-secondary btn-sm" type="button"><i class="fas fa-times"></i></button></td></tr>'
+            var car = '<tr><td style="display:none;">' + IdProducto +
+                '</td><td style="width: 30px;"><img  class="img-fluid" src="../../public/img/' + ImagenProducto +
+                '" alt=""></td><td style="width: 30px;"><h6> ' + NmProducto +
+                '</h6></td><td style="width: 30px;"><input style="width: 20%;" type="number" value="1" class="form-control cantidad"></td><td style="width: 10px;"> <button onclick="eliminaritem(' + IdProducto +
+                ')" data-toggle="tooltip" data-placement="bottom" title="Eliminar" style="border: none;" class="btn btn-outline-light btn-sm" type="button"><i class="fas fa-times"></i></button></td></tr>'
+
             $("#tb tbody").append(car);
         })
         // $("#addcarrito").ccs("display", "none");
 }
 
 //ELIMINAR ITEMS DEL CARRITO
-function mostrarcar(IdProducto) {
-    $.post("../../controlador/producto.php?op=mostrarcar", { IdProducto: IdProducto }, function(data, _status) {
-            data = JSON.parse(data);
-            console.log(data);
+function eliminaritem(IdProducto) {
 
-            var IdProducto = data[0].IdProducto;
-            var ImagenProducto = data[0].ImagenProducto;
-            var NmProducto = data[0].NmProducto;
+    var filas = [];
+    $('#tb tbody tr').each(function() {
+        var Producto = $(this).find('td').eq(0).text();
+        var ImagenProducto = $(this).find('td').eq(1).text();
+        var NmProducto = $(this).find('td').eq(2).text();
+        var cantidad = $(this).find('td').eq(3).text();
 
-            var car = '<tr><td style="width:10%;"><img  class="img-fluid" src="../../public/img/' + ImagenProducto +
-                '" alt=""></td><td style="width:30%;"><h8>' + NmProducto +
-                '</h8></td><td style="width:35;"><input style="width: 20%;" type="number" value="1" class="form-control cantidad"></td><td style=""> <button onclick="eliminaritem(' + IdProducto +
-                ')" data-toggle="tooltip" data-placement="bottom" title="Eliminar" style="border: none;" class="btn btn-outline-secondary btn-sm" type="button"><i class="fas fa-times"></i></button></td></tr>'
-            $("#tb tbody").remove(car);
-        })
-        // $("#addcarrito").ccs("display", "none");
+        var fila = {
+            Producto,
+            ImagenProducto,
+            NmProducto,
+            cantidad
+        };
+        filas.push(fila);
+
+        var car = '<tr><td style="display:none;">' + Producto +
+            '</td><td style="width: 30px;"><img  class="img-fluid" src="../../public/img/' + ImagenProducto +
+            '" alt=""></td><td style="width: 30px;"><h6> ' + NmProducto +
+            '</h6></td><td style="width: 30px;"><input style="width: 20%;" type="number" value="1" class="form-control cantidad"></td><td style="width: 10px;"> <button id="' + ida + '" onclick="eliminaritem(' + IdProducto +
+            ')" data-toggle="tooltip" data-placement="bottom" title="Eliminar" style="border: none;" class="btn btn-outline-light btn-sm" type="button"><i class="fas fa-times"></i></button></td></tr>'
+
+        if (Producto == IdProducto) {
+            $("#tb tbody").remove(car); //LIMPIAR CARD
+        }
+        // var ImagenProducto = $(this).find('td').eq(1).text();
+        // var NmProducto = $(this).find('td').eq(2).text();
+        // var cantidad = $(".cantidad").val();
+    });
+    console.log(filas);
+
+
 }
 
 // function limpiar() {
@@ -92,11 +111,6 @@ $(document).ready(function() {
         $("#header").hide();
         $("#footer").hide();
         $("#main").hide();
-        // $('#tb tr').each(function() {
-        //     var total = $(this).text();
-        //     // alert(total);
-        //     console.log(total)
-        // });
     });
 
     //MOSTRAR CARRITO ALERT
@@ -122,22 +136,15 @@ $(document).ready(function() {
             var imagen = $(this).find('td').eq(0).text();
             var nombre = $(this).find('td').eq(1).text();
             var cantidad = $(".cantidad").val();
-            // var abonocapital = $(this).find('td').eq(2).text();
-            // var valorcuota = $(this).find('td').eq(3).text();
-            // var saldocapital = $(this).find('td').eq(4).text();
 
             var fila = {
                 imagen,
                 nombre,
                 cantidad
-                // abonocapital,
-                // valorcuota,
-                // saldocapital
             };
             filas.push(fila);
         });
         console.log(filas);
-
         alert(JSON.stringify(filas));
     });
 
