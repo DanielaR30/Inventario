@@ -114,8 +114,8 @@
              '</td><td style="width: 20px;">' + NmProducto +
              '</td><td style="width: 20px;">' + NuCantidad +
              '</td><td style="width: 20px;">' + VlUnitario +
-             '</td><td style= "width: 20px;">' + Total +
-             '</td></tr>'
+             '</td><td style= "width: 15px;">' + Total +
+             '</td><td style= "width: 5px;"><button data-toggle="tooltip" data-placement="bottom" title="Eliminar" style="border: none;" class="deletedet btn btn-default btn-xs" type="button"><i class="fas fa-times"></i></button></td></tr>'
          $("#tbcompra tbody").append(compradet);
 
          //  CALCULAR SUBTOTAL
@@ -130,7 +130,11 @@
          $('#NmProducto').val("");
          $('#NuCantidad').val("");
          $('#VlUnitario').val("");
+     });
 
+     //ELIMINAR ITEMS DE DETALLE
+     $('body').on('click', 'button.deletedet', function() {
+         $(this).parents('tr').remove();
      });
 
      $("#btGuardar").click(function(e) {
@@ -200,4 +204,5 @@
      //  limpiar();
  }
 
+ init();
  init();

@@ -192,7 +192,7 @@
                 <h4 class="box-title" style="font-family: 'Sawarabi Gothic', sans-serif; text-align:center;">Detalles del los productos</h4>
                <div class="box">
                             <div class="box-header">
-                    <div class="box-body no-padding">
+                       <div class="box-body no-padding">
                                 <table id="tbcompra" class="table table-striped">
                                 <thead class="border">
                                     <tr>
@@ -201,25 +201,26 @@
                                         <th style="width: 20px;">Producto</th>
                                         <th style="width: 20px;">Cantidad</th>
                                         <th style="width: 20px;">Valor Unitario</th>
-                                        <th style="width: 20px;">Total</th>
+                                        <th style="width: 20px;" colspan="2">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- '<tr><td style="width: 20px;">'+IdProducto+
-                                    '</td><td style="width: 20px;">'+NmProducto+
-                                    '</td><td style="width: 20px;">'+NuCantidad+
-                                    '</td><td style="width: 20px;">'+VlUnitario+
-                                    '</td><td style="width: 20px;">'+Total+
-                                    '</td></tr>' -->
-                           
+                                <!-- <tr>
+                                <td style="width: 20px;">1</td>
+                                <td style="width: 20px;">cocacola</td>
+                                <td style="width: 20px;">10</td>
+                                <td style="width: 20px;">3000</td>
+                                <td style="width: 15px;">30000</td>
+                                <td style="width: 5px;"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-times"></i></button></td>
+                                </tr> -->
                                 </tbody>
                                 <tfoot>
                                   <tr>
                                       <td style="width: 20px;">
-                                      <button type="button" id="agregar" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Agregar producto"><i class="fas fa-plus"></i></button> 
+                                      <button type="button" id="agregar" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Agregar producto"><i class="fas fa-plus"></i></button> 
                                       <input style="display: none;" type="text" class="form-control" name="IdProducto" id="IdProducto">
-                                      <button type="button" id="guardar" style="margin-top: 7px; display: none;" class="btn btn-primary btn-sm m-1"  data-toggle="tooltip" data-placement="right" title="Guardar producto"><i class="fas fa-save"></i></button>
-                                      <button type="button" id="volver" style="margin-top: 7px; display: none;" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="right" title="Volver"><i class="fas fa-backspace"></i></i></button> 
+                                      <button type="button" id="guardar" style="margin-top: 7px; display: none;" class="btn btn-primary btn-sm m-1"  data-toggle="tooltip" data-placement="bottom" title="Guardar producto"><i class="fas fa-save"></i></button>
+                                      <button type="button" id="volver" style="margin-top: 7px; display: none;" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Volver"><i class="fas fa-backspace"></i></button> 
                                       </td>
                                       
                                       <td style="width: 20px;"><input style="display: none;" type="text" class="form-control" name="NmProducto" id="NmProducto" ></td>
