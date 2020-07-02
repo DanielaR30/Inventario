@@ -156,24 +156,8 @@ function listar() {
         },
         /*         "columns": [
                     { "data": 0 },
-                    { "data": 1 },
-                    { "data": 2 },
-                    { "data": 3 },
-                    { "data": 4 },
-                    { "data": 5 },
-                    { "data": 6 },
-                    { "data": 7 },
-                    { "data": 8 },
-                    { "data": 9 },
-                    { "data": 10 },
-                    { "data": 11 },
-                    { "data": 12 },
-                    { "data": 13 },
-                    { "data": 14 },
-                    { "data": 15 },
-                    { "data": 16 },
-                    { "data": 17 },
-                    { "data": 18 }
+                    { "data": 1 }
+             
                 ], */
         initComplete: function() {
             this.api().columns([2]).every(function() {
@@ -220,7 +204,7 @@ $(document).ready(function() {
         var IdClase = $(this).val();
         var dataString = 'IdClase=' + IdClase;
 
-        //mostrar el id de producto, autoincremental según familia, segmento y clase.
+        //MOSTRAR EL ID DE PRODUCTO, autoincremental según familia, segmento y clase.
         $.ajax({
             type: "POST",
             url: "../controlador/producto.php?op=mostrarid",
@@ -284,7 +268,7 @@ $(document).ready(function() {
                 }
             },
             error: function() {
-                console.log('Disculpe, existió un problema');
+                console.log('existió un problema');
             }
         });
 
@@ -393,7 +377,6 @@ $("#btnGuardar").click(function(e) {
     } else {
         guardar(e);
     }
-
 });
 
 $("#btnEditar").click(function(e) { //Valida que ningun campo esté vacio antes de editar
@@ -424,17 +407,17 @@ $("#btnEditar").click(function(e) { //Valida que ningun campo esté vacio antes 
     }
 });
 
-function generarbarcode() {
-    codigo = $("#IdProducto").val();
-    JsBarcode("#barcode", codigo, {
-        formato: " EAN13 ",
-        width: 1,
-        height: 30,
-        fontSize: 13,
-        flat: false
-    });
-    $("#print").show();
-}
+// function generarbarcode() {
+//     codigo = $("#IdProducto").val();
+//     JsBarcode("#barcode", codigo, {
+//         formato: " EAN13 ",
+//         width: 1,
+//         height: 30,
+//         fontSize: 13,
+//         flat: false
+//     });
+//     $("#print").show();
+// }
 
 function imprimir() {
     $("#print").printArea();
@@ -681,7 +664,6 @@ function mostrarEditar(flag) {
         $("#nuevo").hide();
         $("#mlista").show();
     }
-
 }
 
 function mostrar(IdProducto) {

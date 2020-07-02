@@ -15,24 +15,20 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Inventario - Index</title>
+    <title>Inventario  | Index</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
  <!-- google fonts -->
  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
  <link href="https://fonts.googleapis.com/css2?family=Muli&display=swap" rel="stylesheet">
-
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
@@ -40,19 +36,24 @@
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
     <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
+    
+     <!-- sweetalert2 -->
+  <link rel="stylesheet" href="../../public/css/sweetalert.min.css" />
+  
+        <!-- select2 -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../public/plugins/select2-bootstrap4-theme-master/dist/select2-bootstrap4.css">
 
     <!-- <link href="../../plugin" rel="stylesheet" /> -->
     <!-- <script src="path/to/select2.min.js"></script> -->
-
     <!-- =======================================================
-  * Template Name: KnightOne - v2.0.0
-  * Template URL: https://bootstrapmade.com/knight-simple-one-page-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+      * Template Name: KnightOne - v2.0.0
+      * Template URL: https://bootstrapmade.com/knight-simple-one-page-bootstrap-template/
+      * Author: BootstrapMade.com
+      * License: https://bootstrapmade.com/license/
+    ======================================================== -->
   
   <style type="text/css">
     .min{
@@ -74,9 +75,9 @@
               <div class="col position-relative">
               
           <div class="row border-bottom border-success">
-            <div class="mt-3 ml-5">
-                <a id="hidecarrito" href="#" class="min"><h1><i class="fas fa-chevron-right"></i></h1></a>
-            </div>
+                <div class="mt-3 ml-5">
+                    <a id="hidecarrito" href="#" class="min"><h1><i class="fas fa-chevron-right"></i></h1></a>
+                </div>
            
                 <div class="col d-flex justify-content-center pt-4 pb-2 ">
                   <h3 style="font-family: 'Pacifico', cursive;"><i class="fas fa-shopping-cart"></i>&nbsp; Carrito</h3>
@@ -86,7 +87,7 @@
           <div class="row">
            <div class="col col-7 pt-4 pl-5">
            <!-- <div class="col col-8 pt-5" data-spy="scroll" data-target="#navbar-example2" data-offset="0"> -->
-           <table id="tb" class="table table-borderless ">
+           <table id="tbpedido" class="table table-borderless ">
               <thead>
                 <tr>
                   <th scope="col" colspan="2">Producto</th> 
@@ -94,12 +95,15 @@
                 </tr>
               </thead>
               <tbody>
+              
+              <!-- find('td:eq(2)').find('input').val(), -->
                <!-- '<tr><td style="display:none;">' + IdProducto + 
                '</td><td style="width: 30px;"><img  class="img-fluid" src="../../public/img/' + ImagenProducto + 
                '" alt=""></td><td style="width: 30px;"><h6> ' + NmProducto +
                '</h6></td><td style="width: 30px;"><input style="width: 20%;" type="number" value="1" class="form-control cantidad"></td><td style="width: 10px;"><button data-toggle="tooltip" data-placement="bottom" title="Eliminar" style="border: none;" class="deleteDep btn btn-outline-light btn-sm" type="button"><i class="fas fa-times"></i></button></td></tr>'
                 -->
                <!-- <input type="button" class="deleteDep" value="Delete"/> -->
+               
               </tbody>
            </table>
           </div>
@@ -107,8 +111,16 @@
            
            <form class="form-horizontal" action="" method="post">
              <div class="row">
+             
+             <div class="inputWithIcon input-group input-group-sm mb-3 col-lg-11 pl-4 col-md-6 col-sm-6 col-xs-12 ">
+             <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm"><b>Código</b></span>
+              </div>
+                    <input type="number" class="form-control align-self-end" name="IdOrdenPedidoCab" id="IdOrdenPedidoCab"  readonly>
+             </div>
+             
               <div class="col col-lg-12  pl-4">
-                    <label for="Observaciones" class="col-lg-1 control-label"> <b>Observaciones</b> </label>
+                    <label for="Observaciones" class="col control-label"><b>Observaciones</b></label>
                       <div style="width: 92%;">
                         <textarea class="form-control" name="Observaciones" id="Observaciones" maxlength="255" rows="4" cols="50" style="resize: none;"></textarea>
                       <!-- <input type="text" class="form-control" name="Descripcion" id="Descripcion" required> -->
@@ -117,15 +129,13 @@
                         </span>
                       </div>
               </div>
-                
                   <div class="col col-lg-10 pt-4 d-flex justify-content-center ml-4">
-                       <button type="button" id="ingresar" class="btn btn-success btn-lg btn-block">Realizar Pedido</button>
+                       <button type="button" id="btnpedido" class="btn btn-success btn-lg btn-block">Realizar Pedido</button>
                   </div>
              </div>
            </form>
            </div>
           </div>
-              
               </div>
           </div>
         </div>
@@ -144,8 +154,9 @@
                     <nav class="nav-menu d-none d-lg-block">
                         <ul>
                        
-                            <li id="vercarrito"><a href="#"><i class="fas fa-shopping-cart"></i></a></li>     
-                            <li id="prod"><a href="#portfolio">Productos</a></li>
+                            <li id="vercarrito"><a href="#"><i class="fas fa-shopping-cart"></i></a></li> 
+                            
+                            <li id="prod"><a href="#portfolio">Nuevo Pedido</a></li>
                             
                             <?php if ($_SESSION["TipoUsuario"] === 'A' ) { ?>  
                                  <li><a href="../Dashboard/index.php"> Panel de Control</a></li>
@@ -158,12 +169,11 @@
                                 </a>
                     
                                 <ul class="dropdown-menu">
-                                    <li class="">
-                                        
-                              <a href="../../modelo/Logout.php" type="button" class="btn btn-secondary p-1"><i class="fas fa-sign-out-alt"></i>&nbsp; Salir</a>
-                                     
+                                  <li class="">
+                                      <a href="../../modelo/Logout.php" type="button" class="btn btn-secondary p-1"><i class="fas fa-sign-out-alt"></i>&nbsp; Salir</a>
                                   </li>
                                 </ul>
+                                
                               </li>
                         </ul>
                     </nav>
@@ -174,8 +184,8 @@
         </div>
     </header>
     <!-- End Header -->
-
     <!-- ======= Hero Section ======= -->
+    
     <section id="hero" class="d-flex flex-column justify-content-center">
         <div  class="container">
             <div class="row justify-content-center">
@@ -188,6 +198,7 @@
         </div>
     </section>
     
+    <!-- <section id="hero" class="d-flex flex-column justify-content-center"><div  class="container"><div class="row justify-content-center"><div class="col-xl-8">h1>Inventario</h1><h2>Coeducadores Boyacá</h2></div> </div></div></section> -->
     <!-- End Hero -->
 
     <main id="main">
@@ -196,12 +207,7 @@
         <section id="portfolio" class="portfolio">
             <div class="container">
 
-        <div class="row">
-            <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12 mt-4">
-                 <button class="btn btn-success pull-left" style="margin-left: 4px" type="button"  id="btnnvo"><i class="fas fa-truck"></i>&nbsp;Nuevo pedido</button> 
-            </div>
-        </div>  
-
+      
             <div id="pedidocab" class="row">
                 <div class="col">
                  <form class="form-horizontal" name="formulario" id="formulario" action="" method="post">
@@ -211,36 +217,35 @@
                       <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label for="FcOrdenPedido" class="col-sm-2 control-label">Fecha</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control" name="FcOrdenPedido" id="FcOrdenPedido" readonly>
-                             <span class="infoDi" style="display:none; color:rgba(230, 35, 18, 0.952);">
-                                  <i class="fas fa-exclamation-circle"> Campo requerido, Ingrese 1 dígito.</i>
+                            <input type="datetime-local" class="form-control" name="FcOrdenPedido" id="FcOrdenPedido">
+                             <span class="infofc" style="display:none; color:rgba(230, 35, 18, 0.952);">
+                                  <i class="fas fa-exclamation-circle"> Campo requerido.</i>
                               </span>
                             </div>
                        </div>
               </div>
               
-              <div class="row">
+                <div class="row">
                     <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label for="IdTercero" class="col-sm-2 control-label">Tercero</label>
                             <div class="col-lg-10">
                             <select class="form-control select2" style="width: 100%;" name="IdTercero" id="IdTercero"></select>
-                            <span class="infoCor" style="display:none; color:rgba(230, 35, 18, 0.952);">
+                            <span class="infotr" style="display:none; color:rgba(230, 35, 18, 0.952);">
                                   <i class="fas fa-exclamation-circle"> Campo requerido.</i>
                              </span>
                             </div>
                       </div>
-               </div>
+                </div>
          
               <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12 mt-4 d-flex justify-content-end">
                 <button class="btn btn-outline-secondary pull-left" style="margin-left: 4px" type="button"  id="btnGuardar">Siguiente &nbsp;<i class="fas fa-chevron-right"></i></button> 
               </div>
               <!-- <button type="button" class="btn btn-primary pull-right">Sign in</button> -->
-             
                 </form>
                 </div>
             </div>
 
-<div class="row" id="card">
+   <div class="row" id="card">
     <div class="col col-lg-12">
     <div class="section-title">
     
@@ -262,6 +267,7 @@
                       
                    </div>
                 </div>
+                
                 <div class="alert alert-secondary" id="alertcarr" style="display:none; position: fixed; top: 540px; right: 1000px;"> Producto agregado &nbsp; &nbsp; &nbsp;
                         <a href="#" id="vercarrit" class="badge badge-success">Ver carrito</a>&nbsp; &nbsp; &nbsp;<i class="fas fa-times"></i>
                 </div>
@@ -294,13 +300,10 @@
                 </div>
     </div>
 </div>
-                
-           
             </div>
         </section>
         <!-- End Portfolio Section -->
         <br><br>
-
         <!-- ======= Services Section ======= -->
         <section id="services" class="services">
             <div class="container">
@@ -683,37 +686,37 @@
     <!-- ======= Footer ======= -->
     <footer id="footer">
         <div class="container">
-            <h3>KnightOne</h3>
-            <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
-            <div class="social-links">
+            <h3>Coeducadores Boyacá</h3>
+            
+            Teléfonos: (8) 7432318 - 7432319 | Email: info@coeducadores.coop |  Dirección: Carrera 9 No. 17 - 59 Tunja, Boyacá Colombia.
+            
+            <div class="social-links mt-2">
                 <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
                 <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                <!-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> -->
             </div>
             <div class="copyright">
-                &copy; Copyright <strong><span>KnightOne</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span>2020</span></strong>. Todos los derechos reservados 
+               
             </div>
             <div class="credits">
                 <!-- All the links in the footer should remain intact. -->
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/knight-simple-one-page-bootstrap-template/ -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
             </div>
         </div>
     </footer>
     <!-- End Footer -->
-
     <div id="preloader"></div>
     <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-
-    <script src="../js/pedidocab.js"></script>
-    
+    <script src="../js/pedido.js"></script>
     
     <script src="assets/vendor/jquery/jquery.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -727,9 +730,14 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+    <!-- sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="../../public/js/sweetalert.min.js"></script>
+    
+    <!-- select2 -->
+ <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
 </body>
-
 </html>
 <?php
 }

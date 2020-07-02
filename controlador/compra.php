@@ -9,6 +9,7 @@
     $FcDocumento="";
     $Observaciones="";   
     // $IdTransaccionCab="";
+    // $IdProducto="";   
   
     
   // ---------------------------------movimiento cabecera------------------------------
@@ -36,12 +37,39 @@
         $rspta =  $compra->insertardet($filas); 
         echo  $rspta ? "Datos guardados" : "Los datos no se pudieron guardar";
        break;
+       
+       case 'existencias':
+        $rows = json_decode($_POST['valores'], true); // json_decode DECODIFICAR STRING
+        $rspta =  $compra->existencias($rows); 
+        echo  $rspta ? "Existencia Actualizada" : "Los datos no se pudieron Actualizar";
+       break;
+       
+       case 'search':
+        $NmProducto = json_decode($_POST['NmProducto'], true); //json_decode DECODIFICAR STRING
+        $NmProducto = $NmProducto['NmProducto'];
+        $rspta = $compra->search($NmProducto);
+        echo json_encode($rspta);
+       break;
+       
+      //  case 'iva':
+      //   $IdProducto = json_decode($_POST['IdProducto'], true); // json_decode DECODIFICAR STRING
+      //   $rspta = $compra->iva($IdProducto);
+      //   echo  $rspta;
+      //  break;
 
       case 'selectTercero':
         $rspta = $compra->selectTercero();
-        echo '<option value="" selected disabled> Seleccione el proveedor</option>';
+        echo '<option value="" selected disabled> Seleccionar proveedor</option>';
         while ($reg = sqlsrv_fetch_array($rspta, SQLSRV_FETCH_ASSOC)) {
           echo '<option value="' . $reg['IdTercero'] . '">' . $reg['IdTercero'] . ' - ' . $reg['NmRazonSocial'] . '</option>';
+        }
+      break;
+      
+      case 'selectNmProducto':
+        $rspta = $compra->selectNmProducto();
+        echo '<option value="" selected disabled> Seleccionar producto </option>';
+        while ($reg = sqlsrv_fetch_array($rspta, SQLSRV_FETCH_ASSOC)) {
+          echo '<option>' . $reg['NmProducto'] . '</option>';
         }
       break;
         

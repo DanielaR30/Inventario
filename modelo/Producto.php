@@ -13,7 +13,7 @@
 public function mostrarid($IdClase){
 
             try {   
-            //idfamilia pertenece al id clase
+            //idfamilia que pertenece al id clase
                 $IDFamilia= "SELECT IDFamilia        
                 FROM INV_CLASE 
                 WHERE IdClase = '$IdClase'";
@@ -32,7 +32,7 @@ public function mostrarid($IdClase){
                 $Idproducto =  consultarUnaFila($IdProducto);
                 $Idproducto = $Idproducto['IdProducto'];      
                             
-            //si no hay registros id producto inicia en 1
+            //si no hay registros, id producto inicia en 00001
                 if ( $Idproducto === null) {              
                     $Idproducto= $IdSegmento . $IDFamilia . $IdClase . '00001';
                     return ($Idproducto);
@@ -68,16 +68,11 @@ public function mostrarid($IdClase){
         $IdLinea,
         $IdUnidadMedida,
         $IdLocalizacion,
-        // $NuExistenciaFisica,
-        // $NuExistenciaEnTransito,
         $NuStockMin,
         $NuStockMax,
         $GravadoIVA,
         $PorcentajeIVA
-        // $VlCostoPromedio,
-        // $IdEstadoProducto
         ) {            
-        
             $sql="INSERT INTO  INV_PRODUCTO (
              IdProducto,
              IdClase,
@@ -172,6 +167,7 @@ public function mostrarid($IdClase){
             return consultarUnaFila($sql);
         }
       
+      //Eliminar registros según id
         public function eliminar($IdProducto)
         {
             $sql="DELETE FROM INV_PRODUCTO
@@ -179,7 +175,7 @@ public function mostrarid($IdClase){
             return ejecutarConsulta($sql);
         }
         
-
+      //Listar productos
         public function listar()
         {    
            $sql= "SELECT p.IdProducto, c.NmClase, p.NmProducto, p.Descripcion, p.CodigoBarras, p.ImagenProducto, m.NmMarca, l.NmLinea,
@@ -195,18 +191,21 @@ public function mostrarid($IdClase){
            return ejecutarConsulta($sql);
         }
         
+       //FILTRO DE PRODUCTOS SEGUN LA CLASE 
         public function filtropro($IdClase)
         {    
-           $sql= "SELECT p.IdProducto, p.NmProducto, p.ImagenProducto       
+           $sql= "SELECT p.IdProducto, p.NmProducto, p.ImagenProducto      
            FROM INV_PRODUCTO as p
            INNER JOIN INV_CLASE as c on c.IdClase=p.IdClase
-		   WHERE  p.IdClase='$IdClase'"; 
+		   WHERE  p.IdClase='$IdClase' AND p.IdEstadoProducto = '1'"; 
            return ejecutarConsulta($sql);
         }
         
+        //MOSTRAR EL NOMBRE DE LA CLASE SEGUN LOS REGISTROS DE PRODUCTO
         public function selectClasepro()
         {
-            $sql="SELECT DISTINCT p.IdClase, c.NmClase       
+            //SELECT DISTINCT: se usa para devolver solo valores diferentes 
+            $sql="SELECT DISTINCT p.IdClase, c.NmClase      
             FROM INV_PRODUCTO as p
             INNER JOIN INV_CLASE as c on c.IdClase=p.IdClase"; 
             return ejecutarConsulta($sql);		

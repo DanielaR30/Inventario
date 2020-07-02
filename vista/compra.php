@@ -45,7 +45,6 @@
                             <i class="fa fa-angle-left pull-right"></i>
                           </a>
                           <ul class="treeview-menu">
-
                                <li ><a href="segmento.php"><i class="far fa-file"></i>&nbsp; Segmentos</a></li>
                                <li ><a href="familia.php"><i class="fas fa-sitemap"></i>&nbsp; Familias</a></li>
                                <li ><a href="clase.php"><i class="far fa-folder-open"></i>&nbsp; Clases</a></li>
@@ -59,14 +58,12 @@
                                <li ><a href="tipotransaccion.php"><i class="fas fa-store"></i>&nbsp; Tipo de transacción</a></li> 
                                <li class="active"><a href="#"><i class="fas fa-credit-card"></i>&nbsp; Compras</a></li>
                                <li ><a href="pedido.php"><i class="fas fa-shopping-cart"></i>&nbsp; Pedidos</a></li>
-                         
                           </ul>
                    </li>
          </ul>
        </section>
        <!-- /.sidebar -->
      </aside>
-
 
    <!-- Content Wrapper. Contains page content -->
    <div class="content-wrapper">
@@ -105,17 +102,23 @@
               <div class="col-lg-10"></div>
               </div>
               
+              <!-- <div class="inputWithIcon input-group input-group-sm mb-3 col-lg-11 pl-4 col-md-6 col-sm-6 col-xs-12 ">
+             <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm"><b>Código</b></span>
+              </div>
+                          <input type="number" class="form-control align-self-end" name="IdOrdenPedidoCab" id="IdOrdenPedidoCab"  readonly>
+             </div> -->
+              
               <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                           <label for="IdTransaccionCab" class="col-lg-2 control-label">Código</label>
                           <!-- readonly -->
-                          <div class="col-sm-10">
-                          <input type="number" class="form-control align-self-end bg-gray "  name="IdTransaccionCab" id="IdTransaccionCab"  readonly>
+                        <div class="col-sm-10">
+                          <input type="number" class="form-control align-self-end" name="IdTransaccionCab" id="IdTransaccionCab"  readonly>
                             <span class="infoT" style="display:none; color:rgba(230, 35, 18, 0.952);">
                                 <i class="fas fa-exclamation-circle"> Campo requerido.</i>
                             </span>
-                  </div>
-                </div>
-
+                        </div>
+              </div>
               </div>
 
               <div class="row">
@@ -123,8 +126,8 @@
                     <label for="FcTransaccion" class="col-sm-2 control-label">Fecha</label>
                     <div class="col-sm-10">
                     <input type="datetime-local" class="form-control" name="FcTransaccion" id="FcTransaccion" required>
-                     <span class="infoDi" style="display:none; color:rgba(230, 35, 18, 0.952);">
-                          <i class="fas fa-exclamation-circle"> Campo requerido, Ingrese 1 dígito.</i>
+                     <span class="infot" style="display:none; color:rgba(230, 35, 18, 0.952);">
+                          <i class="fas fa-exclamation-circle"> Campo requerido </i>
                       </span>
                     </div>
                   </div>
@@ -134,25 +137,22 @@
                     <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label for="IdTercero" class="col-sm-2 control-label">Proveedor</label>
                             <div class="col-lg-10">
-                            
                             <!-- <input type="text" list="IdTercero" class="form-control" name="IdTercero" id="IdTercero" required>
                             <datalist id="IdTercero" name="IdTercero"></datalist> -->
-                            
                             <select class="form-control select2" style="width: 100%;" name="IdTercero" id="IdTercero"></select>
-                            <span class="infoCor" style="display:none; color:rgba(230, 35, 18, 0.952);">
+                            <span class="infopro" style="display:none; color:rgba(230, 35, 18, 0.952);">
                                   <i class="fas fa-exclamation-circle"> Campo requerido.</i>
                              </span>
                             </div>
                       </div>
-                 
                </div>
 
                 <div class="row">
                     <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <label for="NuDocumento" class="col-sm-2 control-label">Numero Documento</label>
                           <div class="col-lg-10">
-                          <input type="text" class="form-control" name="NuDocumento" id="NuDocumento" required>
-                          <span class="infoDir" style="display:none; color:rgba(230, 35, 18, 0.952);">
+                          <input type="number" class="form-control" name="NuDocumento" id="NuDocumento" required>
+                          <span class="infoDoc" style="display:none; color:rgba(230, 35, 18, 0.952);">
                                 <i class="fas fa-exclamation-circle"> Campo requerido.</i>
                             </span>
                           </div>
@@ -161,8 +161,8 @@
                             <label for="FcDocumento" class="col-sm-2 control-label">Fecha Documento</label>
                             <div class="col-lg-10">
                             <input type="datetime-local" class="form-control" name="FcDocumento" id="FcDocumento" required>
-                            <span class="infoTel" style="display:none; color:rgba(230, 35, 18, 0.952);">
-                                  <i class="fas fa-exclamation-circle"> Campo requerido, Ingrese un número válido(7 dígitos).</i>
+                            <span class="infofech" style="display:none; color:rgba(230, 35, 18, 0.952);">
+                                  <i class="fas fa-exclamation-circle"> Campo requerido.</i>
                              </span>
                             </div>
                       </div>
@@ -189,7 +189,12 @@
                 </div>
                 </div>
 
-                <h4 class="box-title" style="font-family: 'Sawarabi Gothic', sans-serif; text-align:center;">Detalles del los productos</h4>
+                <h4 class="box-title" style="font-family:'Sawarabi Gothic', sans-serif; text-align:center;">Detalles de los productos</h4> 
+                 
+                 <div class="col col-6 bg-info" id="nr" style="visibility: hidden;">
+                 &nbsp;&nbsp; <span id="nro"></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="nro1"></span>
+                 </div>
+                
                <div class="box">
                             <div class="box-header">
                        <div class="box-body no-padding">
@@ -197,54 +202,70 @@
                                 <thead class="border">
                                     <tr>
                                         <!-- <th style="width: 10px">#</th> -->
-                                        <th style="width: 20px;">Código</th>
-                                        <th style="width: 20px;">Producto</th>
-                                        <th style="width: 20px;">Cantidad</th>
-                                        <th style="width: 20px;">Valor Unitario</th>
-                                        <th style="width: 20px;" colspan="2">Total</th>
+                                        <th style="width:17px;">Código</th>
+                                        <th style="width:17px;">Producto</th>
+                                        <th style="width:17px;">Cantidad</th>
+                                        <th style="width:17px;">Valor Unitario</th>
+                                        <th style="width:16px;">Iva</th>
+                                        <th style="width:16px;" colspan="2">Total</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                <!-- <tr>
-                                <td style="width: 20px;">1</td>
-                                <td style="width: 20px;">cocacola</td>
-                                <td style="width: 20px;">10</td>
-                                <td style="width: 20px;">3000</td>
-                                <td style="width: 15px;">30000</td>
-                                <td style="width: 5px;"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-times"></i></button></td>
-                                </tr> -->
-                                </tbody>
+                            <tbody>
+                            <!-- <tr>
+                            <td style="width: 20px;">1</td>
+                            <td style="width: 20px;">cocacola</td>
+                            <td style="width: 20px;">10</td>
+                            <td style="width: 20px;">3000</td>
+                            <td style="width: 15px;">30000</td>
+                            <td style="width: 5px;"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-times"></i></button></td>
+                            </tr> -->
+                            </tbody>
                                 <tfoot>
                                   <tr>
-                                      <td style="width: 20px;">
+                                      <td style="width:17px;">
                                       <button type="button" id="agregar" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Agregar producto"><i class="fas fa-plus"></i></button> 
-                                      <input style="display: none;" type="text" class="form-control" name="IdProducto" id="IdProducto">
+                                      <input style="display: none;" type="text" class="form-control" name="IdProducto" id="IdProducto" readonly>
                                       <button type="button" id="guardar" style="margin-top: 7px; display: none;" class="btn btn-primary btn-sm m-1"  data-toggle="tooltip" data-placement="bottom" title="Guardar producto"><i class="fas fa-save"></i></button>
                                       <button type="button" id="volver" style="margin-top: 7px; display: none;" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Volver"><i class="fas fa-backspace"></i></button> 
                                       </td>
                                       
-                                      <td style="width: 20px;"><input style="display: none;" type="text" class="form-control" name="NmProducto" id="NmProducto" ></td>
-                                      <td style="width: 20px;"><input style="display: none;" type="text" class="form-control" name="NuCantidad" id="NuCantidad" ></td>
-                                      <td style="width: 20px;"><input style="display: none;" type="text" class="form-control" name="VlUnitario" id="VlUnitario" ></td>
-                                      <td style="width: 20px;"></td>
+                                      <td style="width:17px; visibility: hidden;" id="nombre">
+                                      <select style="width: 100%;" class="form-control"  name="NmProducto" id="NmProducto"></select>
+                                      <!-- <input style="display: none;" type="text" class="form-control" name="NmProducto" id="NmProducto"> -->
+                                      <span class="infonm" style="display:none; color:rgba(230, 35, 18, 0.952);">
+                                      <i class="fas fa-exclamation-circle"> Campo requerido.</i></span>
+                                      </td>
+                                      
+                                      <td style="width:17px;"><input style="display: none;" type="number" class="form-control" name="NuCantidad" id="NuCantidad">
+                                      <span class="infocant" style="display:none; color:rgba(230, 35, 18, 0.952);">
+                                      <i class="fas fa-exclamation-circle"> Campo requerido.</i></span>
+                                      </td>
+                                      
+                                      <td style="width:17px;"><input style="display: none;" type="number" class="form-control" name="VlUnitario" id="VlUnitario">
+                                      <span class="infoval" style="display:none; color:rgba(230, 35, 18, 0.952);">
+                                      <i class="fas fa-exclamation-circle"> Campo requerido.</i></span>
+                                      </td>
+                                      
+                                      <td style="width:16px;"><input style="display: none;" type="text" class="form-control" name="VlIVA" id="VlIVA" readonly></td>
+                                      <td style="width:16px;"></td>
                                   </tr>
                                   <tr> 
-                                   <td colspan="3"></td>
-                                   <td style="width: 20px;"><b>Subtotal</b></td>
-                                   <td style="width: 20px; font-weight: 600;"><input type="number" class="form-control align-self-end"  name="VlSubtotal" id="VlSubtotal" readonly></td>
+                                   <td colspan="4"></td>
+                                   <td style="width:16px;"><b>Subtotal</b></td>
+                                   <td style="width:16px; font-weight:600;"><input type="number" class="form-control align-self-end"  name="VlSubtotal" id="VlSubtotal" readonly></td>
                                   </tr>
                                   <tr>
-                                   <td colspan="3"></td>  
-                                   <td style="width: 20px;"><b>Iva</b></td>
-                                   <td style="width: 20px; font-weight: 600;"><input type="number" value="300" class="form-control align-self-end"  name="VlSubtotal" id="VlSubtotal" readonly></td>
+                                   <td colspan="4"></td>  
+                                   <td style="width:16px;"><b>Iva</b></td>
+                                   <td style="width:16px; font-weight:600;"><input type="number" class="form-control align-self-end"  name="Iva" id="Iva" readonly></td>
                                   </tr>
                                   <tr>
-                                   <td colspan="3"></td>  
-                                   <td style="width: 20px;"><b>Total</b></td>
-                                   <td style="width: 20px; font-weight: 600;"><input type="number" class="form-control align-self-end"  name="VlSubtotal" id="VlSubtotal" readonly></td>
+                                   <td colspan="4"></td>  
+                                   <td style="width:16px;"><b>Total</b></td>
+                                   <td style="width:16px; font-weight:600;"><input type="number" class="form-control align-self-end"  name="Total" id="Total" readonly></td>
                                   </tr>
                                 </tfoot>
-                                </table>
+                                </table>  
                             </div> 
                             </div> 
                             </div> 
@@ -285,7 +306,7 @@
               <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
               <div class="col-lg-2"></div>
               <div class="col-lg-10"></div>
-              </div>
+              </div>  
               <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                           <label for="total" class="col-lg-5 control-label">Total</label>
                       
@@ -297,11 +318,9 @@
                   </div>
                 </div>
               </div>  -->
-
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-              
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <button class="btn btn-primary pull-right" style="margin-left: 4px" type="button"  id="btGuardar"><i class="fa fa-save"> Guardar</i></button> 
                 </div>

@@ -50,7 +50,7 @@
   
   <!-- Select2 -->
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
   
 
   <!-- Google Font -->
@@ -604,7 +604,7 @@
 
     <!-- <script type="text/javascript" src="../public/js/jquery-3.1.1.min.js"></script> -->
 
-    <script src="../js/log.js"></script>
+<script src="../js/log.js"></script>
 
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -641,6 +641,10 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+ 
+ <!-- select2 -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
 </body>
 </html>
 

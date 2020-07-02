@@ -84,7 +84,6 @@ case 'guardar':
 			move_uploaded_file($_FILES["ImagenProducto"]["tmp_name"], "../public/img/" . $ImagenProducto);
 		}
 		}
-
 		// if (empty($barcode)) {
 	  //   	$barcode =  $_POST["barcode"]
     // } else {
@@ -219,7 +218,7 @@ case 'listar':
     "NmProducto" =>$NmProducto); 
     }
     echo json_encode($results);
-    break;
+  break;
     
     case 'selectClasepro':
       $rspta = $producto->selectClasepro();

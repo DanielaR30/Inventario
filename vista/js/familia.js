@@ -308,7 +308,7 @@ function eliminar(IdFamilia) {
                 tabla.ajax.reload();
             });
         } else {
-            swal("! Cancelado ¡", "Se Cancelo la Eliminacion", "error");
+            swal("Cancelado", "Se Cancelo la Eliminacion", "error");
         }
     });
 }

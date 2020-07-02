@@ -169,9 +169,7 @@
                                   <i class="fas fa-exclamation-circle"> Campo requerido. Ingrese máximo 255 caracteres.</i>
                               </span>
                             </div>
-
                         </div>
-
                 </div>
                 
     <!-- -------------------------------------------btn Guardar compra------------------------------------------------------------ -->
@@ -244,7 +242,6 @@ require 'footer.php';
 ?>
 
 <script src="js/pedidocab.js"></script>
-<script src="js/pedidodet.js"></script>
 
 <?php
 }
