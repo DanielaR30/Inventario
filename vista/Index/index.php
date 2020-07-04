@@ -24,6 +24,11 @@
  <!-- google fonts -->
  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
  <link href="https://fonts.googleapis.com/css2?family=Muli&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Rakkas&display=swap" rel="stylesheet">
+
+ 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -45,6 +50,14 @@
         <!-- select2 -->
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="../../public/plugins/select2-bootstrap4-theme-master/dist/select2-bootstrap4.css">
+  
+    <!-- datepicker -->
+  <link href = "../../public/plugins/datepicker-master/dist/datepicker.css" rel = "stylesheet"> 
+  
+  <!--MATERIALIZE Compiled and minified CSS --> <!-- Compiled and minified CSS -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> -->
+   
+  <!-- <link href = "../../public/plugins/datepicker-master/src/css/datepicker.css" rel = "stylesheet">  -->
 
     <!-- <link href="../../plugin" rel="stylesheet" /> -->
     <!-- <script src="path/to/select2.min.js"></script> -->
@@ -191,7 +204,7 @@
             <div class="row justify-content-center">
                 <div class="col-xl-8">
                     <h1>Inventario</h1>
-                    <h2>Coeducadores Boyacá</h2>
+                    <h2 style="font-family: 'Roboto Condensed', sans-serif;">Coeducadores Boyacá</h2>
                     <!-- <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a> -->
                 </div>
             </div>
@@ -214,38 +227,55 @@
                  
                      
               <div class="row">
-                      <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <div class="inputWithIcon form-group col-lg-3 col-md-6 col-sm-6 col-xs-12">
                             <label for="FcOrdenPedido" class="col-sm-2 control-label">Fecha</label>
-                            <div class="col-sm-10">
-                            <input type="datetime-local" class="form-control" name="FcOrdenPedido" id="FcOrdenPedido">
+                            <input data-toggle="datepicker" type="datetime-local" class="form-control" name="FcOrdenPedido" id="FcOrdenPedido">
                              <span class="infofc" style="display:none; color:rgba(230, 35, 18, 0.952);">
                                   <i class="fas fa-exclamation-circle"> Campo requerido.</i>
                               </span>
-                            </div>
+                            
                        </div>
-              </div>
-              
-                <div class="row">
-                    <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                       
+                       <div class="inputWithIcon form-group col-lg-3 col-md-6 col-sm-6 col-xs-12">
                             <label for="IdTercero" class="col-sm-2 control-label">Tercero</label>
-                            <div class="col-lg-10">
                             <select class="form-control select2" style="width: 100%;" name="IdTercero" id="IdTercero"></select>
                             <span class="infotr" style="display:none; color:rgba(230, 35, 18, 0.952);">
                                   <i class="fas fa-exclamation-circle"> Campo requerido.</i>
                              </span>
-                            </div>
+                      </div>
+                      
+                  <div class="form-group col-lg-3 col-md-12 col-sm-12 col-xs-12 mt-4 d-flex align-items-end">
+                    <button class="btn btn-outline-primary pull-left" type="button"  id="btnGuardar">Ingresar Productos </button> 
+                  </div>
+                      
+                      <div style="display: none;" id="cls" class="inputWithIcon form-group col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                            <label for="IdTercero" class="col-sm-2 control-label">Clase</label>
+                            <select class="form-control select2" style="width: 100%;" name="IdClase" id="IdClase"></select>
+                            <span class="infoCor" style="display:none; color:rgba(230, 35, 18, 0.952);">
+                                  <i class="fas fa-exclamation-circle"> Campo requerido.</i>
+                            </span>
+                      </div>
+                      
+    
+                      <div style="display: none;" id="nmprod" class="inputWithIcon form-group col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                            <label for="IdTercero" class="col-sm-2 control-label">Producto</label>
+                            <select class="form-control select2" style="width: 100%;" name="NmProducto" id="NmProducto"></select>
+                            <span class="infoCor" style="display:none; color:rgba(230, 35, 18, 0.952);">
+                                  <i class="fas fa-exclamation-circle"> Campo requerido.</i>
+                            </span>
                       </div>
                 </div>
+              
+                <!-- <div class="row">
+                </div> -->
          
-              <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12 mt-4 d-flex justify-content-end">
-                <button class="btn btn-outline-secondary pull-left" style="margin-left: 4px" type="button"  id="btnGuardar">Siguiente &nbsp;<i class="fas fa-chevron-right"></i></button> 
-              </div>
+              
               <!-- <button type="button" class="btn btn-primary pull-right">Sign in</button> -->
                 </form>
                 </div>
             </div>
 
-   <div class="row" id="card">
+    <div class="row" id="card">
     <div class="col col-lg-12">
     <div class="section-title">
     
@@ -254,23 +284,16 @@
 </button>
           <button type="button" class="btn btn-secondary"><i class="fas fa-shopping-cart"></i>Mi carrito</button>
     </div> -->
-                <div> 
+                <!-- <div> 
                    <div class="row">
-                    <div class="inputWithIcon form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
-                            <div class="col-lg-10">
-                            <select class="form-control select2" style="width: 100%;" name="IdClase" id="IdClase"></select>
-                            <span class="infoCor" style="display:none; color:rgba(230, 35, 18, 0.952);">
-                                  <i class="fas fa-exclamation-circle"> Campo requerido.</i>
-                            </span>
-                            </div>
-                      </div>
+                 
                       
                    </div>
-                </div>
+                </div> -->
                 
-                <div class="alert alert-secondary" id="alertcarr" style="display:none; position: fixed; top: 540px; right: 1000px;"> Producto agregado &nbsp; &nbsp; &nbsp;
+                <!-- <div class="alert alert-secondary" id="alertcarr" style="display:none; position: fixed; top: 540px; right: 1000px;"> Producto agregado &nbsp; &nbsp; &nbsp;
                         <a href="#" id="vercarrit" class="badge badge-success">Ver carrito</a>&nbsp; &nbsp; &nbsp;<i class="fas fa-times"></i>
-                </div>
+                </div> -->
     </div>         
                <!-- <div class="row">
                     <div class="col-lg-12 d-flex justify-content-center">
@@ -685,21 +708,21 @@
 
     <!-- ======= Footer ======= -->
     <footer id="footer">
-        <div class="container">
-            <h3>Coeducadores Boyacá</h3>
+        <div class="container"> <br>
+            <h4 style="font-family: 'Roboto Condensed', sans-serif;">Coeducadores Boyacá</h4>
             
-            Teléfonos: (8) 7432318 - 7432319 | Email: info@coeducadores.coop |  Dirección: Carrera 9 No. 17 - 59 Tunja, Boyacá Colombia.
+            Teléfonos: (8) 7432318 - 7432319 | Email: info@coeducadores.coop |  Dirección: Carrera 9 No. 17 - 59 Tunja, Boyacá.
             
-            <div class="social-links mt-2">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <!-- <div class="social-links mt-2 mb-1"> -->
+                <!-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a> -->
+                <!-- <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a> -->
+                <!-- <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a> -->
                 <!-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
                 <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> -->
-            </div>
+            <!-- </div> -->
+            
             <div class="copyright">
-                &copy; Copyright <strong><span>2020</span></strong>. Todos los derechos reservados 
-               
+                Copyright  &copy; <strong><span>2020</span></strong>. Todos los derechos reservados 
             </div>
             <div class="credits">
                 <!-- All the links in the footer should remain intact. -->
@@ -736,6 +759,13 @@
     
     <!-- select2 -->
  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+ 
+ <!-- datepicker -->
+<script src="../../public/plugins/datepicker-master/dist/datepicker.js"></script>
+<!-- <script src="../../public/plugins/datepicker-master/src/js/datepicker.js"></script> -->
+
+ <!--MATERIALIZE Compiled and minified JavaScript -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 </body>
 </html>

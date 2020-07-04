@@ -35,8 +35,11 @@
   <link rel="stylesheet" href="../public/css/bootstrap-select.min.css"> 
   
    <!-- Select2 -->
-     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="../public/plugins/select2-bootstrap4-theme-master/dist/select2-bootstrap4.css">
+  
+  <!-- datepicker -->
+  <link href = "../public/plugins/datepicker-master/src/css/datepicker.css" rel = " stylesheet "> 
      
   
 <style type="text/css">

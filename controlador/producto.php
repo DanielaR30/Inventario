@@ -162,7 +162,7 @@ case 'listar':
       "3" => $reg[2],
       "4" => $reg[3],
       "5" => $reg[4],
-      "6" => "<img src='../public/img/".$reg[5]."' height='80px' width='80px' >",
+      "6" => "<img src='../public/img/".$reg[5]."' height='80px' width='80px'>",
       "7" => $reg[6],
       "8" => $reg[7],
       "9" => $reg[8],
@@ -204,6 +204,23 @@ case 'listar':
       echo json_encode($results);
   break;
   
+  
+  case 'selectClasepro':
+    $rspta = $producto->selectClasepro();
+    echo '<option value="" selected disabled> Seleccione la clase de producto</option>';
+    while ($reg = sqlsrv_fetch_array($rspta, SQLSRV_FETCH_ASSOC)) {
+      echo '<option value="' . $reg['IdClase'] . '">' . $reg['NmClase'] . '</option>';
+    }
+  break;
+  
+  // case 'filtronmpro':
+  //   $rspta = $producto->filtronmpro($NmProducto);
+  //   while ($reg = sqlsrv_fetch_array($rspta, SQLSRV_FETCH_ASSOC)) {
+  //   // print_r($reg['NmProducto']); die();
+  //     echo '<option>' . $reg['NmProducto'] . '</option>';
+  //   }
+  // break;
+   
   case 'card':
     $rspta = $producto->listar();
     while ($reg = sqlsrv_fetch_array($rspta, SQLSRV_FETCH_ASSOC)) {
@@ -243,7 +260,7 @@ case 'listar':
       echo '<option value="' . $reg['IdMarca'] . '">' . $reg['NmMarca'] . '</option>';
     }
   break;
-
+ 
   case 'selectLinea':
     $rspta = $producto->selectLinea();
     echo '<option value="" selected disabled> Seleccione la línea </option>';

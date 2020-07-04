@@ -33,14 +33,15 @@
 
 <!-- sweetalert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-
 <script src="../public/js/sweetalert.min.js"></script>
 
 <!-- select2 -->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-
 <!-- select -->
 <script src="../public/js/bootstrap-select.min.js"></script>
+
+<!-- datepicker -->
+<script src="../public/plugins/datepicker-master/src/js/datepicker.js"></script>
 
  </body>
 </html>

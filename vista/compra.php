@@ -70,14 +70,14 @@
      <!-- Content Header (Page header) -->
      <section class="content-header">
        <h1>
-         Tabla de datos
+         Compra
          <!-- <small>advanced tables</small> -->
        </h1>
        <ol class="breadcrumb">
          <li class="breadcrumb-item"><a href="#">Configuración General</a></li>
-         <li class="breadcrumb-item"><a href="tercero.php">Movimiento</a></li>
+         <li class="breadcrumb-item"><a href="tercero.php">compra</a></li>
        </ol>
-   </section>
+     </section>
 
 
 <!--Contenido-->
@@ -88,7 +88,7 @@
               <div class="col-md-12 ">
               <div class="box box-default">
             <div class="box-header with-border">
-              <h1 class="box-title" style="font-family: 'Sawarabi Gothic', sans-serif;">Compra</h1>
+              <!-- <h1 class="box-title" style="font-family: 'Sawarabi Gothic', sans-serif;">Compra</h1> -->
 
             </div>
             <!-- /.box-header -->
@@ -101,14 +101,7 @@
               <div class="col-lg-2"></div>
               <div class="col-lg-10"></div>
               </div>
-              
-              <!-- <div class="inputWithIcon input-group input-group-sm mb-3 col-lg-11 pl-4 col-md-6 col-sm-6 col-xs-12 ">
-             <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm"><b>Código</b></span>
-              </div>
-                          <input type="number" class="form-control align-self-end" name="IdOrdenPedidoCab" id="IdOrdenPedidoCab"  readonly>
-             </div> -->
-              
+         
               <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                           <label for="IdTransaccionCab" class="col-lg-2 control-label">Código</label>
                           <!-- readonly -->
@@ -122,15 +115,15 @@
               </div>
 
               <div class="row">
-              <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label for="FcTransaccion" class="col-sm-2 control-label">Fecha</label>
-                    <div class="col-sm-10">
-                    <input type="datetime-local" class="form-control" name="FcTransaccion" id="FcTransaccion" required>
-                     <span class="infot" style="display:none; color:rgba(230, 35, 18, 0.952);">
-                          <i class="fas fa-exclamation-circle"> Campo requerido </i>
-                      </span>
+                <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <label for="FcTransaccion" class="col-sm-2 control-label">Fecha</label>
+                      <div class="col-sm-10">
+                      <input data-toggle="datepicker" type="datetime-local" class="form-control" name="FcTransaccion" id="FcTransaccion" required>
+                       <span class="infot" style="display:none; color:rgba(230, 35, 18, 0.952);">
+                            <i class="fas fa-exclamation-circle"> Campo requerido </i>
+                        </span>
+                      </div>
                     </div>
-                  </div>
               </div>
 
               <div class="row">
@@ -181,15 +174,16 @@
                         </div>
                 </div>
                 
-    <!-- -------------------------------------------btn Guardar compra------------------------------------------------------------ -->
+        <!-- --------------------btn Guardar compra---------------------------- -->
                 <div class="box-footer">
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <!-- <button id="btnap" class="btn btn-primary pull-right" type="button"><i class="far fa-list-alt"> Agregar Productos</i></button> -->
-                <button class="btn btn-primary pull-right" style="margin-right: 4px" type="button"  id="btnGuardarc">Siguiente &nbsp;<i class="fas fa-chevron-right"></i></button> 
+                <button class="btn btn-primary pull-right" style="margin-right: 4px" type="button"  id="btnGuardarc">Ingresar productos </button> 
                 </div>
                 </div>
 
-                <h4 class="box-title" style="font-family:'Sawarabi Gothic', sans-serif; text-align:center;">Detalles de los productos</h4> 
+    <div id="detalle" style="display:none;"> 
+          <h4 class="box-title" style="font-family:'Sawarabi Gothic', sans-serif; text-align:center;">Detalles de los productos</h4> 
                  
                  <div class="col col-6 bg-info" id="nr" style="visibility: hidden;">
                  &nbsp;&nbsp; <span id="nro"></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="nro1"></span>
@@ -269,63 +263,17 @@
                             </div> 
                             </div> 
                             </div> 
-                            
-                        
-              <!-- <div class="row">
-              <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-              <div class="col-lg-2"></div>
-              <div class="col-lg-10"></div>
-              </div>
-              <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                          <label for="VlSubtotal" class="col-lg-5 control-label">Subtotal</label>
-                          <div class="col-lg-7">
-                          <input type="number" class="form-control align-self-end"  name="VlSubtotal" id="VlSubtotal"  >
-                            <span class="infoT" style="display:none; color:rgba(230, 35, 18, 0.952);">
-                                <i class="fas fa-exclamation-circle"> Campo requerido.</i>
-                            </span>
-                  </div>
-                </div>
-              </div>   
-               
-              <div class="row">
-              <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-              <div class="col-lg-2"></div>
-              <div class="col-lg-10"></div>
-              </div>
-              <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                          <label for="VlIVA" class="col-lg-5 control-label">Iva</label>
-                          <div class="col-lg-7">
-                          <input type="number" class="form-control align-self-end"  name="VlIVA" id="VlIVA"  >
-                            <span class="infoT" style="display:none; color:rgba(230, 35, 18, 0.952);">
-                                <i class="fas fa-exclamation-circle"> Campo requerido.</i>
-                            </span>
-                  </div>
-              </div>
-              </div> 
-              <div class="row">
-              <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-              <div class="col-lg-2"></div>
-              <div class="col-lg-10"></div>
-              </div>  
-              <div class="inputWithIcon form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                          <label for="total" class="col-lg-5 control-label">Total</label>
-                      
-                          <div class="col-lg-7">
-                          <input type="number" class="form-control align-self-end"  name="total" id="total"  >
-                            <span class="infoT" style="display:none; color:rgba(230, 35, 18, 0.952);">
-                                <i class="fas fa-exclamation-circle"> Campo requerido.</i>
-                            </span>
-                  </div>
-                </div>
-              </div>  -->
+</div>
+
               </div>
               <!-- /.box-body -->
-              <div class="box-footer">
+              <div class="box-footer" id="foot" style="display:none;">
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <button class="btn btn-primary pull-right" style="margin-left: 4px" type="button"  id="btGuardar"><i class="fa fa-save"> Guardar</i></button> 
                 </div>
                 <!-- <button type="button" class="btn btn-primary pull-right">Sign in</button> -->
               </div>
+              
               <!-- /.box-footer -->
             </form>
           </div>
@@ -335,6 +283,7 @@
     </div><!-- /.content-wrapper -->
   <!--Fin-Contenido-->
   <!-- Fin modal -->
+  
 <?php
 require 'footer.php';
 ?>

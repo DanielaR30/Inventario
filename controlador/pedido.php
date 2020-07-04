@@ -27,12 +27,12 @@
 
         case 'selectTercero':
           $rspta = $pedido->selectTercero();
-          echo '<option value="" selected disabled> Seleccione el proveedor</option>';
+          echo '<option selected disabled> Seleccione el proveedor</option>';
           while ($reg = sqlsrv_fetch_array($rspta, SQLSRV_FETCH_ASSOC)) {
             echo '<option value="' . $reg['IdTercero'] . '">' . $reg['IdTercero'] . ' - ' . $reg['NmRazonSocial'] . '</option>';
           }
         break;
-        
+             
         case 'idlast':
           $rspta = $pedido->idlast();
           echo  $rspta;

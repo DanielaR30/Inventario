@@ -18,7 +18,7 @@
      $("#FcTransaccion").val("");
      $("#FcTransaccion").css("background-color", "rgb(255, 255, 255)");
      $(".infot").css("display", "none");
-     $("#IdTercero").val("");
+     $("#IdTercero").val(null).trigger('change');
      $("#IdTercero").css("background-color", "rgb(255, 255, 255)");
      $(".infopro").css("display", "none");
      $("#NuDocumento").val("");
@@ -33,6 +33,7 @@
  $(document).ready(function() {
 
      //  $("#NmProducto").remove();
+     //  $('[data-toggle="datepicker"]').datepicker();
      $('#IdTercero').select2({
          placeholder: 'Seleccionar proveedor',
          theme: 'bootstrap4',
@@ -44,47 +45,47 @@
      });
      //BUSCAR CODIGO,IVA,EXISTENCIAS SEGUN NOMBRE PRODUCTO
      $('#NmProducto').change(function() {
-         // SI NOMBRE PRODUCTO ESTA VACÍO, LIMPIAR INPUTS, INFO
-         //  if ($.trim($("#NmProducto").val()).length == 0) {
-         //      $('#IdProducto').val("");
-         //      $('#VlIVA').val("");
-         //      $('#nr').css("visibility", "hidden");
-         //      $('#nro').text("");
-         //      $('#nro1').text("");
-         //  } else {
-         var NmProducto = $(this).val();
-         //  alert(NmProducto);
-         var dataString = ({ NmProducto: NmProducto });
-         //  alert(JSON.stringify(dataString));
+         //  SI NOMBRE PRODUCTO ESTA VACÍO, LIMPIAR INPUTS, INFO
+         if ($.trim($("#NmProducto").val()).length == 0) {
+             $('#IdProducto').val("");
+             $('#VlIVA').val("");
+             $('#nr').css("visibility", "hidden");
+             $('#nro').text("");
+             $('#nro1').text("");
+         } else {
+             var NmProducto = $(this).val();
+             //  alert(NmProducto);
+             var dataString = ({ NmProducto: NmProducto });
+             //  alert(JSON.stringify(dataString));
 
-         $.ajax({
-             type: "POST",
-             url: "../controlador/compra.php?op=search",
-             data: { NmProducto: JSON.stringify(dataString) },
-             success: function(data) {
-                 data = JSON.parse(data);
-                 console.log(data);
+             $.ajax({
+                 type: "POST",
+                 url: "../controlador/compra.php?op=search",
+                 data: { NmProducto: JSON.stringify(dataString) },
+                 success: function(data) {
+                     data = JSON.parse(data);
+                     console.log(data);
 
-                 var IdProducto = data.IdProducto;
-                 var PorcentajeIVA = data.PorcentajeIVA;
-                 var NuExistenciaFisica = data.NuExistenciaFisica;
-                 var NuStockMin = data.NuStockMin;
-                 var NuStockMax = data.NuStockMax;
-                 var Existencia = "Existencia: " + NuExistenciaFisica;
-                 var Existencia1 = "Stock: " + NuStockMin + " - " + NuStockMax;
+                     var IdProducto = data.IdProducto;
+                     var PorcentajeIVA = data.PorcentajeIVA;
+                     var NuExistenciaFisica = data.NuExistenciaFisica;
+                     var NuStockMin = data.NuStockMin;
+                     var NuStockMax = data.NuStockMax;
+                     var Existencia = "Existencia: " + NuExistenciaFisica;
+                     var Existencia1 = "Stock: " + NuStockMin + " - " + NuStockMax;
 
-                 $('#IdProducto').val(IdProducto);
-                 $('#VlIVA').val(PorcentajeIVA);
-                 $('#nr').css("visibility", "visible");
-                 $('#nro').text(Existencia);
-                 $('#nro1').text(Existencia1);
-                 //  $('#nro1').text(Existencia1);
-             },
-             error: function() {
-                 console.log('existió un problema');
-             }
-         });
-         //  }
+                     $('#IdProducto').val(IdProducto);
+                     $('#VlIVA').val(PorcentajeIVA);
+                     $('#nr').css("visibility", "visible");
+                     $('#nro').text(Existencia);
+                     $('#nro1').text(Existencia1);
+                     //  $('#nro1').text(Existencia1);
+                 },
+                 error: function() {
+                     console.log('existió un problema');
+                 }
+             });
+         }
      });
 
      //VALIDAR QUE NO SE REPITA NOMBRE PRODUCTO
@@ -105,6 +106,7 @@
 
      //GUARDAR CABECERA
      $("#btnGuardarc").click(function(e) {
+
          campos();
          //VALIDAR QUE LOS CAMPOS NO ESTEN VACÍOS
          if (
@@ -116,6 +118,9 @@
              console.log('campos vacíos');
          } else {
              guardar(e);
+             $("#detalle").slideDown("slow");
+             $("#foot").css("display", "inline");
+             $(this).css("display", "none"); //ocultar btn Ingresar productos
          }
          //LEER ULTIMO ID CAB
          $.ajax({
@@ -129,7 +134,7 @@
                  }
              }
          });
-         //  campos();
+
      });
 
      // MOSTRAR INPUTS, BTN GUARDAR y BTN VOLVER
@@ -146,23 +151,31 @@
 
      // MOSTRAR BTN AGREGAR, ESCONDER INPUTS 
      $('#volver').click(function() {
+
          $(this).css("display", "none");
          $('#nr').css("visibility", "hidden");
          $('#agregar').css("display", "inline");
-         $('#IdProducto').val("");
+         $('#IdProducto').val(null);
+         $("#IdProducto").css("background-color", "rgba(255, 255, 255, 0.911)");
          $('#IdProducto').css("display", "none");
          $('#NmProducto').val(null).trigger('change');
+         $("#NmProducto").css("background-color", "rgba(255, 255, 255, 0.911)");
+         $(".infonm").css("display", "none");
          $('#nombre').css("visibility", "hidden");
          $('#NuCantidad').val("");
+         $("#NuCantidad").css("background-color", "rgba(255, 255, 255, 0.911)");
+         $(".infocant").css("display", "none");
          $('#NuCantidad').css("display", "none");
          $('#VlUnitario').val("");
+         $("#VlUnitario").css("background-color", "rgba(255, 255, 255, 0.911)");
+         $(".infoval").css("display", "none");
          $('#VlUnitario').css("display", "none");
          $('#VlIVA').val("");
+         $("#VlIVA").css("background-color", "rgba(255, 255, 255, 0.911)");
          $('#VlIVA').css("display", "none");
          $('#guardar').css("display", "none");
          $('#volver').css("display", "none");
      });
-
 
      //VALIDAR INPUTS DETALLE, AGREGAR FILAS
      $('#guardar').click(function() {
@@ -179,7 +192,6 @@
          } else {
              agregar();
          }
-
      });
 
      //ELIMINAR ITEMS DE DETALLE
@@ -205,15 +217,20 @@
 
      //GUARDAR DETALLES DE LOS PRODUCTOS
      $("#btGuardar").click(function(e) {
+
          //RECORRER TABLA
          var filas = [];
-         var IdTransaccionCab = $('#IdTransaccionCab').val();
+         var IdTransaccionCab = $('#IdTransaccionCab').val(); //ULTIMO ID MOVIMIENTO CAB
+         var VlSubtotal = $('#VlSubtotal').val(); //SUBTOTAL DETALLE
+         var Iva = $('#Iva').val(); //TOTAL IVA DETALLE
          $('#tbcompra tbody tr').each(function() {
              var IdProducto = $(this).find('td').eq(0).text();
              var NmProducto = $(this).find('td').eq(1).text();
-             var NuCantidad = $(this).find('td').eq(2).text();
-             var VlUnitario = $(this).find('td').eq(3).text();
-             var Total = $(this).find('td').eq(4).text();
+             var NuCantidad = parseFloat($(this).find('td').eq(2).text());
+             var VlUnitario = parseFloat($(this).find('td').eq(3).text());
+             var valIVA = parseFloat($(this).find('td').eq(4).text());
+             var IVA = NuCantidad * valIVA;
+             //  var Total = $(this).find('td').eq(4).text();
 
              var fila = {
                  IdTransaccionCab,
@@ -221,7 +238,9 @@
                  NmProducto,
                  NuCantidad,
                  VlUnitario,
-                 Total
+                 IVA,
+                 VlSubtotal,
+                 Iva
              };
              filas.push(fila);
          });
@@ -246,6 +265,17 @@
                      });
                  }
              });
+
+             //ACTULIZAR SUBTOTAL,IVA EN MOVIMIENTO CAB
+             $.ajax({
+                 type: "POST",
+                 url: '../controlador/compra.php?op=subtotal',
+                 data: { valores: JSON.stringify(filas) }, // stringify CONVERTIR OBJ EN STRING
+                 success: function(data) {
+                     console.log(data);
+                 }
+             });
+
              //ACTUALIZAR CANTIDAD DE PRODUCTO
              $.ajax({
                  type: "POST",
@@ -253,22 +283,22 @@
                  data: { valores: JSON.stringify(filas) }, // stringify CONVERTIR OBJ EN STRING
                  success: function(data) {
                      console.log(data);
-                     //  swal({
-                     //      title: 'Success',
-                     //      type: 'success',
-                     //      text: data
-                     //  });
                  }
              });
+
              //LIMPIAR TABLA DETALLE
              $(".removeRow").remove();
              $('#volver').css("display", "none");
              $('#nr').css("visibility", "hidden");
              $('#agregar').css("display", "inline");
+
              $('#IdProducto').val("");
              $("#IdProducto").css("background-color", "rgb(255, 255, 255)");
              $('#IdProducto').css("display", "none");
-             $('#NmProducto').val("");
+
+             $('#NmProducto').val(null).trigger('change');
+             $('#nombre').css("visibility", "hidden");
+             //  $('#NmProducto').val("");
              $("#NmProducto").css("background-color", "rgb(255, 255, 255)");
              $(".infonm").css("display", "none");
              $('#NmProducto').css("display", "none");
@@ -289,7 +319,11 @@
              $('#Iva').val("");
              $('#Total').val("");
              $('#IdTransaccionCab').val(""); //LIMPIAR IDTRANSACCIONCAB
-             limpiar();
+             $("#detalle").css("display", "none"); //OCULTAR DETALLE
+             $("#foot").css("display", "none");
+             limpiar(); //LIMPIAR CAB
+             $('#btnGuardarc').css("display", "inline");
+
          } else {
              alert('Tabla detalle vacía');
          }
@@ -416,7 +450,8 @@
          '</td><td style="width:17%;">' + VlUnitario +
          '</td><td style="width:16%;">' + VlIVA +
          '</td><td style="width:11%;">' + Total +
-         '</td><td style="width:5%;"><button data-toggle="tooltip" data-placement="bottom" title="Eliminar" style="border: none;" class="deletedet btn btn-default btn-xs" type="button"><i class="fas fa-times"></i></button></td></tr>'
+         '</td><td style="width:5%;"><button data-toggle="tooltip" data-placement="bottom" title="Eliminar" style="border: none;"' +
+         ' class="deletedet btn btn-default btn-xs" type="button"><i class="fas fa-times"></i></button></td></tr>';
      $("#tbcompra tbody").append(compradet);
 
      // CALCULAR SUBTOTAL, IVA; TOTAL
@@ -437,7 +472,9 @@
 
      // DESPUES DE AGREGAR FILA, LIMPIAR INPUTS 
      $('#IdProducto').val("");
-     $('#NmProducto').val("");
+     //  $('#NmProducto').val("");
+     $('#NmProducto').val(null).trigger('change');
+     //  $('#nombre').css("visibility", "hidden");
      $('#NuCantidad').val("");
      $('#VlUnitario').val("");
      $('#VlIVA').val("");

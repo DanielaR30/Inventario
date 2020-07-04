@@ -1,7 +1,7 @@
 var tabla;
 
 function init() {
-    $("#card").hide();
+    // $("#card").hide();
     $("#carrito").hide();
     //   mostrarform(false);
     //   listar();
@@ -14,6 +14,22 @@ function init() {
         $("#IdClase").html(r);
     });
 
+    $(document).ready(function() {
+        $("#IdClase").change(function() {
+
+            $("#IdClase option:selected").each(function() {
+                IdClase = $(this).val();
+                $.post("../../controlador/producto.php?op=selectNmpro", { IdClase: IdClase }, function(data) {
+                    $("#NmProducto").html(data);
+                });
+            });
+        });
+    });
+
+
+    // $.post("../../controlador/producto.php?op=selectnmpro", function(r) {
+    //     $("#NmProducto").html(r);
+    // });
     //     $.post("../controlador/producto.php?op=selectClase", function(r) {
     //         $("#fclase").html(r);
     //     });
@@ -62,7 +78,7 @@ function mostrarcar(IdProducto) {
             '</h8></td><td style="width:20%;"><input style="width:80%;" type="number" value="1" class="form-control"></td>' +
             '<td style="width:45%;">' +
             '<button data-toggle="tooltip" data-placement="bottom" title="Eliminar" ' +
-            'style="border: none;" class="deletepro btn btn-outline-dark btn-sm" type="button"><i class="fas fa-times"></i></button></td></tr>'
+            'style="border: none;" class="deletepro btn btn-outline-dark btn-sm" type="button"><i class="fas fa-times"></i></button></td></tr>';
 
         $("#tbpedido tbody").append(car);
 
@@ -91,9 +107,21 @@ function mostrarcar(IdProducto) {
 }
 
 $(document).ready(function() {
+    // $('[data-toggle="datepicker"]').datepicker();
 
     //aplicar pluggin  
-    $('.select2').select2({
+    $('#IdTercero').select2({
+        placeholder: 'Seleccionar tercero',
+        theme: 'bootstrap4',
+    });
+
+    $('#IdClase').select2({
+        placeholder: 'Seleccionar clase de producto',
+        theme: 'bootstrap4',
+    });
+
+    $('#NmProducto').select2({
+        placeholder: 'Buscar producto',
         theme: 'bootstrap4',
     });
 
@@ -115,8 +143,9 @@ $(document).ready(function() {
             console.log('campos vacíos');
         } else {
             guardar(e);
-            $('#pedidocab').css("display", "none");
-            $('#hed').css("display", "inline");
+            $('#btnGuardar').remove();
+            $('#cls').css("display", "inline");
+            $('#nmprod').css("display", "inline");
             $('#card').show();
         }
 
@@ -134,7 +163,7 @@ $(document).ready(function() {
         });
     });
 
-    //FILTRAR PRODUCTOS 
+    //FILTRAR PRODUCTOS POR CLASE
     $('#IdClase').change(function() {
         var IdClase = $(this).val();
         var dataString = 'IdClase=' + IdClase;
@@ -146,6 +175,8 @@ $(document).ready(function() {
             success: function(data) {
 
                 $(".portfolio-item").remove(card); //LIMPIAR CARD
+                // $("#NmProducto").empty(opt); //LIMPIAR SELECT
+
 
                 console.log(data);
                 if (data.trim() !== "\r\nnull" || data.trim() !== undefined || data.trim() !== null || data.trim() !== "null") {
@@ -166,24 +197,25 @@ $(document).ready(function() {
                         var addcar = "addcar" + i;
                         var delcar = "delcar" + i;
 
+                        // var opt = '<option value="">' + NmProducto + '</option>';
+                        // $("#NmProducto").find(opt);
+
                         var card = '<div class="col-lg-2 col-md-6 portfolio-item" >' +
                             '<img class="img-fluid" src="../../public/img/' + ImagenProducto + '" alt="">' +
                             '<div class="portfolio-info"> ' +
                             '<p>' + NmProducto + '</p><p><button onclick="mostrarcar(' + IdProducto + ')"' +
                             ' data-toggle="tooltip" data-placement="bottom"' +
-                            'title="agregar al carrito" style="border:none;" id="' + addcar + '" class="a btn btn-outline-light btn-sm" type="button">' +
-                            '<i class="fas fa-cart-plus"></i></button>' +
+                            'title="agregar al carrito" style="border:none;" id="' + addcar + '" class="a btn btn-outline-light btn-sm" ' +
+                            'type="button"> <i class="fas fa-cart-plus"></i></button>' +
                             '<button onclick="delet(' + IdProducto + ')"' +
                             'data-toggle="tooltip" data-placement="bottom" title="Eliminar del carrito" style="border:none; display:none;"' +
                             ' id="' + delcar + '" class="d btn btn-outline-light btn-sm" type="button"><i class="far fa-trash-alt"></i></button>' +
-                            '</p></div>'
+                            '</p></div>';
 
                         $("#card").append(card);
-
                         //AGREGAR PRODUCTO ++
                         // $('body').on('click', 'button.a', function() {
-                        //     // $(this).prop('disabled', true);
-
+                        // // $(this).prop('disabled', true);
                         // });
                     }
                 }
@@ -193,6 +225,71 @@ $(document).ready(function() {
             }
         });
     });
+
+
+    //FILTRAR PRODUCTOS POR NOMBRE
+    $('#NmProducto').change(function() {
+        var NmProducto = $(this).val();
+        var dataString = 'IdClase=' + NmProducto;
+
+        $.ajax({
+            type: "POST",
+            url: "../../controlador/producto.php?op=filtronmpro",
+            data: dataString,
+            success: function(data) {
+
+                $(".portfolio-item").remove(card); //LIMPIAR CARD
+                // $("#NmProducto").empty(opt); //LIMPIAR SELECT
+
+                console.log(data);
+                if (data.trim() !== "\r\nnull" || data.trim() !== undefined || data.trim() !== null || data.trim() !== "null") {
+                    data = JSON.parse(data);
+
+                    console.log(data);
+                    console.log(data[0]);
+
+                    var len = data.length;
+                    console.log(len);
+
+                    //CREAR CARD POR PRODUCTO
+                    for (var i = 0; i < len; i++) {
+
+                        var IdProducto = data[i].IdProducto;
+                        var ImagenProducto = data[i].ImagenProducto;
+                        var NmProducto = data[i].NmProducto;
+                        var addcar = "addcar" + i;
+                        var delcar = "delcar" + i;
+
+                        var opt = '<option>' + NmProducto + '</option>';
+                        $("#NmProducto").append(opt);
+
+                        var card = '<div class="col-lg-2 col-md-6 portfolio-item" >' +
+                            '<img class="img-fluid" src="../../public/img/' + ImagenProducto + '" alt="">' +
+                            '<div class="portfolio-info"> ' +
+                            '<p>' + NmProducto + '</p><p><button onclick="mostrarcar(' + IdProducto + ')"' +
+                            ' data-toggle="tooltip" data-placement="bottom"' +
+                            'title="agregar al carrito" style="border:none;" id="' + addcar + '" class="a btn btn-outline-light btn-sm" ' +
+                            'type="button"> <i class="fas fa-cart-plus"></i></button>' +
+                            '<button onclick="delet(' + IdProducto + ')"' +
+                            'data-toggle="tooltip" data-placement="bottom" title="Eliminar del carrito" style="border:none; display:none;"' +
+                            ' id="' + delcar + '" class="d btn btn-outline-light btn-sm" type="button"><i class="far fa-trash-alt"></i></button>' +
+                            '</p></div>';
+
+                        $("#card").append(card);
+                        //AGREGAR PRODUCTO ++
+                        // $('body').on('click', 'button.a', function() {
+                        // // $(this).prop('disabled', true);
+                        // });
+                    }
+                }
+            },
+            error: function() {
+                console.log('existió un problema');
+            }
+        });
+    });
+
+
 
     //ELIMINAR ITEMS DEL CARRITO
     $('body').on('click', 'button.deletepro', function() {
@@ -273,7 +370,6 @@ $(document).ready(function() {
     //     type: 'get',
     //     dataType: 'JSON',
     //     success: function(response) {
-
     //         console.log(response);
     //         var len = response.length;
 

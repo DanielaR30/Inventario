@@ -14,9 +14,10 @@
       {
         $sql = "SELECT IdProducto, PorcentajeIVA, NuExistenciaFisica, NuStockMin, NuStockMax 
                 FROM INV_PRODUCTO
-                WHERE	NmProducto = '$NmProducto'";
+                WHERE	NmProducto LIKE '%{$NmProducto}'";
                 return consultarUnaFila($sql);
-            // WHERE	NmProducto LIKE '%{$NmProducto}'";
+                
+                //WHERE	NmProducto = '$NmProducto'";
       }
   
       //GUARDAR CABECERA
@@ -35,7 +36,7 @@
           for ($k=0; $k < count($filas); $k++) { 
             //print_r($filas[$k]); 
             $sql = "INSERT INTO  INV_MOVIMIENTODET (IdTransaccionCab, IdProducto, NuCantidad, VlUnitario, VlIVA) 
-            VALUES (".$filas[$k]['IdTransaccionCab'].",".$filas[$k]['IdProducto'].",".$filas[$k]['NuCantidad'].",".$filas[$k]['VlUnitario'].",'2')";
+            VALUES (".$filas[$k]['IdTransaccionCab'].",".$filas[$k]['IdProducto'].",".$filas[$k]['NuCantidad'].",".$filas[$k]['VlUnitario'].",".$filas[$k]['IVA'].")";
             ejecutarConsulta($sql);
           }
           return 'datos guardados';
@@ -43,6 +44,24 @@
           throw new \PDOException($e->getMessage(), (int) $e->getCode());
         }
       }
+      
+          //ACTULIZAR SUBTOTAL,IVA EN MOVIMIENTO CAB
+           public function subtotal($rows)
+           {
+             try {
+               for ($k=0; $k < count($rows); $k++) { 
+                         
+                 $sql="UPDATE INV_MOVIMIENTOCAB 
+                 SET VlSubtotal=".$rows[$k]['VlSubtotal']." ,VlIVA=".$rows[$k]['Iva']."
+                 WHERE IdTransaccion= ".$rows[$k]['IdTransaccionCab']."";
+                 ejecutarConsulta($sql);
+               }
+               return 'Compra Actualizada';
+              
+             } catch (\PDOException $e) {
+               throw new \PDOException($e->getMessage(), (int) $e->getCode());
+             }
+           } 
       
       //ACTUALIZAR NRO DE EXISTENCIAS EN TABLA PRODUCTO
       public function existencias($rows)

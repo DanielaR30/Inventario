@@ -37,16 +37,14 @@ public function mostrarid($IdClase){
                     $Idproducto= $IdSegmento . $IDFamilia . $IdClase . '00001';
                     return ($Idproducto);
                 } else {
-               //si hay registros seleccione idproducto y aumente en 1 
+            //si hay registros seleccione idproducto y aumente en 1 
                     $IdProducto = "SELECT MAX(SUBSTRING(IdProducto, 6, 5))+1 AS ID FROM INV_PRODUCTO";
                     $res =  consultarUnaFila($IdProducto); 
-                    //agregar nro de ceros correspondiente a la izquerda
+                  //agregar nro de ceros correspondiente a la izquerda
                     $IdProducto = str_pad($res['ID'], 5, '0', STR_PAD_LEFT);
-                    // concatenar idsegmento,idfamili,idclase,idproducto para Código final
+                  // concatenar idsegmento,idfamili,idclase,idproducto para Código final
                     $Idproducto= $IdSegmento . $IDFamilia . $IdClase . $IdProducto;
-                    
                     return ($Idproducto);
-                    
                 }
                 } 
                 catch (Exception $e) {
@@ -199,7 +197,16 @@ public function mostrarid($IdClase){
            INNER JOIN INV_CLASE as c on c.IdClase=p.IdClase
 		   WHERE  p.IdClase='$IdClase' AND p.IdEstadoProducto = '1'"; 
            return ejecutarConsulta($sql);
-        }
+        }   
+        
+        //FILTRO DE PRODUCTOS SEGUN NOMBRE 
+         public function filtronmpro($NmProducto)
+         {    
+            $sql= "SELECT IdProducto, NmProducto, ImagenProducto      
+            FROM INV_PRODUCTO
+            WHERE  NmProducto='$NmProducto' AND IdEstadoProducto = '1'"; 
+            return ejecutarConsulta($sql);
+         }
         
         //MOSTRAR EL NOMBRE DE LA CLASE SEGUN LOS REGISTROS DE PRODUCTO
         public function selectClasepro()
