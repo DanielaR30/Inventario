@@ -142,7 +142,6 @@ public function mostrarid($IdClase){
              NuStockMax='$NuStockMax'
             WHERE IdProducto='$IdProducto'";
             return ejecutarConsulta($sql);           
-            
         }
   
   //selecciona los registros según el id
@@ -152,7 +151,6 @@ public function mostrarid($IdClase){
             WHERE IdProducto='$IdProducto'";
             return ejecutarConsulta($sql);               
         } 
-
   
         //Método para mostrar los datos de un registro a modificar
         public function mostrar($IdProducto)
@@ -195,18 +193,18 @@ public function mostrarid($IdClase){
            $sql= "SELECT p.IdProducto, p.NmProducto, p.ImagenProducto      
            FROM INV_PRODUCTO as p
            INNER JOIN INV_CLASE as c on c.IdClase=p.IdClase
-		   WHERE  p.IdClase='$IdClase' AND p.IdEstadoProducto = '1'"; 
+           WHERE  p.IdClase='$IdClase' AND p.IdEstadoProducto = '1'"; 
            return ejecutarConsulta($sql);
         }   
         
-        //FILTRO DE PRODUCTOS SEGUN NOMBRE 
-         public function filtronmpro($NmProducto)
-         {    
-            $sql= "SELECT IdProducto, NmProducto, ImagenProducto      
-            FROM INV_PRODUCTO
-            WHERE  NmProducto='$NmProducto' AND IdEstadoProducto = '1'"; 
-            return ejecutarConsulta($sql);
-         }
+        // //FILTRO DE PRODUCTOS SEGUN NOMBRE 
+        //  public function filtronmpro($NmProducto)
+        //  {    
+        //     $sql= "SELECT IdProducto, NmProducto, ImagenProducto      
+        //     FROM INV_PRODUCTO
+        //     WHERE  NmProducto='$NmProducto' AND IdEstadoProducto = '1'"; 
+        //     return ejecutarConsulta($sql);
+        //  }
         
         //MOSTRAR EL NOMBRE DE LA CLASE SEGUN LOS REGISTROS DE PRODUCTO
         public function selectClasepro()

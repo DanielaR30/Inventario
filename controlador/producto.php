@@ -59,6 +59,7 @@ case 'datosid':
   }
 break;
 
+
 //mostrar id producto autoincremental según: familia,segmento y clase
 case 'mostrarid':
   $rspta = $producto->mostrarid($IdClase);
@@ -203,24 +204,33 @@ case 'listar':
       }
       echo json_encode($results);
   break;
-  
-  
-  case 'selectClasepro':
-    $rspta = $producto->selectClasepro();
-    echo '<option value="" selected disabled> Seleccione la clase de producto</option>';
+
+
+  case 'selectprono':
+    $rspta = $producto->filtropro($IdClase);
+      echo '<option value="" selected disabled> Seleccionar clase del producto</option>';
+      while ($reg = sqlsrv_fetch_array($rspta, SQLSRV_FETCH_ASSOC)) {
+      echo '<option>' . $reg['NmProducto'] . '</option>';
+      }
+  break;
+
+  case 'filtroprono':
+    $rspta = $producto->filtropro($IdClase);
     while ($reg = sqlsrv_fetch_array($rspta, SQLSRV_FETCH_ASSOC)) {
-      echo '<option value="' . $reg['IdClase'] . '">' . $reg['NmClase'] . '</option>';
-    }
+  
+      $IdProducto =  $reg['IdProducto'];
+      $ImagenProducto =  $reg['ImagenProducto'];
+      $NmProducto =  $reg['NmProducto'];
+      
+      $results[] = array(
+      "IdProducto" =>$IdProducto,
+      "ImagenProducto" =>$ImagenProducto, 
+      "NmProducto" =>$NmProducto); 
+      }
+      echo json_encode($results);
   break;
   
-  // case 'filtronmpro':
-  //   $rspta = $producto->filtronmpro($NmProducto);
-  //   while ($reg = sqlsrv_fetch_array($rspta, SQLSRV_FETCH_ASSOC)) {
-  //   // print_r($reg['NmProducto']); die();
-  //     echo '<option>' . $reg['NmProducto'] . '</option>';
-  //   }
-  // break;
-   
+
   case 'card':
     $rspta = $producto->listar();
     while ($reg = sqlsrv_fetch_array($rspta, SQLSRV_FETCH_ASSOC)) {
@@ -239,7 +249,7 @@ case 'listar':
     
     case 'selectClasepro':
       $rspta = $producto->selectClasepro();
-      echo '<option value="" selected disabled> Seleccione la clase de producto</option>';
+      echo '<option value="" selected disabled> Seleccionar clase del producto</option>';
       while ($reg = sqlsrv_fetch_array($rspta, SQLSRV_FETCH_ASSOC)) {
         echo '<option value="' . $reg['IdClase'] . '">' . $reg['NmClase'] . '</option>';
       }
@@ -247,7 +257,7 @@ case 'listar':
   
   case 'selectClase':
     $rspta = $producto->selectClase();
-    echo '<option value="" selected disabled> Seleccione la clase </option>';
+    echo '<option value="" selected disabled> Seleccionar clase </option>';
     while ($reg = sqlsrv_fetch_array($rspta, SQLSRV_FETCH_ASSOC)) {
       echo '<option value="' . $reg['IdClase'] . '">' . $reg['NmClase'] . '</option>';
     }
@@ -255,7 +265,7 @@ case 'listar':
 
   case 'selectMarca':
     $rspta = $producto->selectMarca();
-    echo '<option value="" selected disabled> Seleccione la marca </option>';
+    echo '<option value="" selected disabled> Seleccionar marca </option>';
     while ($reg = sqlsrv_fetch_array($rspta, SQLSRV_FETCH_ASSOC)) {
       echo '<option value="' . $reg['IdMarca'] . '">' . $reg['NmMarca'] . '</option>';
     }
@@ -263,7 +273,7 @@ case 'listar':
  
   case 'selectLinea':
     $rspta = $producto->selectLinea();
-    echo '<option value="" selected disabled> Seleccione la línea </option>';
+    echo '<option value="" selected disabled> Seleccionar línea </option>';
     while ($reg = sqlsrv_fetch_array($rspta, SQLSRV_FETCH_ASSOC)) {
       echo '<option value="' . $reg['IdLinea'] . '">' . $reg['NmLinea'] . '</option>';
     }
@@ -271,7 +281,7 @@ case 'listar':
 
   case 'selectUnidad':
     $rspta = $producto->selectUnidad();
-    echo '<option value="" selected disabled> Seleccione la Unidad de medida </option>';
+    echo '<option value="" selected disabled> Seleccionar Unidad de medida </option>';
     while ($reg = sqlsrv_fetch_array($rspta, SQLSRV_FETCH_ASSOC)) {
       echo '<option value="' . $reg['IdUnidadMedida'] . '">' . $reg['NmUnidadMedida'] . '</option>';
     }
@@ -279,7 +289,7 @@ case 'listar':
 
   case 'selectBodega':
     $rspta = $producto->selectBodega();
-    echo '<option value="" selected disabled> Seleccione la Localización </option>';
+    echo '<option value="" selected disabled> Seleccionar Localización </option>';
     while ($reg = sqlsrv_fetch_array($rspta, SQLSRV_FETCH_ASSOC)) {
       echo '<option value="' . $reg['IdBodega'] . '">' . $reg['NmBodega'] . '</option>';
     }
@@ -287,7 +297,7 @@ case 'listar':
 
     case 'selectEstado':
       $rspta = $producto->selectEstado();
-      echo '<option value="" selected disabled> Seleccione el estado </option>';
+      echo '<option value="" selected disabled> Seleccionar el estado </option>';
       while ($reg = sqlsrv_fetch_array($rspta, SQLSRV_FETCH_ASSOC)) {
         echo '<option value="' . $reg['IdEstadoProducto'] . '">' . $reg['NmEstadoProducto'] . '</option>';
       }

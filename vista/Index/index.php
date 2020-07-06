@@ -80,8 +80,6 @@
 </head>
 
 <body>
-
-
 <div id="carrito" class="container-fluid" style="max-width: 2000px; height: 700px;">
           
           <div class="row">
@@ -244,10 +242,7 @@
                              </span>
                       </div>
                       
-                  <div class="form-group col-lg-3 col-md-12 col-sm-12 col-xs-12 mt-4 d-flex align-items-end">
-                    <button class="btn btn-outline-primary pull-left" type="button"  id="btnGuardar">Ingresar Productos </button> 
-                  </div>
-                      
+                
                       <div style="display: none;" id="cls" class="inputWithIcon form-group col-lg-3 col-md-6 col-sm-6 col-xs-12">
                             <label for="IdTercero" class="col-sm-2 control-label">Clase</label>
                             <select class="form-control select2" style="width: 100%;" name="IdClase" id="IdClase"></select>
@@ -266,10 +261,12 @@
                       </div>
                 </div>
               
-                <!-- <div class="row">
-                </div> -->
-         
-              
+                <div class="row">
+                  <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12 mt-4 d-flex justify-content-end">
+                    <button class="btn btn-outline-primary pull-left" type="button"  id="btnGuardar">Ingresar Productos</button> 
+                  </div>
+                </div>
+
               <!-- <button type="button" class="btn btn-primary pull-right">Sign in</button> -->
                 </form>
                 </div>

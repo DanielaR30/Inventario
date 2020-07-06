@@ -15,17 +15,17 @@ function init() {
     });
 
     $(document).ready(function() {
-        $("#IdClase").change(function() {
 
+        $("#IdClase").change(function() {
             $("#IdClase option:selected").each(function() {
                 IdClase = $(this).val();
-                $.post("../../controlador/producto.php?op=selectNmpro", { IdClase: IdClase }, function(data) {
+                $.post("../../controlador/producto.php?op=selectprono", { IdClase: IdClase }, function(data) {
                     $("#NmProducto").html(data);
                 });
             });
         });
-    });
 
+    });
 
     // $.post("../../controlador/producto.php?op=selectnmpro", function(r) {
     //     $("#NmProducto").html(r);
@@ -57,11 +57,11 @@ function guardar(e) {
     //  limpiar();
 }
 
+
 //AGREGAR ITEMS AL CARRITO
 function mostrarcar(IdProducto) {
 
     $("#alertcarr").css("display", "inline");
-
     $.post("../../controlador/producto.php?op=mostrarcar", { IdProducto: IdProducto }, function(data, _status) {
         data = JSON.parse(data);
         console.log(data);
@@ -143,7 +143,7 @@ $(document).ready(function() {
             console.log('campos vacíos');
         } else {
             guardar(e);
-            $('#btnGuardar').remove();
+            $('#btnGuardar').hide();
             $('#cls').css("display", "inline");
             $('#nmprod').css("display", "inline");
             $('#card').show();
@@ -239,7 +239,6 @@ $(document).ready(function() {
             success: function(data) {
 
                 $(".portfolio-item").remove(card); //LIMPIAR CARD
-                // $("#NmProducto").empty(opt); //LIMPIAR SELECT
 
                 console.log(data);
                 if (data.trim() !== "\r\nnull" || data.trim() !== undefined || data.trim() !== null || data.trim() !== "null") {
